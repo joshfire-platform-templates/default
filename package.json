@@ -10,7 +10,7 @@
 		"devices":{
 	  	"tablet":{
   			"startfile":"tablet/index.html"
-  		}
+  		},
 			"*":{
 				"startfile":"index.html"
 			}
