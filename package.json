@@ -7,14 +7,16 @@
        "default"
    ],
 	"joshfire":{
-		"devices":{
-	  	"tablet":{
-  			"startfile":"tablet/index.html"
-  		},
-			"*":{
-				"startfile":"index.html"
-			}
-		},
+		"devices":[
+		  {
+		    "devices":"tablet",
+		    "startfile":"tablet/index.html"
+		  },
+		  {
+		    "devices":"*",
+		    "startfile":"index.html"
+		  }
+		],
 		"datasources":{
 			"main":{
 				"title":"Main datasource",
