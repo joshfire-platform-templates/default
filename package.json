@@ -1,0 +1,25 @@
+{
+	"name":"default",
+	"version":"0.0.1",
+	"fullName":"Default theme",
+	"description":"Defaut theme",
+	"keywords": [
+       "default"
+   ],
+	"joshfire":{
+		"devices":{
+	  	"tablet":{
+  			"startfile":"tablet/index.html"
+  		}
+			"*":{
+				"startfile":"index.html"
+			}
+		},
+		"datasources":{
+			"main":{
+				"title":"Main datasource",
+				"description":"Main display"
+			}
+		}
+	}
+}
