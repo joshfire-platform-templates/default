@@ -3,6 +3,15 @@
 	"version":"0.0.1",
 	"fullName":"Default theme",
 	"description":"Defaut theme",
+	"graphic_small":"http://i.imgur.com/7QFFS.png",
+	"graphic_big":"http://i.imgur.com/x5NbC.png",
+	"previews":{
+		"mobile":"",
+		"tablet":"",
+		"desktop":"",
+		"tv":"",
+		"objects":""
+	},
 	"keywords": [
        "default"
    ],
