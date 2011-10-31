@@ -11,6 +11,12 @@
     "desktop": "http://i.imgur.com/F2m22.png",
     "tv": "http://i.imgur.com/eVpIc.png"
   },
+  "previews": {
+    "mobile": "http://i.imgur.com/rphpo.png",
+    "tablet": "http://i.imgur.com/44JIF.png",
+    "desktop": "http://i.imgur.com/F2m22.png",
+    "tv": "http://i.imgur.com/eVpIc.png"
+  },
   "keywords": [
      "default",
      "clean",
@@ -19,16 +25,24 @@
   "joshfire": {
     "devices": [
       {
+        "devices": "desktop",
+        "startfile": "app/index.desktop.html"
+      },
+      {
         "devices": "phone",
-        "startfile": "index.phone.html"
+        "startfile": "app/index.phone.html"
       },
       {
         "devices": "tablet",
-        "startfile": "index.tablet.html"
+        "startfile": "app/index.tablet.html"
+      },
+      {
+        "devices": "tv",
+        "startfile": "app/index.tv.html"
       },
       {
         "devices": "*",
-        "startfile": "index.html"
+        "startfile": "app/index.html"
       }
     ],
     "datasources": {
