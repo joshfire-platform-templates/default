@@ -51,7 +51,7 @@
         "description": "Datasource with videos"
       },
       "news": {
-        "title": "News fedd",
+        "title": "News feed",
         "description": "Datasource with articles"
       }
     },
