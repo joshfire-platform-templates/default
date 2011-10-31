@@ -1,35 +1,60 @@
 {
-	"name":"default",
-	"version":"0.0.1",
-	"fullName":"Default theme",
-	"description":"Defaut theme",
-	"graphic_small":"http://i.imgur.com/7QFFS.png",
-	"graphic_big":"http://i.imgur.com/x5NbC.png",
-	"previews":{
-		"mobile":"http://i.imgur.com/rphpo.png",
-		"tablet":"http://i.imgur.com/44JIF.png",
-		"desktop":"http://i.imgur.com/F2m22.png",
-		"tv":"http://i.imgur.com/eVpIc.png"
-	},
-	"keywords": [
-       "default"
+  "name": "default",
+  "version": "0.0.1",
+  "fullName": "Default template",
+  "description": "Official default template, handling every device supported by the platform.",
+  "graphic_small": "http://i.imgur.com/7QFFS.png",
+  "graphic_big": "http://i.imgur.com/x5NbC.png",
+  "previews": {
+    "mobile": "http://i.imgur.com/rphpo.png",
+    "tablet": "http://i.imgur.com/44JIF.png",
+    "desktop": "http://i.imgur.com/F2m22.png",
+    "tv": "http://i.imgur.com/eVpIc.png"
+  },
+  "keywords": [
+     "default",
+     "clean",
+     "white"
    ],
-	"joshfire":{
-		"devices":[
-		  {
-		    "devices":"tablet",
-		    "startfile":"tablet/index.html"
-		  },
-		  {
-		    "devices":"*",
-		    "startfile":"index.html"
-		  }
-		],
-		"datasources":{
-			"main":{
-				"title":"Main datasource",
-				"description":"Main display"
-			}
-		}
-	}
+  "joshfire": {
+    "devices": [
+      {
+        "devices": "phone",
+        "startfile": "index.phone.html"
+      },
+      {
+        "devices": "tablet",
+        "startfile": "index.tablet.html"
+      },
+      {
+        "devices": "*",
+        "startfile": "index.html"
+      }
+    ],
+    "datasources": {
+      "videos": {
+        "title": "Videos source",
+        "description": "Datasource with videos"
+      },
+      "news": {
+        "title": "News fedd",
+        "description": "Datasource with articles"
+      }
+    },
+    "options": {
+      "schema": {
+        "abouthtml": {
+          "type": "string"
+        }
+      },
+      "form": [
+        "datasources.videos",
+        "datasources.news",
+        {
+          "key": "abouthtml",
+          "type": "textarea"
+        }
+      ]
+    }
+  }
 }
