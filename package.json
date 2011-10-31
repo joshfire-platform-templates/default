@@ -29,8 +29,12 @@
         "startfile": "app/index.desktop.html"
       },
       {
-        "devices": ["phone", "tablet"],
+        "devices": "phone",
         "startfile": "app/index.phone.html"
+      },
+      {
+        "devices": "tablet",
+        "startfile": "app/index.tablet.html"
       },
       {
         "devices": "tv",
