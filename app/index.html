@@ -2,33 +2,11 @@
 <html>
   <head>
     <title>Insert here title of my app</title>
-    <link rel="stylesheet" href="css/desktop.css" />
-    <script data-joshfire-bootstrap></script>
+    <link rel="stylesheet" href="css/basic.css">
+    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4eb2680a89bb37000000002d/4eb2682ecd29e30000000008/auto/"></script>
   </head>
   <body>
+    <h1>Unknown device</h1>
     <div id="preview">Loading...</div>
-    <p>Unknown device</p>
-    <script>
-      Joshfire.getDataSource('main').find({}, function(err, data) {
-        var str;
-        if (!data.entries || !data.entries.length) {
-          str = 'No entries';
-        } else {
-          str = '<ul>';
-          for (var i = 0; i < data.entries.length; i++) {
-            var element = data.entries[i];
-            str += '<li><a href="' + element.video + '"><h4>' + element.title +'</h4><p><img src="' + element.image + '"></p></a></li>';
-          }
-          str += '</ul>';
-        }
-        document.getElementById('preview').innerHTML = str;
-      });
-
-      // Joshfire.debug = true;
-      // Joshfire.require(['src/app'], function(App) {
-      //   console.log("Code is loaded!");
-      //   new App();
-      // });
-    </script>
   </body>
 </html>
