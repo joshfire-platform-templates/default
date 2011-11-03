@@ -8,5 +8,21 @@
   <body>
     <div id="preview">Loading...</div>
     <p>Phone Coin coin</p>
+    <script>
+      Joshfire.getDataSource('main').find({}, function(err, data) {
+        var str;
+        if (!data.entries || !data.entries.length) {
+          str = 'No entries';
+        } else {
+          str = '<ul>';
+          for (var i = 0; i < data.entries.length; i++) {
+            var element = data.entries[i];
+            str += '<li><a href="' + element.video + '"><h4>' + element.title +'</h4><p><img src="' + element.image + '"></p></a></li>';
+          }
+          str += '</ul>';
+        }
+        document.getElementById('preview').innerHTML = str;
+      });
+    </script>
   </body>
 </html>
