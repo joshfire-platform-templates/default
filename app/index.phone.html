@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Insert here title of my app</title>
+    <meta charset="UTF-8">
+    <title>Phone</title>
     <link rel="stylesheet" href="css/phone.css">
     <!-- Use iOS or Android adapter depending on the device -->
     <script data-main="./" src="joshfire/adapters/ios/bootstrap.js"></script>
     <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4eb2680a89bb37000000002d/4eb2682ecd29e30000000008/phone/"></script>
   </head>
   <body>
-    <h1>Phone</h1>
-    <div id="preview">Loading…</div>
+    <div id="splashscreen">Loading…</div>
     <script>
       Joshfire.debug = true;
-      // Here, select "phone" specifically
       Joshfire.require(['app'], function(App) {
-        new App();
+        _app = new App();
       });
     </script>
   </body>

@@ -1,0 +1,83 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: lavenderblush;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+#splashscreen {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+#defaultApp__ {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#defaultApp__header {
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 45px;
+  background: cadetblue;
+}
+
+#defaultApp__content {
+  position: absolute;
+  top: 45px; right: 0; bottom: 60px; left: 0;
+  overflow: auto;
+}
+
+#defaultApp__header__prev {
+  display: none;
+}
+
+#defaultApp__content__itemsList {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#defaultApp__content__itemsList li {
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+}
+
+#defaultApp__content__itemsList li p {
+  margin: 0;
+}
+
+#defaultApp__footer {
+  position: absolute;
+  right: 0; bottom: 0;  left: 0;
+  height: 60px;
+  background: darkslategrey;
+  text-align: center;
+}
+
+.defaultApp__footer_scroller {
+  height: 100%;
+}
+
+.defaultApp__footer_scroller ul {
+  height: 100%;
+}
+
+#defaultApp__footer li {
+  display: inline-block;
+  border: 1px solid black;
+  color: white;
+  height: 58px;
+  line-height: 60px;
+  margin: 0 5px;
+  padding: 0 15px;
+}
