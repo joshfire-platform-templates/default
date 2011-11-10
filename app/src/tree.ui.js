@@ -22,7 +22,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: 'Panel',
-              content: '_title_'
+              content: 'My App'
             }
           ]
         },
@@ -32,40 +32,23 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           uiMaster: '/footer',
           children: [
             {
-              id:               'itemsList',
+              id:               'itemList',
               type:             List,
               orientation:      'left',
               loadingTemplate: '<div style="padding:40px;">Loading...</div>',
               itemInnerTemplate:
                 '<div class="clearfix">'+
-                // '    <p class="title"><a href="<%= item.link %>"><%= item.title %></a></p>'+
                 '    <p class="title"><%= item.title %></p>'+
-                '</div>',
-              onState: function(ui, ev, data) {
-                console.warn('onState', ui, ev, data);
-              },
-              onSelect: function(ui, type, data) {
-                console.warn('onSelect', ui, type, data);
-              }
+                '</div>'
             }
           ]
         },
         {
           id: 'footer',
           type: List,
-          onSelect: function(ui, type, data, token) {
-            var datasourceId = data[0][0];
-
-            console.warn('Selected Footer Item', datasourceId);
-
-            app.currentDatasource = datasourceId;
-
-            console.warn('app.currentDatasource', app.currentDatasource);
-
-            app.ui.element('/content/itemsList').setDataPath('/items/');
-
-            // app.ui.element('/content/itemsList').refresh();
-          }
+          dataPath: '/datasourcelist/',
+          itemInnerTemplate: '<%= item.name %>',
+          onData: function() {} // trigger data, WTF?
         }
       ];
     }

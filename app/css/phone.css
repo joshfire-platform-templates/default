@@ -38,21 +38,29 @@ ul {
   overflow: auto;
 }
 
+#defaultApp__header__title {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+}
+
 #defaultApp__header__prev {
   display: none;
 }
 
-#defaultApp__content__itemsList {
+#defaultApp__content__itemList {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
-#defaultApp__content__itemsList li {
+#defaultApp__content__itemList li {
   padding: 10px 0;
   border-bottom: 1px solid gray;
 }
 
-#defaultApp__content__itemsList li p {
+#defaultApp__content__itemList li p {
   margin: 0;
 }
 
