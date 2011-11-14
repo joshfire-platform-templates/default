@@ -44,6 +44,7 @@ ul {
   text-align: center;
   line-height: 45px;
   color: #fff;
+  text-transform: capitalize;
 }
 
 #defaultApp__header__prev {
@@ -88,4 +89,8 @@ ul {
   line-height: 60px;
   margin: 0 5px;
   padding: 0 15px;
+}
+
+#defaultApp__footer li.selected {
+  background: #000;
 }

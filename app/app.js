@@ -29,15 +29,12 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       footer.subscribe('select', function(event, data) {
         var datasourceId = data[0][0];
 
-        self.currentDatasource = datasourceId;
-
-        // TODO: find a way to get items specifice to this datasource…
-        self.ui.element('/content/itemList').setDataPath('/items/');
+        self.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
 
         title.htmlEl.innerHTML = datasourceId;
       });
 
-      // Refresh content each time a new data is attached
+      // Refresh content each time new data is attached
       itemList.subscribe('data', function(event, data) {
         itemList.refresh();
       });
