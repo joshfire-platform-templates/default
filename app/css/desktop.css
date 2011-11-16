@@ -1,0 +1,58 @@
+html,
+body {
+  background: url('../images/xv.png');
+  text-align: center;
+}
+
+#defaultApp__ {
+  m
+}
+
+#defaultApp__header__prev {
+  display: none !important;
+}
+
+#defaultApp__header__title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+#defaultApp__menu ul {
+  text-align: center;
+}
+
+#defaultApp__menu li {
+  display: inline-block;
+  list-style: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#defaultApp__menu li.selected {
+  background: #000;
+  color: #fff;
+}
+
+#defaultApp__content {
+  outline: 1px solid black;
+  padding: 5px;
+  overflow: hidden;
+}
+
+#defaultApp__content__itemList,
+#defaultApp__content__detail {
+  float: left;
+  width: 50%;
+}
+
+#defaultApp__content__itemList {
+  outline: 1px solid gray;
+}
+
+#defaultApp__content__detail {
+  outline: 1px solid silver;
+}
