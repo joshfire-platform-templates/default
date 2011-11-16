@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <title>Phone</title>
     <link rel="stylesheet" href="css/phone.css">
-    <!-- Use iOS or Android adapter depending on the device -->
     <script data-main="./" src="joshfire/adapters/ios/bootstrap.js"></script>
-    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4eb2680a89bb37000000002d/4eb2682ecd29e30000000008/phone/"></script>
+    <script data-joshfire-bootstrap></script>
   </head>
   <body>
     <div id="splashscreen">Loading…</div>
     <script>
-      Joshfire.debug = true;
-      Joshfire.require(['app'], function(App) {
-        _app = new App();
+      Joshfire.require(['app.phone'], function(App) {
+        new App();
       });
     </script>
   </body>
