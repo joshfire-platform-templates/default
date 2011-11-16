@@ -1,0 +1,9 @@
+body {
+  background: crimson;
+  text-align: center;
+  color: mintcream;
+  font-weight: bold;
+  font-family: Helvetica, Arial;
+  font-size: 50px;
+  text-shadow: 0 0 15px #fff;
+}
