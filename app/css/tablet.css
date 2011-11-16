@@ -1,1 +1,15 @@
 @import url('phone.css');
+
+html,
+body,
+#defaultApp__content__detail {
+  background: azure;
+}
+
+#defaultApp__header {
+  background: mediumturquoise;
+}
+
+#defaultApp__footer {
+  background: darkturquoise;
+}
