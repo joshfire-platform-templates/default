@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data.phone', './src/tree.ui.phone', 'joshfire/utils/splashscreen', 'joshfire/uielements/panel'], function(BaseApp, Class, Data, UI, Splash, Panel) {
+Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tree.ui.phone', 'joshfire/utils/splashscreen', 'joshfire/uielements/panel'], function(BaseApp, Class, Data, UI, Splash, Panel) {
   
   return Class(BaseApp, {
 
