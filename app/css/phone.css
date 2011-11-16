@@ -32,6 +32,11 @@ ul {
   background: cadetblue;
 }
 
+#defaultApp__header__prev {
+  position: relative;
+  z-index: 10;
+}
+
 #defaultApp__content {
   position: absolute;
   top: 45px; right: 0; bottom: 60px; left: 0;
@@ -63,6 +68,12 @@ ul {
 
 #defaultApp__content__itemList li p {
   margin: 0;
+}
+
+#defaultApp__content__detail {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: lavenderblush;
 }
 
 #defaultApp__footer {

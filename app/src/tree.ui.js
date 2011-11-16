@@ -32,15 +32,35 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           uiMaster: '/footer',
           children: [
             {
-              id:               'itemList',
-              type:             List,
-              orientation:      'left',
-              loadingTemplate: '<div style="padding:40px;">Loading...</div>',
+              id: 'itemList',
+              type: List,
+              orientation: 'left',
+              loadingTemplate: '<div>Loading itemList...</div>',
               itemInnerTemplate:
                 '<div class="clearfix">'+
                 '    <p class="title"><%= item.title %></p>'+
                 '</div>'
+            },
+            {
+              id: 'detail',
+              type: Panel,
+              loadingTemplate: '<div>Loading detail...</div>',
+              autoShow: false,
+              uiDataMaster: '/content/itemList',
+              forceDataPathRefresh: true,
+              innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.
+                '<h4 class="title"><%= data.title %></h4>'+
+                '<% if (data.image) { %>'+
+                '  <img style="max-width:100%" src="<%= data.image %>">'+
+                '<% } %>'+
+                '<% if (data.video) { %>'+
+                '  <p><a href="<%= data.video %>"><%= data.video %></a></p>'+
+                '<% } else { %>'+
+                '  <p><a href="<%= data.link %>"><%= data.link %></a></p>'+
+                '<% } %>'+
+                '<p>Par <strong><%= data.creator || data.user %></strong></p>'
             }
+            
           ]
         },
         {
