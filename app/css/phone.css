@@ -28,30 +28,41 @@ ul {
 #defaultApp__header {
   position: absolute;
   top: 0; right: 0; left: 0;
-  height: 44px;
-  border-bottom: 1px solid #000;
-  background-image: -webkit-linear-gradient(#7c9bc0,#416086 2%,#293e56);
+  height: 43px;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #2D3033;
+  background: -webkit-gradient(
+    linear, 0 0, 0 100%,
+    color-stop(0, #d1d7de),
+    color-stop(.016, #b5c0ce),
+    color-stop(.5, #889bb3),
+    color-stop(.505, #7f94b0),
+    color-stop(1, #6d83a1)
+  );
 }
 
 #defaultApp__header__prev {
   position: relative;
   z-index: 10;
-  -webkit-appearance: none;
-  font-weight: bold;
+  -webkit-border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAeCAIAAACqmwlGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAatJREFUeNqVlMtKw0AUhqfJSRpTk5Za1FAvxS6sgrVeFrpQdOcT+IpuBVHcuVBQpCDYjeAdkSpavDTGNJkz43FpFZz8DISZ+b75J5tJbWwfMsZuby7rh/vN5v1H+539TMZxPa84v7g0WirTFISQR/t7jdOTcqVaGp+ze50uIfDbL62H3a3NqerMwtIqXF9dnF+dL6+t9/S6hmFqut4luHns80aKpcrxwY43PKK7+f6J2ZVcYTCl6ZIxKuwatEhbpmU72UKjfgCakXFz/TwW7L8QlgIbTNtBwVAgU0g644IGZoycqYVgQGRRLBQFggEpHJUFBI4iUhYIBhSSPooCwUB0zEWiBsERlRsECJSIUlEgOHmDH3TM909FgWBgqe8oCgRrLGGADlcvIDB5A2nfQ7kD6D5J/jn5lZILBoAUQgWVUgDoWi5r8zhUEXgU5nOOVp0sB+0W+f8WEDY9MabpYNUqQ29Pd1Hoi79eA1qkLQIIY5CGIOwUvYHBQr5xdvn4/BSGnS7BstIDhexUbVo3jNarD1Ky5xfftszF+WqPZcKvp5IjfoYRoYHv0/QLHvXjAb8xkEMAAAAASUVORK5CYII=) 0 5 0 5 stretch stretch;
+  background: none;
+  border-width: 0 5px;
+  color: white;
+  font-family: inherit;
   font-size: 12px;
-  background-image: -webkit-linear-gradient(#5a81af,#304864 2%,#192533);
-  border: 0.1em solid #030507;
-  border-top-color: #0c1118;
-  color: #fff;
-  text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
-  -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 0.1em 0;
-  margin: 7px;
-  padding: .3em .6em;
-  background-clip: padding-box;
-  border-radius: 0.4em;
+  font-weight: bold;
   height: 30px;
-  min-width: 60px;
-  overflow: hidden;
+  line-height: 30px;
+  margin: 0;
+  overflow: ;
+  padding: 0 3px;
+  margin-left: 6px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-shadow: rgba(0, 0, 0, 0.496094) 0 -1px 0;
+  margin-top: 7px;
+  white-space: nowrap;
+  width: auto;
 }
 
 #defaultApp__content {
@@ -83,10 +94,11 @@ ul {
   height: 41px;
   line-height: 41px;
   border-bottom: 1px solid #e0e0e0;
-  padding: 0 15px;
+  padding: 0 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-shadow: #fff 0 0 1px;
 }
 
 #defaultApp__content__itemList li p {
@@ -97,7 +109,7 @@ ul {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   background: #fff;
-  padding: 15px;
+  padding: 6px;
 }
 
 #defaultApp__content__detail h4 {

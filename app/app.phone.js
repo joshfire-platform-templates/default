@@ -37,6 +37,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
         // Show itemList, because we could be on a detail panel
         _this.ui.element('/content').switchTo('itemList');
+
+        // Hide prev button (todo: check if it's visible before doing so)
+        _this.ui.element('/header/prev').hide();
       });
 
       // Refresh content each time new data is attached
@@ -57,6 +60,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Show previous panel now
       prevBtn.subscribe('select', function(event, data) {
         _this.ui.element('/content').switchTo('itemList');
+
         // _this.ui.element('/header/prev') == this?
         // Also, we could hide the button after displaying /content/itemList
         _this.ui.element('/header/prev').hide();
