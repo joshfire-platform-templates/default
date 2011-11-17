@@ -17,9 +17,7 @@ ul {
 #splashscreen {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background: #000;
-  color: #fff;
-  text-align: center;
+  background: #000 url('../images/spinner-inverted.gif') no-repeat center center;
 }
 
 #defaultApp__ {
@@ -85,6 +83,10 @@ ul {
   height: 41px;
   line-height: 41px;
   border-bottom: 1px solid #e0e0e0;
+  padding: 0 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #defaultApp__content__itemList li p {
@@ -95,6 +97,11 @@ ul {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   background: #fff;
+  padding: 15px;
+}
+
+#defaultApp__content__detail h4 {
+  margin-top: 0;
 }
 
 #defaultApp__footer {
@@ -120,14 +127,24 @@ ul {
   margin: 3px;
   color: white;
   min-width: 50px;
+  max-width: 25%;
   padding: 0 5px;
   font-size: 10px;
   font-weight: 300;
   line-height: 75px;
   text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #defaultApp__footer li.selected {
   background: rgba(255, 255, 255, 0.14);
   border-radius: 5px;
+}
+
+.loading {
+  background: #fff url('../images/spinner.gif') no-repeat center center;
+  width: 100%;
+  height: 100%
 }

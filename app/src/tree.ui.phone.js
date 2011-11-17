@@ -35,14 +35,14 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'itemList',
               type: List,
               orientation: 'left',
-              loadingTemplate: '<div>Loading itemList...</div>',
+              loadingTemplate: '<div class="loading"></div>',
               itemInnerTemplate:
                 '<%= item.title %>'
             },
             {
               id: 'detail',
               type: Panel,
-              loadingTemplate: '<div>Loading detail...</div>',
+              loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
               uiDataMaster: '/content/itemList',
               forceDataPathRefresh: true,
