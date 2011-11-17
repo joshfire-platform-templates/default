@@ -19,7 +19,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
 
               // Our framework expect each item to have an id
               var items = _.map(data, function(item, id) {
-                return _.extend(item, { id: item.name, sourceId: item.id, type: item.config.col });
+                return _.extend(item, { id: item.name, sourceId: item.id });
               });
 
               // Loop trough all items to create data tree branches

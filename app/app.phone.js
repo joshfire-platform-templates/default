@@ -37,9 +37,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
         // Show itemList, because we could be on a detail panel
         _this.ui.element('/content').switchTo('itemList');
-
-        // Change title of our app
-        title.htmlEl.innerHTML = datasourceId;
       });
 
       // Refresh content each time new data is attached

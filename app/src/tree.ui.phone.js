@@ -22,7 +22,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: 'Panel',
-              content: 'My App'
+              content: '{Logo}'
             }
           ]
         },
@@ -37,9 +37,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               orientation: 'left',
               loadingTemplate: '<div>Loading itemList...</div>',
               itemInnerTemplate:
-                '<div class="clearfix">'+
-                '    <p class="title"><%= item.title %></p>'+
-                '</div>'
+                '<%= item.title %>'
             },
             {
               id: 'detail',
