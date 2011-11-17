@@ -2,12 +2,17 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Insert here title of my app</title>
+    <title>TV</title>
     <link rel="stylesheet" href="css/tv.css">
-    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4eb2680a89bb37000000002d/4eb2682ecd29e30000000008/tv/"></script>
+    <script data-main="./" src="joshfire/adapters/philips/bootstrap.js"></script>
+    <script data-joshfire-bootstrap></script>
   </head>
   <body>
-    <h1>TV</h1>
-    <div id="preview">Loading...</div>
+    <div id="splashscreen">Loading…</div>
+    <script>
+      Joshfire.require(['app.tv'], function(App) {
+        new App();
+      });
+    </script>
   </body>
 </html>

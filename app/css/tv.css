@@ -1,0 +1,34 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-size: 20px;
+}
+
+#defaultApp__header {
+  background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
+  font-size: 30px;
+  padding: 10px;
+}
+
+#defaultApp__footer ul {
+  outline: 1px solid red;
+}
+
+#defaultApp__footer li {
+  float: left;
+  width: 200px;
+  height: 150px;
+  border: 2px solid #fff;
+  margin-right: 10px;
+  text-align: center;
+  list-style: none;
+}
+
+#defaultApp__footer li.selected {
+  outline: 2px solid blue;
+}
