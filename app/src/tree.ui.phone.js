@@ -64,7 +64,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           id: 'footer',
           type: List,
           dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.name %>',
+          itemInnerTemplate: '<div class="picto"></div><div class="name"><%= item.name %></div>',
           onData: function() {} // trigger data, WTF?
         }
       ];
