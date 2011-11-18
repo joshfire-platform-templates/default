@@ -42,21 +42,49 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'detail',
               type: Panel,
-              loadingTemplate: '<div class="loading"></div>',
+              // loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
-              uiDataMaster: '/content/itemList',
-              forceDataPathRefresh: true,
-              innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.
-                '<h4 class="title"><%= data.title %></h4>'+
-                '<% if (data.image) { %>'+
-                '  <img style="max-width:100%" src="<%= data.image %>">'+
-                '<% } %>'+
-                '<% if (data.video) { %>'+
-                '  <p><a href="<%= data.video %>"><%= data.video %></a></p>'+
-                '<% } else { %>'+
-                '  <p><a href="<%= data.link %>"><%= data.link %></a></p>'+
-                '<% } %>'+
-                '<p>Par <strong><%= data.creator || data.user %></strong></p>'
+              children: [
+                {
+                  id: 'text',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  // loadingTemplate: '<div class="loading"></div>',
+                  innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.
+                    '<h4 class="title"><%= data.title %></h4>'+
+                    // '<% if (data.image) { %>'+
+                    // '  <img style="max-width:100%" src="<%= data.image %>">'+
+                    // '<% } %>'+
+                    '<% if (data.video) { %>'+
+                    // '  <p><a href="<%= data.video %>"><%= data.video %></a></p>'+
+                    '<% } else { %>'+
+                    '  <p><a href="<%= data.link %>"><%= data.link %></a></p>'+
+                    '<% } %>'+
+                    '<p>Par <strong><%= data.creator || data.user %></strong></p>',
+                  onData: function(ui) {
+                    var player = app.ui.element('/content/detail/player.youtube');
+
+                    if (ui.data.source == 'youtube') {
+                      console.warn('ui.data.source == \'youtube\'');
+                      // player.show();
+                      player.playWithStaticUrl({
+                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
+                        width: '100%',
+                        
+                      });
+                    }
+                  }
+                },
+                {
+                  id: 'player.youtube',
+                  type: 'video.youtube',
+                  autoShow: true,
+                  controls: true,
+                  noAutoPlay: false,
+                  // uiDataMaster: '/content/itemList'
+                }
+              ]
             }
           ]
         },

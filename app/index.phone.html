@@ -14,13 +14,14 @@
     <!-- For nokia devices: -->
     <!-- <link rel="shortcut icon" href="img/l/apple-touch-icon.png"> -->
     <script data-main="./" src="joshfire/adapters/ios/bootstrap.js"></script>
-    <script data-joshfire-bootstrap></script>
+    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4ec535c38def4e0000000062/4ec5326ccf74820000000003/phone/"></script>
   </head>
   <body>
     <div id="splashscreen"></div>
     <script>
+      Joshfire.debug = true;
       Joshfire.require(['app.phone'], function(App) {
-        new App();
+        _app = new App();
       });
     </script>
   </body>
