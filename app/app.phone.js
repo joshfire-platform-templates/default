@@ -14,7 +14,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/content/detail'),
           prevBtn = _this.ui.element('/header/prev'),
-          title = _this.ui.element('/header/title');
+          logo = _this.ui.element('/header/title');
 
       this.splash = new Splash();
 
@@ -39,7 +39,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.element('/content').switchTo('itemList');
 
         // Hide prev button (todo: check if it's visible before doing so)
-        _this.ui.element('/header/prev').hide();
+        prevBtn.hide();
       });
 
       // Refresh content each time new data is attached
@@ -54,7 +54,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Show prev button when viewing details
       detailPanel.subscribe('afterShow', function(event, data) {
-        _this.ui.element('/header/prev').show();
+        prevBtn.show();
       });
 
       // Show previous panel now
@@ -63,7 +63,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
         // _this.ui.element('/header/prev') == this?
         // Also, we could hide the button after displaying /content/itemList
-        _this.ui.element('/header/prev').hide();
+        prevBtn.hide();
       });
 
       callback(null, true);
