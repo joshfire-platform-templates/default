@@ -1,11 +1,24 @@
 html,
 body {
-  background: url('../images/xv.png');
-  text-align: center;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
-#defaultApp__ {
-  m
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+#defaultApp__header {
+  background: #000;
+  color: #fff;
+  text-align: left;
+  border-bottom: solid 4px purple;
 }
 
 #defaultApp__header__prev {
@@ -16,31 +29,56 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 40px;
-  margin-top: 20px;
+  padding: 10px;
+}
+
+#defaultApp__menu {
+
 }
 
 #defaultApp__menu ul {
+  display: block;
+  margin: 20px auto 0;
+  padding: 0;
+  height: 30px;
+  border-bottom: solid 1px #ddd;
   text-align: center;
 }
 
 #defaultApp__menu li {
   display: inline-block;
-  list-style: none;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 5px;
-  border: 1px solid black;
+  width: auto;
+  height: 30px;
+  padding: 0;
+  text-transform: capitalize;
+  width: auto;
+  height: 29px;
+  padding: 0px 9px;
+  line-height: 30px;
+  border: solid 1px #ddd;
+  margin: 0 -1px 0 0;
+  color: #555;
+  background: #eee;
+}
+
+#defaultApp__menu li:not(.selected):hover {
+  cursor: pointer;
 }
 
 #defaultApp__menu li.selected {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  border-width: 1px 1px 0px 1px;
+  height: 30px;
 }
 
 #defaultApp__content {
-  outline: 1px solid black;
-  padding: 5px;
+  margin: auto;
+  width: 98%;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 #defaultApp__content__itemList,
@@ -50,9 +88,28 @@ body {
 }
 
 #defaultApp__content__itemList {
-  outline: 1px solid gray;
+  -webkit-box-sizing: border-box;
+  border-right: 1px solid #ddd;
+}
+
+#defaultApp__content__itemList li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  list-style: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#defaultApp__content__itemList li.selected {
+  background: #ddd;
 }
 
 #defaultApp__content__detail {
-  outline: 1px solid silver;
+  -webkit-box-sizing: border-box;
+  padding: 10px;
+}
+
+#defaultApp__content__detail h4 {
+  margin-top: 0;
 }

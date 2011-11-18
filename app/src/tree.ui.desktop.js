@@ -16,7 +16,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: 'Panel',
-              content: 'My App'
+              content: '{Logo}'
             }
           ]
         },
@@ -36,14 +36,14 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'itemList',
               type: List,
               orientation: 'left',
-              loadingTemplate: '<div>Loading itemList...</div>',
+              loadingTemplate: '<div class="loading"></div>',
               itemInnerTemplate:
-                '<p class="title"><%= item.title %></p>'
+                '<%= item.title %>'
             },
             {
               id: 'detail',
               type: Panel,
-              loadingTemplate: '<div>Loading detail...</div>',
+              loadingTemplate: '<div class="loading"></div>',
               uiDataMaster: '/content/itemList',
               forceDataPathRefresh: true,
               innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.

@@ -5,13 +5,14 @@
     <title>Desktop</title>
     <link rel="stylesheet" href="css/desktop.css">
     <script data-main="./" src="joshfire/adapters/browser/bootstrap.js"></script>
-    <script data-joshfire-bootstrap></script>
+    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4ec535c38def4e0000000062/4ec5326ccf74820000000003/desktop/"></script>
   </head>
   <body>
     <div id="splashscreen">Loading…</div>
     <script>
+      Joshfire.debug = true;
       Joshfire.require(['app.desktop'], function(App) {
-        new App();
+        _app = new App();
       });
     </script>
   </body>
