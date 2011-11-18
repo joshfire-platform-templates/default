@@ -1,15 +1,125 @@
-@import url('phone.css');
-
 html,
-body,
-#defaultApp__content__detail {
-  background: azure;
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
 }
 
-#defaultApp__header {
-  background: mediumturquoise;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-#defaultApp__footer {
-  background: darkturquoise;
+.loading {
+  background: #fff url('../images/spinner.gif') no-repeat center center;
+  width: 100%;
+  height: 100%
+}
+
+#splashscreen {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: #000 url('../images/spinner-inverted.gif') no-repeat center center;
+}
+
+#defaultApp__sidebarleft {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 299px;
+  border-right: 1px solid #000;
+}
+
+#defaultApp__sidebarleft__title,
+#defaultApp__sidebarright__header__title {
+  position: absolute;
+  top: 0; right: 0; left: 0;
+  height: 43px;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #2D3033;
+  background: -webkit-gradient(
+    linear, 0 0, 0 100%,
+    color-stop(0, #d1d7de),
+    color-stop(.016, #b5c0ce),
+    color-stop(.5, #889bb3),
+    color-stop(.505, #7f94b0),
+    color-stop(1, #6d83a1)
+  );
+  text-align: center;
+  line-height: 43px;
+  color: #fff;
+  text-transform: capitalize;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;
+}
+
+#defaultApp__sidebarleft__menu {
+  position: absolute;
+  top: 45px; right: 0; bottom: 0; left: 0;
+}
+
+#defaultApp__sidebarleft__menu li,
+#defaultApp__sidebarright__content__itemList li {
+  height: 41px;
+  line-height: 41px;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-shadow: #fff 0 0 1px;
+  text-transform: capitalize;
+}
+
+#defaultApp__sidebarleft__menu li.selected {
+  color: #fff;
+  background: blue;
+}
+
+#defaultApp__sidebarright {
+  position: absolute;
+  top: 0; left: 300px; bottom: 0; right: 0;
+}
+
+#defaultApp__sidebarright__header__prev {
+  position: relative;
+  z-index: 10;
+  -webkit-border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAeCAIAAACqmwlGAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAatJREFUeNqVlMtKw0AUhqfJSRpTk5Za1FAvxS6sgrVeFrpQdOcT+IpuBVHcuVBQpCDYjeAdkSpavDTGNJkz43FpFZz8DISZ+b75J5tJbWwfMsZuby7rh/vN5v1H+539TMZxPa84v7g0WirTFISQR/t7jdOTcqVaGp+ze50uIfDbL62H3a3NqerMwtIqXF9dnF+dL6+t9/S6hmFqut4luHns80aKpcrxwY43PKK7+f6J2ZVcYTCl6ZIxKuwatEhbpmU72UKjfgCakXFz/TwW7L8QlgIbTNtBwVAgU0g644IGZoycqYVgQGRRLBQFggEpHJUFBI4iUhYIBhSSPooCwUB0zEWiBsERlRsECJSIUlEgOHmDH3TM909FgWBgqe8oCgRrLGGADlcvIDB5A2nfQ7kD6D5J/jn5lZILBoAUQgWVUgDoWi5r8zhUEXgU5nOOVp0sB+0W+f8WEDY9MabpYNUqQ29Pd1Hoi79eA1qkLQIIY5CGIOwUvYHBQr5xdvn4/BSGnS7BstIDhexUbVo3jNarD1Ky5xfftszF+WqPZcKvp5IjfoYRoYHv0/QLHvXjAb8xkEMAAAAASUVORK5CYII=) 0 5 0 5 stretch stretch;
+  background: none;
+  border-width: 0 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0 3px;
+  margin-left: 6px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-shadow: rgba(0, 0, 0, 0.496094) 0 -1px 0;
+  margin-top: 7px;
+  white-space: nowrap;
+  width: auto;
+}
+
+#defaultApp__sidebarright__content {
+  position: absolute;
+  top: 45px; right: 0; bottom: 0; left: 0;
+  overflow: auto;
+}
+
+#defaultApp__sidebarright__content__itemList,
+#defaultApp__sidebarright__content__detail {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#defaultApp__sidebarright__content__detail {
+  background: #fff;
+  padding: 6px;
 }

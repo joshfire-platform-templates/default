@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <title>Tablet</title>
     <link rel="stylesheet" href="css/tablet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- For iPhone 4 with high-resolution Retina display: -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png"> -->
+    <!-- For first-generation iPad: -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png"> -->
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png"> -->
+    <!-- For nokia devices: -->
+    <!-- <link rel="shortcut icon" href="img/l/apple-touch-icon.png"> -->
     <script data-main="./" src="joshfire/adapters/ios/bootstrap.js"></script>
-    <script data-joshfire-bootstrap></script>
+    <script data-joshfire-bootstrap src="http://127.0.0.1:40021/bootstrap/4ec535c38def4e0000000062/4ec5326ccf74820000000003/tablet/"></script>
   </head>
   <body>
-    <div id="splashscreen">Loading…</div>
+    <div id="splashscreen"></div>
     <script>
+    Joshfire.debug = true;
       Joshfire.require(['app.tablet'], function(App) {
-        new App();
+        _app = new App();
       });
     </script>
   </body>
