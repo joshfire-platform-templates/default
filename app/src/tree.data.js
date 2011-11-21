@@ -11,41 +11,37 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
           id: 'datasourcelist',
 
           children: function(query, callback) {
-            var datasources = Joshfire.getDataSourceList();
+            var datasources = Joshfire.config.datasources;
+            console.log(datasources);
 
-            if (!datasources || !datasources.find) callback(['ERROR'], null);
+            if (!datasources) callback(['ERROR'], null);
 
-            datasources.find({}, function (err, data) {
-
-              // Our framework expect each item to have an id
-              var items = _.map(data, function(item, id) {
-                return _.extend(item, { id: item.name, sourceId: item.id });
-              });
-
-              // Loop trough all items to create data tree branches
-              _.each(items, function(datasource, index) {
-                self.set('/datasource/' + datasource.id,
-                  {
-                    'id': datasource.id,
-                    children: function(query, callback) {
-                      var ds = Joshfire.getDataSource(datasource.id);
-
-                      ds.find({}, function (err, data) {
-
-                        // Some datasources have an id (item.sourceID), others don't (id)
-                        var items = _.map(data.entries, function(item, id) {
-                          return _.extend(item, { id: item.sourceId || id });
-                        });
-
-                        callback(null, items);
-                      });
-                    }
-                  });
-              });
-
-              callback(null, items);
-
+            var datasourceArray = [];
+            _.each(datasources, function(value, key) {
+              datasourceArray.push( _.extend(value, { id: key }) );
             });
+            console.log(datasourceArray);
+
+            // Loop trough all items to create data tree branches
+            _.each(datasourceArray, function(datasource, index) {
+              self.set('/datasource/' + datasource.id,
+                {
+                  'id': datasource.id,
+                  children: function(query, callback) {
+                    datasource.find({}, function (err, data) {
+                      // Make sure every entry has an id
+                      // Some datasource entries have an id (item.sourceID), others don't (id)
+                      var items = _.map(data.entries, function(item, id) {
+                        return _.extend(item, { id: item.sourceId || id });
+                      });
+                      console.warn("find", items);
+                      callback(null, items);
+                    });
+                  }
+                });
+            });
+
+            callback(null, datasourceArray);
           }
         },
         {
