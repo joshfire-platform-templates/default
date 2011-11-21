@@ -14,11 +14,17 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
             var datasources = Joshfire.config.datasources;
             console.log(datasources);
 
-            if (!datasources) callback(['ERROR'], null);
+            if (!datasources) { callback(['ERROR'], null); }
 
             var datasourceArray = [];
             _.each(datasources, function(value, key) {
-              datasourceArray.push( _.extend(value, { id: key }) );
+              if(_.isArray(value)) {
+                _forEach(value, function(val, index) {
+                  datasourceArray.push( _.extend(val, { id: key + index }) );  
+                })
+              } else {
+                datasourceArray.push( _.extend(value, { id: key }) );
+              }
             });
             console.log(datasourceArray);
 
