@@ -12,7 +12,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
 
           children: function(query, callback) {
             var datasources = Joshfire.config.datasources;
-            console.log(datasources);
 
             if (!datasources) { callback(['ERROR'], null); }
 
@@ -26,7 +25,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
                 datasourceArray.push( _.extend(value, { id: key }) );
               }
             });
-            console.log(datasourceArray);
 
             // Loop trough all items to create data tree branches
             _.each(datasourceArray, function(datasource, index) {
@@ -40,7 +38,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
                       var items = _.map(data.entries, function(item, id) {
                         return _.extend(item, { id: item.sourceId || id });
                       });
-                      console.warn("find", items);
                       callback(null, items);
                     });
                   }
