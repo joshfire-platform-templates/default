@@ -11,7 +11,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
           id: 'datasourcelist',
 
           children: function(query, callback) {
-            var datasources = Joshfire.config.datasources;
+            var datasources = Joshfire.factory.config.datasources;
 
             if (!datasources) { callback(['ERROR'], null); }
 
