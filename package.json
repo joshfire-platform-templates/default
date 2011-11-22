@@ -40,7 +40,7 @@
       }
     ],
     "datasources": {
-      "tabs": {
+      "main": {
         "title": "Main tabs",
         "description": "Add up to 6 tabs in your application",
         "multiple":true
