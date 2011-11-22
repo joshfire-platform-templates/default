@@ -52,15 +52,13 @@
           "type": "string"
         }
       },
-      "form": [
-        "datasources.main",
-        "datasources.videos",
-        "datasources.news",
-        {
-          "key": "abouthtml",
-          "type": "textarea"
-        }
-      ]
+    "form": [
+      "datasources.main",
+      {
+        "key": "abouthtml",
+        "type": "textarea"
+      }
+    ]
     }
   }
 }
