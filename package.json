@@ -41,16 +41,9 @@
     ],
     "datasources": {
       "main": {
-        "title": "Main source",
-        "description": "Could be anything"
-      },
-      "videos": {
-        "title": "Videos source",
-        "description": "Datasource with videos"
-      },
-      "news": {
-        "title": "News feed",
-        "description": "Datasource with articles"
+        "title": "Main tabs",
+        "description": "Add up to 6 tabs in your application",
+        "multiple":true
       }
     },
     "options": {
@@ -59,15 +52,13 @@
           "type": "string"
         }
       },
-      "form": [
-        "datasources.main",
-        "datasources.videos",
-        "datasources.news",
-        {
-          "key": "abouthtml",
-          "type": "textarea"
-        }
-      ]
+    "form": [
+      "datasources.main",
+      {
+        "key": "abouthtml",
+        "type": "textarea"
+      }
+    ]
     }
   }
 }

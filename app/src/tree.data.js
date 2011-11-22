@@ -18,7 +18,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
             var datasourceArray = [];
             _.each(datasources, function(value, key) {
               if(_.isArray(value)) {
-                _forEach(value, function(val, index) {
+                _.each(value, function(val, index) {
                   datasourceArray.push( _.extend(val, { id: key + index }) );  
                 })
               } else {
