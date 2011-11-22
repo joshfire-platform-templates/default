@@ -47,7 +47,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'detail',
               type: Panel,
-              // loadingTemplate: '<div class="loading"></div>',
+              uiDataMaster: '/content/itemList',
+              loadingTemplate: '<div class="loadin">Loading details</div>',
               autoShow: false,
               children: [
                 {
@@ -55,35 +56,59 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   type: Panel,
                   uiDataMaster: '/content/itemList',
                   forceDataPathRefresh: true,
-                  // loadingTemplate: '<div class="loading"></div>',
-                  innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.
-                    '<h4 class="title"><%= data.title %></h4>' +
-                    // '<% if (data.image) { %>' +
-                    // '  <img style="max-width:100%" src="<%= data.image %>">' +
-                    // '<% } %>' +
-                    '<% if (data.video) { %>' +
-                    // '  <p><a href="<%= data.video %>"><%= data.video %></a></p>' +
-                    '<% } else { %>' +
-                    '  <p><a href="<%= data.link %>"><%= data.link %></a></p>' +
-                    '<% } %>',
-                    // '<p>Par <strong><%= data.creator || data.user %></strong></p>',
+                  loadingTemplate: '<div class="loadin">Loading text</div>',
+                  innerTemplate:
+                    '<div class="title"><h1><%= data.title %></h1>' +
+                    '<p class="author"><%= data.creator || data.user %></p></div>' +
+                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
                   onData: function(ui) {
-                    var player = app.ui.element('/content/detail/player.youtube');
+                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
+                    if (ui.data.source != 'youtube') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
+                },
+                {
+                  id: 'video',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loadin">Loading video</div>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/video').htmlEl,
+                        player = app.ui.element('/content/detail/video/player.youtube');
+
                     if (ui.data.source == 'youtube') {
                       player.playWithStaticUrl({
                         url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
                         width: '100%',
                       });
+
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
                     }
-                  }
-                },
-                {
-                  id: 'player.youtube',
-                  type: 'video.youtube',
-                  autoShow: true,
-                  controls: true,
-                  noAutoPlay: false,
-                  // uiDataMaster: '/content/itemList'
+                  },
+                  children: [
+                    {
+                      id: 'title',
+                      type: Panel,
+                      uiDataMaster: '/content/itemList',
+                      innerTemplate:
+                        '<div class="title"><h1><%= data.title %></h1>' +
+                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
+                    },
+                    {
+                      id: 'player.youtube',
+                      type: 'video.youtube',
+                      autoShow: true,
+                      controls: true,
+                      noAutoPlay: false,
+                      // uiDataMaster: '/content/itemList'
+                    }
+                  ]
                 }
               ]
             }

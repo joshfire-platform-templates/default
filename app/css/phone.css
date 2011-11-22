@@ -75,7 +75,7 @@ ul {
 
 #defaultApp__content {
   position: absolute;
-  top: 45px; right: 0; bottom: 45px; left: 0;
+  top: 45px; right: 0; bottom: 49px; left: 0;
   overflow: auto;
 }
 
@@ -146,13 +146,29 @@ ul {
   top: 0; right: 0; bottom: 0; left: 0;
   background: #fff;
   padding: 6px;
+  z-index: 101;
 }
 
-#defaultApp__content__detail h4 {
-  margin-top: 0;
-  font-size: 20px;
-  font-weight: 300;
+#defaultApp__content__detail .title {
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c5c3be;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
   margin-bottom: 10px;
+}
+
+#defaultApp__content__detail h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 300;
+  font-weight: bold;
+}
+
+#defaultApp__content__detail p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.7;
 }
 
 #defaultApp__footer {
