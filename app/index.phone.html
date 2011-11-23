@@ -19,11 +19,10 @@
     <script data-joshfire-bootstrap></script>
   </head>
   <body>
-    <div id="splashscreen"></div>
+    <div id="splashscreen" class="abs100"></div>
     <script>
-      Joshfire.debug = false;
       Joshfire.require(['app.phone'], function(App) {
-        _app = new App();
+        new App();
       });
     </script>
   </body>

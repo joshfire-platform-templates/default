@@ -12,6 +12,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
         {
           id: 'header',
           type: Panel,
+          htmlClass: 'header',
           children: [
             {
               id: 'prev',
@@ -22,6 +23,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: 'Panel',
+              htmlClass: 'abs100',
               content: '{Logo}'
             }
           ]
@@ -35,6 +37,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'itemList',
               type: List,
               orientation: 'left',
+              htmlClass: 'abs100',
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
               itemInnerTemplate:

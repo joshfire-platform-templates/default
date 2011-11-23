@@ -29,12 +29,11 @@ ul {
 }
 
 #splashscreen {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
   background: #000 url('../images/spinner-inverted.gif') no-repeat center center;
 }
 
-#defaultApp__ {
+#defaultApp__,
+.abs100 {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
 }
@@ -43,10 +42,14 @@ ul {
   position: absolute;
   top: 0; right: 0; left: 0;
   height: 44px;
+}
+
+.header {
   border-bottom: 1px solid #404040;
   background: -webkit-linear-gradient(top, #d8d8d8, #b8b8b8);
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
 
 #defaultApp__header__prev {
   -webkit-appearance: none;
@@ -80,18 +83,11 @@ ul {
 }
 
 #defaultApp__header__title {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
   text-align: center;
   line-height: 43px;
   color: #585858;
   text-transform: capitalize;
   text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
-}
-
-#defaultApp__content__itemList {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
 }
 
 #defaultApp__content__itemList ul {
@@ -177,7 +173,7 @@ ul {
   height: 49px;
   background: -webkit-linear-gradient(top, #dcdcdc, #eaeaea);
   text-align: center;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .defaultApp__footer_scroller {
