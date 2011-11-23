@@ -36,7 +36,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'itemList',
               type: List,
-              orientation: 'left',
               htmlClass: 'abs100',
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
