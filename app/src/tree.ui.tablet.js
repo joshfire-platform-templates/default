@@ -15,7 +15,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           children: [
             {
               id: 'title',
-              type: 'Panel',
+              type: Panel,
               htmlClass: 'header',
               content: '{Logo}'
             },
@@ -45,7 +45,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 },
                 {
                   id: 'title',
-                  type: 'Panel',
+                  type: Panel,
                   content: '{Logo}'
                 }
               ]
@@ -128,8 +128,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                           type: 'video.youtube',
                           autoShow: true,
                           controls: true,
-                          noAutoPlay: false,
-                          // uiDataMaster: '/content/itemList'
+                          noAutoPlay: false
                         }
                       ]
                     }

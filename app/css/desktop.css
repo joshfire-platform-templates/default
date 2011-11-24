@@ -1,17 +1,20 @@
 html,
 body {
-  background: #fff;
-  margin: 0;
-  padding: 0;
-  height: 100%;
   width: 100%;
+  padding: 0;
+  margin: 0;
+  background: url('../images/bg_white.png');
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 15px;
 }
 
+body {
+  padding-bottom: 40px;
+}
+
 ul {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .loading {
@@ -20,17 +23,26 @@ ul {
   height: 100%
 }
 
-#splashscreen {
+#splashscreen,
+.abs100 {
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
-  background: #000 url('../images/spinner-inverted.gif') no-repeat center center;
+}
+
+#defaultApp__ {
+  margin: 40px auto;
+  width: 960px;
+  background: #fff;
+/*  border-top: 3px solid #404040;*/
 }
 
 #defaultApp__header {
-  background: #000;
-  color: #fff;
   text-align: left;
-  border-bottom: solid 4px purple;
+/*  outline: 1px solid red;*/
+/*border: 1px solid #404040;*/
+border-bottom: 1px solid #aaa;
+background: -webkit-linear-gradient(top, #d8d8d8, #b8b8b8);
+-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 #defaultApp__header__prev {
@@ -44,14 +56,13 @@ ul {
   padding: 10px;
 }
 
-#defaultApp__menu {
-
-}
+#defaultApp__menu {}
 
 #defaultApp__menu ul {
   display: block;
   margin: 20px auto 0;
   padding: 0;
+  width: 98%;
   height: 30px;
   border-bottom: solid 1px #ddd;
   text-align: center;
@@ -70,17 +81,20 @@ ul {
   border: solid 1px #ddd;
   margin: 0 -1px 0 0;
   color: #555;
-  background: #eee;
+  background: #eaeaea;
 }
 
 #defaultApp__menu li:not(.selected):hover {
   cursor: pointer;
 }
 
+
 #defaultApp__menu li.selected {
   background: #fff;
   border-width: 1px 1px 0px 1px;
+  border-top: 1px solid orange;
   height: 30px;
+  -webkit-box-shadow: inset 0 2px 0 0 orange;
 }
 
 #defaultApp__content {
@@ -91,6 +105,7 @@ ul {
   border-bottom: 1px solid #ddd;
   overflow: hidden;
   margin-bottom: 20px;
+  min-height: 300px;
 }
 
 #defaultApp__content__itemList,
@@ -115,6 +130,10 @@ ul {
 
 #defaultApp__content__itemList li.selected {
   background: #ddd;
+}
+
+#defaultApp__content__itemList li:last-child {
+  border-bottom: 0;
 }
 
 #defaultApp__content__detail {
