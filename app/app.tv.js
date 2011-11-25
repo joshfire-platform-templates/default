@@ -18,7 +18,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       this.splash = new Splash();
 
       // Change app name globally
-      document.getElementsByTagName('title')[0].textContent = Joshfire.factory.config.app.name;
+      document.title = Joshfire.factory.config.app.name;
 
       // Change app name globally
       htmlTitle = Joshfire.factory.config.app.name;
