@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button'], function(Class, UITree, List, Panel, PanelManager, Button) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'joshfire/adapters/ios/uielements/video.youtube'], function(Class, UITree, List, Panel, PanelManager, Button, Video) {
 
   return Class(UITree, {
 
@@ -24,7 +24,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           id: 'menu',
           type: List,
           dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.id %>',
+          itemInnerTemplate: '<%= item.name %>',
           onData: function() {} // trigger data, WTF?
         },
         {
@@ -73,14 +73,14 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loadin">Loading video</div>',
                   onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/video').htmlEl/*,
-                        player = app.ui.element('/content/detail/video/player.youtube')*/;
+                    var thisEl = app.ui.element('/content/detail/video').htmlEl,
+                        player = app.ui.element('/content/detail/video/player.youtube');
 
                     if (ui.data.source == 'youtube') {
-                      /*player.playWithStaticUrl({
+                      player.playWithStaticUrl({
                         url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
                         width: '480px',
-                      });*/
+                      });
 
                       $(thisEl).show();
                     } else {
@@ -94,16 +94,15 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       uiDataMaster: '/content/itemList',
                       innerTemplate:
                         '<div class="title"><h1><%= data.title %></h1>' +
-                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>' +
-                        '{VIDEO}'
-                    }/*,
+                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
+                    },
                     {
                       id: 'player.youtube',
-                      type: 'video.youtube',
+                      type: Video,
                       autoShow: true,
                       controls: true,
                       noAutoPlay: false
-                    }*/
+                    }
                   ]
                 }
               ]
