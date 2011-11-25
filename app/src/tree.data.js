@@ -44,8 +44,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
                 });
             });
 
-            console.warn('datasourceArray', datasourceArray);
-
             callback(null, datasourceArray);
           }
         },

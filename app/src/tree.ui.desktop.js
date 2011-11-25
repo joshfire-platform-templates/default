@@ -16,7 +16,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: Panel,
-              content: '{Logo}'
+              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
             }
           ]
         },
@@ -79,7 +79,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     if (ui.data.source == 'youtube') {
                       player.playWithStaticUrl({
                         url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
-                        width: '480px',
+                        width: '480px'
                       });
 
                       $(thisEl).show();

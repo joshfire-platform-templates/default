@@ -18,6 +18,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       this.splash = new Splash();
 
+      // Change app name globally
+      document.getElementsByTagName('title')[0].textContent = Joshfire.factory.config.app.name;
+
       // Populate footer
       footer.subscribe('data', function(event, data) {
         // We have data, remove splashscreen

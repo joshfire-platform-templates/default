@@ -16,7 +16,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'title',
               type: Panel,
-              content: 'My App'
+              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
             }
           ]
         },
