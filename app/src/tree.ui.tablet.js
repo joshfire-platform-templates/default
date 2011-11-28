@@ -65,7 +65,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   id: 'detail',
                   type: Panel,
                   uiDataMaster: '/sidebarright/content/itemList',
-                  loadingTemplate: '<div class="loadin">Loading details</div>',
+                  loadingTemplate: '<div class="loading"></div>',
                   autoShow: false,
                   children: [
                     {
@@ -73,7 +73,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
                       forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loadin">Loading text</div>',
+                      loadingTemplate: '<div class="loading"></div>',
                       innerTemplate:
                         '<div class="title"><h1><%= data.title %></h1>' +
                         '<p class="author"><%= data.creator || data.user %></p></div>' +
@@ -92,7 +92,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
                       forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loadin">Loading video</div>',
+                      loadingTemplate: '<div class="loading"></div>',
                       onData: function(ui) {
                         var thisEl = app.ui.element('/sidebarright/content/detail/video').htmlEl,
                             player = app.ui.element('/sidebarright/content/detail/video/player.youtube');
