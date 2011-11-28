@@ -14,16 +14,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           type: Panel,
           children: [
             {
-              id: 'title',
-              type: Panel,
-              htmlClass: 'header',
-              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
-            },
-            {
               id: 'menu',
               type: List,
               dataPath: '/datasourcelist/',
-              itemInnerTemplate: '<div class="picto"></div><div class="name item-<%= item.col %>"><%= item.name %></div>',
+              itemInnerTemplate: '<div class="picto item-<%= item.col %>"></div><div class="name"><%= item.name %></div>',
               onData: function() {} // trigger data, WTF?
             }
           ]
@@ -46,7 +40,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 {
                   id: 'title',
                   type: Panel,
-                  content: '{Logo}'
+                  innerTemplate: '<%= Joshfire.factory.config.app.name %>'
                 }
               ]
             },
@@ -62,7 +56,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
                   itemInnerTemplate:
                     '<% if (item.source == "youtube") { %>' +
-                     '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                     '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
                     '<% } else { %>' +
                      '<%= item.title %><span class="list-arrow"></span>' +
                     '<% } %>'

@@ -32,7 +32,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               orientation: 'left',
               loadingTemplate: '<div>Loading itemList...</div>',
               itemInnerTemplate:
-                '<%= item.title %>'+
+                '<%= item.title %>'
             },
             {
               id: 'detail',

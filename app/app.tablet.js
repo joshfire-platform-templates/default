@@ -13,8 +13,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
           menu = _this.ui.element('/sidebarleft/menu'),
           itemList = _this.ui.element('/sidebarright/content/itemList'),
           detailPanel = _this.ui.element('/sidebarright/content/detail'),
-          logo = _this.ui.element('/sidebarleft/title'),
-          catTitle = _this.ui.element('/sidebarright/header/title'),
+          logo = _this.ui.element('/sidebarright/header/title'),
           prevBtn = _this.ui.element('/sidebarright/header/prev');
 
       this.splash = new Splash();
@@ -41,9 +40,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
         // Show itemList, because we could be on a detail panel
         _this.ui.element('/sidebarright/content').switchTo('itemList');
-
-        // Set title
-        catTitle.htmlEl.innerText = datasourceId;
 
         // Hide prev button (todo: check if it's visible before doing so)
         prevBtn.hide();

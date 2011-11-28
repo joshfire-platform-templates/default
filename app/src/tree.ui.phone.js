@@ -85,9 +85,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     if (ui.data.source == 'youtube') {
                       player.playWithStaticUrl({
                         url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
-                        width: '100%',
+                        width: '100%'
                       });
-
                       $(thisEl).show();
                     } else {
                       $(thisEl).hide();
@@ -119,7 +118,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           id: 'footer',
           type: List,
           dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<div class="picto"></div><div class="name item-<%= item.col %>"><%= item.name %></div>',
+          itemInnerTemplate: '<div class="picto item-<%= item.col %>"></div><div class="name"><%= item.name %></div>',
           onData: function() {} // trigger data, WTF?
         }
       ];
