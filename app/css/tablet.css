@@ -260,6 +260,11 @@ ul {
   opacity: 0.7;
 }
 
+#defaultApp__sidebarright__content__detail__text {
+  width: 80%;
+  margin: auto;
+}
+
 /* @end */
 
 /* @end */
