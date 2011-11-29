@@ -86,7 +86,7 @@ Joshfire.define(['joshfire/input', 'joshfire/class', 'joshfire/vendor/json2'],
             {
               //Unknown key stroke... send input event nevertheless
               self.app.publish('input', [e.keyCode]);
-              self.app.mylog('Unknown '+e.keyCode);
+              // self.app.mylog('Unknown '+e.keyCode);
             }
           },true);
           callback();
