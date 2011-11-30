@@ -6,8 +6,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
 
       var app = this.app;
 
-      app.currentDatasource = false;
-
       return [
         {
           id: 'header',

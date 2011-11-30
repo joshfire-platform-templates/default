@@ -10,7 +10,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
     setup: function(callback) {
       var _this = this,
-          footer = _this.ui.element('/footer'),
+          menu = _this.ui.element('/menu'),
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/content/detail'),
           title = _this.ui.element('/header/title');
@@ -20,21 +20,24 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Change app name globally
       document.title = Joshfire.factory.config.app.name;
 
-      // Change app name globally
-      htmlTitle = Joshfire.factory.config.app.name;
+      // Populate menu
+      menu.subscribe('data', function(event, data) {
 
-      // Populate footer
-      footer.subscribe('data', function(event, data) {
+        console.warn('Menu received data');
+
         // We have data, remove splashscreen
         // Todo: it may better to remove it "onAfterShow" or "onAfterInsert"
         _this.splash.remove();
 
-        // Select the first tab on our footer
-        footer.selectByIndex(0);
+        // Select the first tab on our menu
+        menu.selectByIndex(0);
       });
 
-      // Handle clicks on footer
-      footer.subscribe('select', function(event, data) {
+      // Handle clicks on menu
+      menu.subscribe('select', function(event, data) {
+
+        console.warn('On menu item has been selected');
+
         var datasourceId = data[0][0];
 
         // Set the new dataPath

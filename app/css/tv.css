@@ -7,28 +7,81 @@ body {
   background: #000;
   color: #fff;
   font-size: 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 #defaultApp__header {
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
+  background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   font-size: 30px;
   padding: 10px;
 }
 
-#defaultApp__footer ul {
-  outline: 1px solid red;
+#defaultApp__menu {
+  margin: 20px auto 0;
+  width: 90%;
 }
 
-#defaultApp__footer li {
+#defaultApp__menu ul {
+  overflow: hidden;
+}
+
+#defaultApp__menu li {
   float: left;
   width: 200px;
-  height: 150px;
+  height: 30px;
+  line-height: 30px;
   border: 2px solid #fff;
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   margin-right: 10px;
   text-align: center;
   list-style: none;
+  text-transform: capitalize;
 }
 
-#defaultApp__footer li.selected {
+#defaultApp__menu li.selected {
   outline: 2px solid blue;
+}
+
+#defaultApp__content {
+  border: 2px solid #fff;
+  margin: auto;
+  width: 92%;
+}
+
+#defaultApp__content__itemList ul {
+  overflow: hidden;
+}
+
+#defaultApp__content__itemList li {
+  outline: 1px solid white;
+  list-style: none;
+  float: left;
+  margin: 20px 4%;
+  width: 20%;
+  text-align: center;
+  margin-right: 0;
+}
+
+#defaultApp__content__itemList li:hover,
+#defaultApp__content__itemList li.focused {
+  outline: 1px solid blue;
+}
+
+#defaultApp__content__itemList li .preview {
+  width: 100%;
+}
+
+#defaultApp__content__itemList li .title {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

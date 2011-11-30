@@ -1,12 +1,10 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button'], function(Class, UITree, List, Panel, PanelManager, Button) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'joshfire/adapters/ios/uielements/video.youtube'], function(Class, UITree, List, Panel, PanelManager, Button, Video) {
 
   return Class(UITree, {
 
     buildTree: function() {
 
       var app = this.app;
-
-      app.currentDatasource = false;
 
       return [
         {
@@ -21,46 +19,98 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           ]
         },
         {
+          id: 'menu',
+          type: List,
+          dataPath: '/datasourcelist/',
+          itemInnerTemplate: '<%= item.name %>',
+          onData: function() {} // trigger data, WTF?
+        },
+        {
           id: 'content',
           type: PanelManager,
-          uiMaster: '/footer',
-          autoShow: false,
+          uiMaster: '/menu',
           children: [
             {
               id: 'itemList',
               type: List,
               orientation: 'left',
-              loadingTemplate: '<div>Loading itemList...</div>',
+              loadingTemplate: '<div class="loading"></div>',
+                itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
               itemInnerTemplate:
-                '<%= item.title %>'
+                '<% if (item.source == "youtube") { %>' +
+                 '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
+                '<% } else { %>' +
+                 '<%= item.title %>' +
+                '<% } %>'
             },
             {
               id: 'detail',
               type: Panel,
-              loadingTemplate: '<div>Loading detail...</div>',
               uiDataMaster: '/content/itemList',
-              forceDataPathRefresh: true,
-              innerTemplate: // Dirty… TODO: need to know before if it's a picture, a video, etc.
-                '<h4 class="title"><%= data.title %></h4>'+
-                '<% if (data.image) { %>'+
-                '  <img style="max-width:100%" src="<%= data.image %>">'+
-                '<% } %>'+
-                '<% if (data.video) { %>'+
-                '  <p><a href="<%= data.video %>"><%= data.video %></a></p>'+
-                '<% } else { %>'+
-                '  <p><a href="<%= data.link %>"><%= data.link %></a></p>'+
-                '<% } %>'+
-                '<p>Par <strong><%= data.creator || data.user %></strong></p>'
+              loadingTemplate: '<div class="loading"></div>',
+              autoShow: false,
+              children: [
+                {
+                  id: 'text',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loading"></div>',
+                  innerTemplate:
+                    '<div class="title"><h1><%= data.title %></h1>' +
+                    '<p class="author"><%= data.creator || data.user %></p></div>' +
+                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
+                    if (ui.data.source != 'youtube') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
+                },
+                {
+                  id: 'video',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loading"></div>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/video').htmlEl,
+                        player = app.ui.element('/content/detail/video/player.youtube');
+
+                    if (ui.data.source == 'youtube') {
+                      player.playWithStaticUrl({
+                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
+                        width: '480px',
+                      });
+
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  },
+                  children: [
+                    {
+                      id: 'title',
+                      type: Panel,
+                      uiDataMaster: '/content/itemList',
+                      innerTemplate:
+                        '<div class="title"><h1><%= data.title %></h1>' +
+                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
+                    },
+                    {
+                      id: 'player.youtube',
+                      type: Video,
+                      autoShow: true,
+                      controls: true,
+                      noAutoPlay: false
+                    }
+                  ]
+                }
+              ]
             }
-            
           ]
-        },
-        {
-          id: 'footer',
-          type: List,
-          dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.name %>',
-          onData: function() {} // trigger data, WTF?
         }
       ];
     }
