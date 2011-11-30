@@ -23,8 +23,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Populate menu
       menu.subscribe('data', function(event, data) {
 
-        console.warn('Menu received data');
-
         // We have data, remove splashscreen
         // Todo: it may better to remove it "onAfterShow" or "onAfterInsert"
         _this.splash.remove();
@@ -36,7 +34,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Handle clicks on menu
       menu.subscribe('select', function(event, data) {
 
-        console.warn('On menu item has been selected');
+        console.warn('On menu item has been selected', data[0][0]);
 
         var datasourceId = data[0][0];
 
@@ -50,6 +48,8 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Refresh content each time new data is attached
       itemList.subscribe('data', function(event, data) {
         itemList.refresh();
+        
+        _this.ui.moveTo('focus', '/content/itemList');
       });
 
       // Open item when selected

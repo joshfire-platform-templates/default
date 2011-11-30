@@ -46,6 +46,10 @@ ul {
   text-transform: capitalize;
 }
 
+#defaultApp__menu li.focused {
+  background: cyan;
+}
+
 #defaultApp__menu li.selected {
   outline: 2px solid blue;
 }
@@ -72,9 +76,8 @@ ul {
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li:hover
-/*#defaultApp__content__itemList li.focused*/ {
-  outline: 1px solid blue;
+#defaultApp__content__itemList li.focused {
+  outline:3px solid cyan;
 }
 
 #defaultApp__content__itemList li .preview {
@@ -86,8 +89,4 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.focused{
-  outline:3px solid cyan !important;
 }

@@ -23,7 +23,13 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           type: List,
           dataPath: '/datasourcelist/',
           itemInnerTemplate: '<%= item.name %>',
-          onData: function() {} // trigger data, WTF?
+          onData: function() {}, // trigger data, WTF?
+          beforeGridExit: function(self, direction) {
+            if (direction == 'up' || direction == 'down') {
+              app.ui.moveTo('focus', '/content/itemList');
+              app.ui.element('/content/itemList').publish('focusItem', [0]);
+            }
+          }
         },
         {
           id: 'content',
@@ -34,7 +40,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'itemList',
               type: List,
               // orientation: 'left',
-              // loadingTemplate: '<div class="loading"></div>',
+              loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
               itemInnerTemplate:
                 '<% if (item.source == "youtube") { %>' +
@@ -44,17 +50,21 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% } else { %>' +
                   '<%= item.title %>' +
                 '<% } %>',
-              beforeGridExit:function(self, direction){
-                //self : app.ui.element('/content/list')
-                //direction left | right | down | up
-                // consoel
+              beforeGridExit: function(self, direction) {
+                if (direction == 'up' || direction == 'down') {
+                  app.ui.moveTo('focus', '/menu');
+                  // Create an error, wtf?
+                  // app.ui.element('/menu').publish('focusItem', [0]);
+                }
               }
             },
             {
               id: 'detail',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              // loadingTemplate: '<div class="loading"></div>',
+              noMouseAutoFocus: true,
+              moveOnFocus: true,
+              loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
               children: [
                 {
@@ -89,7 +99,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     if (ui.data.source == 'youtube') {
                       player.playWithStaticUrl({
                         url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
-                        width: '480px',
+                        width: '480px'
                       });
 
                       $(thisEl).show();
