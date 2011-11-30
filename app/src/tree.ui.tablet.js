@@ -54,9 +54,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
                   itemInnerTemplate:
                     '<% if (item.source == "youtube") { %>' +
-                     '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                      '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                    '<% } else if (item.source == "twitter") { %>' +
+                      '<div class="tweet"><%= item.text %></div>' +
                     '<% } else { %>' +
-                     '<%= item.title %><span class="list-arrow"></span>' +
+                      '<%= item.title %><span class="list-arrow"></span>' +
                     '<% } %>'
                 },
                 {
@@ -123,6 +125,23 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                           noAutoPlay: false
                         }
                       ]
+                    },
+                    {
+                      id: 'twitter',
+                      type: Panel,
+                      uiDataMaster: '/sidebarright/content/itemList',
+                      forceDataPathRefresh: true,
+                      loadingTemplate: '<div class="loading"></div>',
+                      innerTemplate:
+                        '<div class="tweet"><%= data.text %><p class="date"><%= data.date %></p></div>',
+                      onData: function(ui) {
+                        var thisEl = app.ui.element('/sidebarright/content/detail/twitter').htmlEl;
+                        if (ui.data.source == 'twitter') {
+                          $(thisEl).show();
+                        } else {
+                          $(thisEl).hide();
+                        }
+                      }
                     }
                   ]
                 }

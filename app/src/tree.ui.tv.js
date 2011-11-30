@@ -33,21 +33,28 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'itemList',
               type: List,
-              orientation: 'left',
-              loadingTemplate: '<div class="loading"></div>',
-                itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
+              // orientation: 'left',
+              // loadingTemplate: '<div class="loading"></div>',
+              itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
               itemInnerTemplate:
                 '<% if (item.source == "youtube") { %>' +
-                 '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
+                  '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
+                '<% } else if (item.source == "twitter") { %>' +
+                  '<div class="tweet"><%= item.text %></div>' +
                 '<% } else { %>' +
-                 '<%= item.title %>' +
-                '<% } %>'
+                  '<%= item.title %>' +
+                '<% } %>',
+              beforeGridExit:function(self, direction){
+                //self : app.ui.element('/content/list')
+                //direction left | right | down | up
+                // consoel
+              }
             },
             {
               id: 'detail',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              loadingTemplate: '<div class="loading"></div>',
+              // loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
               children: [
                 {
@@ -55,7 +62,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   type: Panel,
                   uiDataMaster: '/content/itemList',
                   forceDataPathRefresh: true,
-                  loadingTemplate: '<div class="loading"></div>',
+                  // loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
                     '<p class="author"><%= data.creator || data.user %></p></div>' +

@@ -38,6 +38,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
                       var items = _.map(data.entries, function(item, id) {
                         return _.extend(item, { id: item.sourceId || id });
                       });
+
                       callback(null, items);
                     });
                   }

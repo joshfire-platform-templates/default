@@ -72,8 +72,12 @@ ul {
   background: #949494;
 }
 
-#defaultApp__sidebarleft__menu li .item-video {
+#defaultApp__sidebarleft__menu li .item-videos {
   -webkit-mask-box-image: url('../images/movie.png');
+}
+
+#defaultApp__sidebarleft__menu li .item-photos {
+  -webkit-mask-box-image: url('../images/photos.png');
 }
 
 #defaultApp__sidebarleft__menu li .item-rss,
@@ -85,7 +89,7 @@ ul {
   -webkit-mask-box-image: url('../images/calendar.png');
 }
 
-#defaultApp__sidebarleft__menu li .item-tweet {
+#defaultApp__sidebarleft__menu li .item-tweets {
   -webkit-mask-box-image: url('../images/bird.png');
 }
 

@@ -207,8 +207,12 @@ ul {
   background: #949494;
 }
 
-#defaultApp__footer li .item-video {
+#defaultApp__footer li .item-videos {
   -webkit-mask-box-image: url('../images/movie.png');
+}
+
+#defaultApp__footer li .item-photos {
+  -webkit-mask-box-image: url('../images/photos.png');
 }
 
 #defaultApp__footer li .item-rss,
@@ -220,7 +224,7 @@ ul {
   -webkit-mask-box-image: url('../images/calendar.png');
 }
 
-#defaultApp__footer li .item-tweet {
+#defaultApp__footer li .item-tweets {
   -webkit-mask-box-image: url('../images/bird.png');
 }
 

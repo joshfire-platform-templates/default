@@ -39,9 +39,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
               itemInnerTemplate:
                 '<% if (item.source == "youtube") { %>' +
-                 '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                  '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                '<% } else if (item.source == "twitter") { %>' +
+                  '<div class="tweet"><%= item.text %></div>' +
                 '<% } else { %>' +
-                 '<%= item.title %><span class="list-arrow"></span>' +
+                  '<%= item.title %><span class="list-arrow"></span>' +
                 '<% } %>'
             },
             {
@@ -63,10 +65,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/text').htmlEl;
-                    if (ui.data.source != 'youtube') {
-                      $(thisEl).show();
-                    } else {
+                    if (ui.data.source == 'youtube' || ui.data.source == 'twitter') {
                       $(thisEl).hide();
+                    } else {
+                      $(thisEl).show();
                     }
                   }
                 },
@@ -107,6 +109,23 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       noAutoPlay: false
                     }
                   ]
+                },
+                {
+                  id: 'twitter',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loading"></div>',
+                  innerTemplate:
+                    '<div class="tweet"><%= data.text %><p class="date"><%= data.date %></p></div>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/twitter').htmlEl;
+                    if (ui.data.source == 'twitter') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
                 }
               ]
             }
