@@ -12,8 +12,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       var _this = this,
           menu = _this.ui.element('/menu'),
           itemList = _this.ui.element('/content/itemList'),
-          detailPanel = _this.ui.element('/content/detail'),
-          title = _this.ui.element('/header/title');
+          detailPanel = _this.ui.element('/detail'),
+          title = _this.ui.element('/header/title'),
+          backBtn = _this.ui.element('/detail/back');
 
       this.splash = new Splash();
 
@@ -54,7 +55,19 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Open item when selected
       itemList.subscribe('select', function(event, data) {
-        _this.ui.element('/content/detail').show();
+        _this.ui.element('/detail').show();
+      });
+
+      // Open item when selected
+      itemList.subscribe('select', function(event, data) {
+        _this.ui.element('/detail').show();
+      });
+
+      // Close details when pushing back button
+      backBtn.subscribe('select', function(event, data) {
+        alert('plop');
+        detailPanel.hide();
+        _this.ui.moveTo('focus', '/content/itemList');
       });
 
       callback(null, true);

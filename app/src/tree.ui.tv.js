@@ -57,73 +57,78 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   // app.ui.element('/menu').publish('focusItem', [0]);
                 }
               }
+            }
+          ]
+        },
+        {
+          id: 'detail',
+          type: Panel,
+          uiDataMaster: '/content/itemList',
+          noMouseAutoFocus: true,
+          moveOnFocus: true,
+          loadingTemplate: '<div class="loading"></div>',
+          autoShow: false,
+          children: [
+            {
+              id: 'back',
+              type: Button,
+              label: 'Back'
             },
             {
-              id: 'detail',
+              id: 'text',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              noMouseAutoFocus: true,
-              moveOnFocus: true,
+              forceDataPathRefresh: true,
               loadingTemplate: '<div class="loading"></div>',
-              autoShow: false,
+              innerTemplate:
+                '<div class="title"><h1><%= data.title %></h1>' +
+                '<p class="author"><%= data.creator || data.user %></p></div>' +
+                '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+              onData: function(ui) {
+                var thisEl = app.ui.element('/detail/text').htmlEl;
+                if (ui.data.source != 'youtube') {
+                  $(thisEl).show();
+                } else {
+                  $(thisEl).hide();
+                }
+              }
+            },
+            {
+              id: 'video',
+              type: Panel,
+              uiDataMaster: '/content/itemList',
+              forceDataPathRefresh: true,
+              loadingTemplate: '<div class="loading"></div>',
+              onData: function(ui) {
+                var thisEl = app.ui.element('/detail/video').htmlEl,
+                    player = app.ui.element('/detail/video/player.youtube');
+
+                if (ui.data.source == 'youtube') {
+                  player.playWithStaticUrl({
+                    url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
+                    width: '480px'
+                  });
+
+                  $(thisEl).show();
+                } else {
+                  $(thisEl).hide();
+                }
+              },
               children: [
                 {
-                  id: 'text',
+                  id: 'title',
                   type: Panel,
                   uiDataMaster: '/content/itemList',
-                  forceDataPathRefresh: true,
-                  // loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
-                    '<p class="author"><%= data.creator || data.user %></p></div>' +
-                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
-                  onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
-                    if (ui.data.source != 'youtube') {
-                      $(thisEl).show();
-                    } else {
-                      $(thisEl).hide();
-                    }
-                  }
+                    '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
                 },
                 {
-                  id: 'video',
-                  type: Panel,
-                  uiDataMaster: '/content/itemList',
-                  forceDataPathRefresh: true,
-                  loadingTemplate: '<div class="loading"></div>',
-                  onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/video').htmlEl,
-                        player = app.ui.element('/content/detail/video/player.youtube');
-
-                    if (ui.data.source == 'youtube') {
-                      player.playWithStaticUrl({
-                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
-                        width: '480px'
-                      });
-
-                      $(thisEl).show();
-                    } else {
-                      $(thisEl).hide();
-                    }
-                  },
-                  children: [
-                    {
-                      id: 'title',
-                      type: Panel,
-                      uiDataMaster: '/content/itemList',
-                      innerTemplate:
-                        '<div class="title"><h1><%= data.title %></h1>' +
-                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
-                    },
-                    {
-                      id: 'player.youtube',
-                      type: Video,
-                      autoShow: true,
-                      controls: true,
-                      noAutoPlay: false
-                    }
-                  ]
+                  id: 'player.youtube',
+                  type: Video,
+                  autoShow: true,
+                  controls: true,
+                  noAutoPlay: false
                 }
               ]
             }

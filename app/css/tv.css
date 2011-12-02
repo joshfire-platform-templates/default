@@ -15,6 +15,12 @@ ul {
   padding: 0;
 }
 
+.loading {
+  background: #fff url('../images/spinner.gif') no-repeat center center;
+  width: 100%;
+  height: 100%
+}
+
 #defaultApp__header {
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
@@ -47,7 +53,7 @@ ul {
 }
 
 #defaultApp__menu li.focused {
-  background: cyan;
+  background: orange;
 }
 
 #defaultApp__menu li.selected {
@@ -55,9 +61,10 @@ ul {
 }
 
 #defaultApp__content {
+  position: absolute;
+  top: 108px; right: 4%; bottom: 30px; left: 4%;
   border: 2px solid #fff;
-  margin: auto;
-  width: 92%;
+  overflow: auto;
 }
 
 #defaultApp__content__itemList ul {
@@ -77,7 +84,7 @@ ul {
 }
 
 #defaultApp__content__itemList li.focused {
-  outline:3px solid cyan;
+  outline:3px solid orange;
 }
 
 #defaultApp__content__itemList li .preview {
@@ -89,4 +96,12 @@ ul {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+#defaultApp__detail {
+  outline: 3px dashed red;
+  background: black;
+  z-index: 1000;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
 }
