@@ -16,10 +16,14 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
             if (!datasources) { callback(['ERROR'], null); }
 
             var datasourceArray = [];
+
+            console.warn('datasources', datasources);
+
             _.each(datasources, function(value, key) {
               if(_.isArray(value)) {
                 _.each(value, function(val, index) {
-                  datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index }) );  
+                  console.warn('val', 'key', val, key);
+                  datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index, name: val.name, col: val.col }) );  
                 });
               } else {
                 datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key), { id: key }) );
@@ -44,6 +48,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
                   }
                 });
             });
+
+            console.warn('datasourceArray', datasourceArray);
 
             callback(null, datasourceArray);
           }
