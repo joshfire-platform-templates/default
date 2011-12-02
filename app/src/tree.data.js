@@ -19,10 +19,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
             _.each(datasources, function(value, key) {
               if(_.isArray(value)) {
                 _.each(value, function(val, index) {
-                  datasourceArray.push( _.extend(val, { id: key + index }) );  
-                })
+                  datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index }) );  
+                });
               } else {
-                datasourceArray.push( _.extend(value, { id: key }) );
+                datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key), { id: key }) );
               }
             });
 
