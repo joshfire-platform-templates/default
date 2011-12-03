@@ -41,7 +41,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% if (item.source == "youtube") { %>' +
                   '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
                 '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.text %></div>' +
+                  '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
                   '<%= item.title %><span class="list-arrow"></span>' +
                 '<% } %>'
@@ -117,7 +117,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
-                    '<div class="tweet"><%= data.text %><p class="date"><%= data.date %></p></div>',
+                    '<div class="tweet"><%= data.title %><p class="date"><%= data.date %></p></div>',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/twitter').htmlEl;
                     if (ui.data.source == 'twitter') {

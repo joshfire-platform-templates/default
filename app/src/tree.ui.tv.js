@@ -46,7 +46,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% if (item.source == "youtube") { %>' +
                   '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
                 '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.text %></div>' +
+                  '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
                   '<%= item.title %>' +
                 '<% } %>',
