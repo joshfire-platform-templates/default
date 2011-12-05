@@ -49,7 +49,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Refresh content each time new data is attached
       itemList.subscribe('data', function(event, data) {
         itemList.refresh();
-        
         _this.ui.moveTo('focus', '/content/itemList');
       });
 
@@ -61,14 +60,27 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Open item when selected
       itemList.subscribe('select', function(event, data) {
         _this.ui.element('/detail').show();
+        _this.ui.moveTo('focus', '/detail/back');
+      });
+
+      detailPanel.subscribe('data', function(event, data) {
+        _this.ui.moveTo('focus', '/detail/back');
       });
 
       // Close details when pushing back button
       backBtn.subscribe('select', function(event, data) {
-        alert('plop');
         detailPanel.hide();
         _this.ui.moveTo('focus', '/content/itemList');
       });
+
+      // Handling focus style on back button
+      backBtn.subscribe('afterFocus', function() {
+        backBtn.addClass('focused');
+      });
+      backBtn.subscribe('afterBlur', function() {
+        backBtn.removeClass('focused');
+      });
+
 
       callback(null, true);
     }

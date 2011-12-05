@@ -99,9 +99,25 @@ ul {
 }
 
 #defaultApp__detail {
-  outline: 3px dashed red;
   background: black;
   z-index: 1000;
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#defaultApp__detail__back {
+  -webkit-appearance: none;
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+  background: gray;
+  border: 3px solid darkgray;
+  width: 100px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+#defaultApp__detail__back.focused {
+  opacity: 1;
+  background: yellow;
 }
