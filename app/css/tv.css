@@ -24,13 +24,19 @@ ul {
 #defaultApp__header {
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
-  font-size: 30px;
-  padding: 10px;
+  font-size: 15px;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 10%;
+  height: 30px;
 }
 
 #defaultApp__menu {
-  margin: 20px auto 0;
-  width: 90%;
+  position: absolute;
+  top: 30px; 
+  left: 0;
+  width: 10%;
 }
 
 #defaultApp__menu ul {
@@ -62,7 +68,10 @@ ul {
 
 #defaultApp__content {
   position: absolute;
-  top: 108px; right: 4%; bottom: 30px; left: 4%;
+  top: 0; bottom: 0; 
+  left: 10%;
+  right: 0;
+
   border: 2px solid #fff;
   overflow: auto;
 }
