@@ -51,10 +51,30 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   '<%= item.title %>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
-                if (direction == 'up' || direction == 'down') {
-                  app.ui.moveTo('focus', '/menu');
-                  // Create an error, wtf?
-                  // app.ui.element('/menu').publish('focusItem', [0]);
+                // This is a Hack. This should be handled by a Grid Element of the Joshfire framework.
+
+                // CSS impose a grid of 4 element in width
+                var widthElements = 4;
+
+                var coords = app.ui.element('/content/itemList').grid.currentCoords;
+
+                switch (direction) {
+                  case 'down' :
+                    var gotoIndex = coords[0] + widthElements;
+                    if( gotoIndex <  app.ui.element('/content/itemList').data.length ) {
+                      app.ui.element('/content/itemList').grid.goTo( [gotoIndex, 0] );
+                    }
+                    break;
+                  case 'up' :
+                    var gotoIndex = coords[0] - widthElements;
+                    if(gotoIndex < 0) {
+                      app.ui.moveTo('focus', '/menu');
+                    } else {
+                      // the followingline doesn't work well: the grid coordinates are not updated 
+                      //app.ui.element('/content/itemList').focusByIndex(gotoIndex);
+                      app.ui.element('/content/itemList').grid.goTo( [gotoIndex, 0] );
+                    }
+                  break;
                 }
               }
             }
