@@ -23,11 +23,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           type: List,
           dataPath: '/datasourcelist/',
           itemInnerTemplate: '<%= item.name %>',
+          orientation:'left',
           onData: function() {}, // trigger data, WTF?
           beforeGridExit: function(self, direction) {
-            if (direction == 'up' || direction == 'down') {
+            if (direction == 'right') {
               app.ui.moveTo('focus', '/content/itemList');
-              app.ui.element('/content/itemList').publish('focusItem', [0]);
+              app.ui.element('/content/itemList').focusByIndex([0]);
             }
           }
         },
