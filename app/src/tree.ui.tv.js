@@ -41,9 +41,15 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               type: List,
               // orientation: 'left',
               loadingTemplate: '<div class="loading"></div>',
-              itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
+              itemTemplate: '<li id="<%=itemHtmlId%>" data-josh-ui-path="<%= path %>" data-josh-grid-id="<%= item.id %>" ' + 
+                              'class="josh-List joshover item-<%= item.source %> ' +
+                              '<% if (item.source == "youtube" || item.source == "flickr") { %>' +
+                                'grid' +
+                              '<% } %>' +
+                              '"' + 
+                              '><%= itemInner %></li>',
               itemInnerTemplate:
-                '<% if (item.source == "youtube") { %>' +
+                '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
                   '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
                 '<% } else if (item.source == "twitter") { %>' +
                   '<div class="tweet"><%= item.title %></div>' +
@@ -102,7 +108,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               innerTemplate:
                 '<div class="title"><h1><%= data.title %></h1>' +
                 '<p class="author"><%= data.creator || data.user %></p></div>' +
-                '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                '<p><%= data.content %></p>',
               onData: function(ui) {
                 var thisEl = app.ui.element('/detail/text').htmlEl;
                 if (ui.data.source == 'youtube' || ui.data.source == 'twitter') {

@@ -21,7 +21,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Change app name globally
       document.title = Joshfire.factory.config.app.name;
 
-
       // on lenu select, assign the corresponding dartaPath to itemList
       menu.subscribe('select', function(event, data) {
         console.warn('menu item has been selected', data[0][0]);
