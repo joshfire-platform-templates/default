@@ -23,18 +23,15 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Populate menu
       menu.subscribe('data', function(event, data) {
-
         // We have data, remove splashscreen
         // Todo: it may better to remove it "onAfterShow" or "onAfterInsert"
         _this.splash.remove();
-
         // Select the first tab on our menu
         menu.selectByIndex(0);
       });
 
       // Handle clicks on menu
       menu.subscribe('select', function(event, data) {
-
         console.warn('On menu item has been selected', data[0][0]);
 
         var datasourceId = data[0][0];
@@ -48,13 +45,10 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Refresh content each time new data is attached
       itemList.subscribe('data', function(event, data) {
-        itemList.refresh();
+        console.log("itemList receiving data", event);
+        // Why should we do this ?
+        //itemList.refresh();
         _this.ui.moveTo('focus', '/content/itemList');
-      });
-
-      // Open item when selected
-      itemList.subscribe('select', function(event, data) {
-        _this.ui.element('/detail').show();
       });
 
       // Open item when selected
@@ -64,6 +58,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       });
 
       detailPanel.subscribe('data', function(event, data) {
+        console.log("detailPanel receiving data", event);
         _this.ui.moveTo('focus', '/detail/back');
       });
 
