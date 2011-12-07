@@ -13,7 +13,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
       _.each(datasources, function(value, key) {
         if(_.isArray(value)) {
           _.each(value, function(val, index) {
-            console.warn('val', 'key', val, key);
             datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index, name: val.name, col: val.col }) );  
           });
         } else {

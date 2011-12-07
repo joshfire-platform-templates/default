@@ -24,7 +24,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           dataPath: '/datasourcelist/',
           itemInnerTemplate: '<%= item.name %>',
           orientation:'left',
-          onData: function() {}, // trigger data, WTF?
           beforeGridExit: function(self, direction) {
             if (direction == 'right') {
               app.ui.moveTo('focus', '/content/itemList');
@@ -99,7 +98,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'text',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              forceDataPathRefresh: true,
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
                 '<div class="title"><h1><%= data.title %></h1>' +
@@ -118,7 +116,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'video',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              forceDataPathRefresh: true,
               loadingTemplate: '<div class="loading"></div>',
               onData: function(ui) {
                 var thisEl = app.ui.element('/detail/video').htmlEl,
@@ -157,7 +154,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'twitter',
               type: Panel,
               uiDataMaster: '/content/itemList',
-              forceDataPathRefresh: true,
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
                 '<div class="tweet"><%= data.text %><p class="date"><%= data.date %></p></div>',

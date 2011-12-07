@@ -21,44 +21,19 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // Change app name globally
       document.title = Joshfire.factory.config.app.name;
 
-      // Populate menu
-      menu.subscribe('data', function(event, data) {
-        // We have data, remove splashscreen
-        // Todo: it may better to remove it "onAfterShow" or "onAfterInsert"
-        _this.splash.remove();
-        // Select the first tab on our menu
-        menu.selectByIndex(0);
-      });
 
-      // Handle clicks on menu
+      // on lenu select, assign the corresponding dartaPath to itemList
       menu.subscribe('select', function(event, data) {
-        console.warn('On menu item has been selected', data[0][0]);
-
+        console.warn('menu item has been selected', data[0][0]);
         var datasourceId = data[0][0];
-
         // Set the new dataPath
         _this.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
-
-        // Show itemList, because we could be on a detail panel
-        _this.ui.element('/content').switchTo('itemList');
-      });
-
-      // Refresh content each time new data is attached
-      itemList.subscribe('data', function(event, data) {
-        console.log("itemList receiving data", event);
-        // Why should we do this ?
-        //itemList.refresh();
         _this.ui.moveTo('focus', '/content/itemList');
       });
 
-      // Open item when selected
+      // handle select on itemList
       itemList.subscribe('select', function(event, data) {
         _this.ui.element('/detail').show();
-        _this.ui.moveTo('focus', '/detail/back');
-      });
-
-      detailPanel.subscribe('data', function(event, data) {
-        console.log("detailPanel receiving data", event);
         _this.ui.moveTo('focus', '/detail/back');
       });
 
@@ -68,14 +43,8 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.moveTo('focus', '/content/itemList');
       });
 
-      // Handling focus style on back button
-      backBtn.subscribe('afterFocus', function() {
-        backBtn.addClass('focused');
-      });
-      backBtn.subscribe('afterBlur', function() {
-        backBtn.removeClass('focused');
-      });
-
+      // select first item
+      menu.selectByIndex(0);
 
       callback(null, true);
     }
