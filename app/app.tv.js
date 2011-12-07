@@ -43,6 +43,14 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.moveTo('focus', '/content/itemList');
       });
 
+      // Handling focus style on back button      
+      backBtn.subscribe('afterFocus', function() {
+        backBtn.addClass('focused');
+      });
+      backBtn.subscribe('afterBlur', function() {
+        backBtn.removeClass('focused');
+      });
+
       // select first item
       menu.selectByIndex(0);
 
