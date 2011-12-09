@@ -25,24 +25,58 @@ ul {
   height: 100%
 }
 
+
+.josh-id-sidebarleft{
+  background: red;
+  top: 5%;
+  left: 5%;
+  position: absolute;
+  bottom: 5%;
+  width: 15%;
+  margin: 3% 0 0 0;
+  padding: 6px 0 6px 1%;
+  background-image: linear-gradient(bottom, rgb(0,0,0) 20%, rgb(66,66,66) 80%);
+background-image: -o-linear-gradient(bottom, rgb(0,0,0) 20%, rgb(66,66,66) 80%);
+background-image: -moz-linear-gradient(bottom, rgb(0,0,0) 20%, rgb(66,66,66) 80%);
+background-image: -webkit-linear-gradient(bottom, rgb(0,0,0) 20%, rgb(66,66,66) 80%);
+background-image: -ms-linear-gradient(bottom, rgb(0,0,0) 20%, rgb(66,66,66) 80%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.2, rgb(0,0,0)),
+	color-stop(0.8, rgb(66,66,66))
+);
+  
+  
+}
+
+
 #defaultApp__sidebarleft__header {
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   font-size: 15px;
   position: absolute;
+/* 
   top: 5%; 
   left: 5%;
-  width: 14%;
+*/
+  width: 90%;
   height: 22px;
+/*
   margin: 3% 0 0px 0;
-  padding: 6px 0 6px 1%;
+*/
+  padding: 8px 8px 6px 6%;
 }
 
 #defaultApp__sidebarleft__menu {
   position: absolute;
-  top: 20%;
+  top: 12%;
+  /*
   left: 5%;
-  width: 15%;
+  */
+  width: 100%;
 }
 
 #defaultApp__sidebarleft__menu ul {
