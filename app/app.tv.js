@@ -10,11 +10,11 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
     setup: function(callback) {
       var _this = this,
-          menu = _this.ui.element('/menu'),
+          menu = _this.ui.element('/sidebarleft/menu'),
           itemGrid = _this.ui.element('/content/itemGrid'),          
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/detail'),
-          title = _this.ui.element('/header/title'),
+          title = _this.ui.element('/sidebarleft/header/title'),
           backBtn = _this.ui.element('/detail/back');
 
       this.splash = new Splash();
@@ -39,6 +39,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.element("/content").switchTo(item);
         _this.ui.element(item).setDataPath('/datasource/' + datasourceId + '/');
         _this.ui.moveTo('focus', item );
+
+        // TODO: do not do this here
+        _this.splash.remove();
       });
 
       // handle select on itemList and itemGrid

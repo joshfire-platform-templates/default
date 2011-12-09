@@ -8,33 +8,39 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
 
       return [
         {
-          id: 'header',
+          id: 'sidebarleft',
           type: Panel,
           children: [
             {
-              id: 'title',
+              id: 'header',
               type: Panel,
-              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+              children: [
+                {
+                  id: 'title',
+                  type: Panel,
+                  innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+                }
+              ]
+            },
+            {
+              id: 'menu',
+              type: List,
+              dataPath: '/datasourcelist/',
+              itemInnerTemplate: '<%= item.name %>',
+              orientation:'left',
+              beforeGridExit: function(self, direction) {
+                if (direction == 'right') {
+                  app.ui.moveTo('focus', '/content/itemList');
+                  app.ui.element('/content/itemList').focusByIndex([0]);
+                }
+              }
             }
           ]
         },
         {
-          id: 'menu',
-          type: List,
-          dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.name %>',
-          orientation:'left',
-          beforeGridExit: function(self, direction) {
-            if (direction == 'right') {
-              app.ui.moveTo('focus', '/content/itemList');
-              app.ui.element('/content/itemList').focusByIndex([0]);
-            }
-          }
-        },
-        {
           id: 'content',
           type: PanelManager,
-          uiMaster: '/menu',
+          uiMaster: '/sidebarleft/menu',
           children: [
             {
               id: 'itemList',
@@ -45,17 +51,18 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                               'class="josh-List joshover item-<%= item.source %> "' + 
                               '><%= itemInner %></li>',
               itemInnerTemplate:
-                '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
-                  '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
-                '<% } else if (item.source == "twitter") { %>' +
+                '<% if (item.source == "twitter") { %>' +
                   '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
-                  '<%= item.title %>' +
+                  '<div class="preview"><img src="http://placehold.it/200x150" /></div>' +
+                  '<h3><%= item.title %></h3>' +
+                  '<% var len = Math.min(300, item.content.length); var truncated = item.content.substring(0, len); %>' +
+                  '<p><%= truncated %></p>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 switch (direction) {
                   case 'left' :
-                    app.ui.moveTo('focus', '/menu');
+                    app.ui.moveTo('focus', '/sidebarleft/menu');
                     break;
                 }
               }
@@ -70,10 +77,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               itemInnerTemplate:
                 '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
                   '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
-                '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.title %></div>' +
-                '<% } else { %>' +
-                  '<%= item.title %>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 // This is a Hack. This should be handled by a Grid Element of the Joshfire framework.
@@ -93,7 +96,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   case 'up' :
                     var gotoIndex = coords[0] - widthElements;
                     if(gotoIndex < 0) {
-                      app.ui.moveTo('focus', '/menu');
+                      app.ui.moveTo('focus', '/sidebarleft/menu');
                     } else {
                       // the followingline doesn't work well: the grid coordinates are not updated 
                       //app.ui.element('/content/itemList').focusByIndex(gotoIndex);
@@ -108,7 +111,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
         {
           id: 'detail',
           type: Panel,
-          //uiDataMaster: '/content/itemList',
           noMouseAutoFocus: true,
           moveOnFocus: true,
           loadingTemplate: '<div class="loading"></div>',
@@ -122,7 +124,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'text',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
@@ -141,7 +142,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'video',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               onData: function(ui) {
@@ -163,7 +163,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 {
                   id: 'title',
                   type: Panel,
-                  //uiDataMaster: '/content/itemList',
                   uiDataSync: '/detail',                  
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
@@ -181,7 +180,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'twitter',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
