@@ -39,6 +39,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.element("/content").switchTo(item);
         _this.ui.element(item).setDataPath('/datasource/' + datasourceId + '/');
         _this.ui.moveTo('focus', item );
+
+        // TODO: do not do this here
+        _this.splash.remove();
       });
 
       // handle select on itemList and itemGrid
