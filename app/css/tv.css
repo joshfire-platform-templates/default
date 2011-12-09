@@ -80,7 +80,7 @@ ul {
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li {
+#defaultApp__content__itemList li, #defaultApp__content__itemGrid li {
   outline: 1px solid white;
   list-style: none;
   float: left;
@@ -92,9 +92,8 @@ ul {
   overflow: hidden;
 }
 
-/* alternative grid layout */
-#defaultApp__content__itemList li.grid {
-  width: 20%;
+#defaultApp__content__itemGrid li {
+    width: 20%;
 }
 
 #defaultApp__content__itemList li.focused {

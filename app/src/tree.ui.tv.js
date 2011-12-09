@@ -39,14 +39,33 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'itemList',
               type: List,
-              // orientation: 'left',
+              orientation: 'left', // left means a list going down
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: '<li id="<%=itemHtmlId%>" data-josh-ui-path="<%= path %>" data-josh-grid-id="<%= item.id %>" ' + 
-                              'class="josh-List joshover item-<%= item.source %> ' +
-                              '<% if (item.source == "youtube" || item.source == "flickr") { %>' +
-                                'grid' +
-                              '<% } %>' +
-                              '"' + 
+                              'class="josh-List joshover item-<%= item.source %> "' + 
+                              '><%= itemInner %></li>',
+              itemInnerTemplate:
+                '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
+                  '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
+                '<% } else if (item.source == "twitter") { %>' +
+                  '<div class="tweet"><%= item.title %></div>' +
+                '<% } else { %>' +
+                  '<%= item.title %>' +
+                '<% } %>',
+              beforeGridExit: function(self, direction) {
+                switch (direction) {
+                  case 'left' :
+                    app.ui.moveTo('focus', '/menu');
+                    break;
+                }
+              }
+            },
+            {
+              id: 'itemGrid',
+              type: List,
+              loadingTemplate: '<div class="loading"></div>',
+              itemTemplate: '<li id="<%=itemHtmlId%>" data-josh-ui-path="<%= path %>" data-josh-grid-id="<%= item.id %>" ' + 
+                              'class="josh-List joshover item-<%= item.source %> "' + 
                               '><%= itemInner %></li>',
               itemInnerTemplate:
                 '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
@@ -62,13 +81,13 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 // CSS impose a grid of 4 element in width
                 var widthElements = 4;
 
-                var coords = app.ui.element('/content/itemList').grid.currentCoords;
+                var coords = app.ui.element('/content/itemGrid').grid.currentCoords;
 
                 switch (direction) {
                   case 'down' :
                     var gotoIndex = coords[0] + widthElements;
-                    if( gotoIndex <  app.ui.element('/content/itemList').data.length ) {
-                      app.ui.element('/content/itemList').grid.goTo( [gotoIndex, 0] );
+                    if( gotoIndex <  app.ui.element('/content/itemGrid').data.length ) {
+                      app.ui.element('/content/itemGrid').grid.goTo( [gotoIndex, 0] );
                     }
                     break;
                   case 'up' :
@@ -78,7 +97,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     } else {
                       // the followingline doesn't work well: the grid coordinates are not updated 
                       //app.ui.element('/content/itemList').focusByIndex(gotoIndex);
-                      app.ui.element('/content/itemList').grid.goTo( [gotoIndex, 0] );
+                      app.ui.element('/content/itemGrid').grid.goTo( [gotoIndex, 0] );
                     }
                   break;
                 }
@@ -89,7 +108,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
         {
           id: 'detail',
           type: Panel,
-          uiDataMaster: '/content/itemList',
+          //uiDataMaster: '/content/itemList',
           noMouseAutoFocus: true,
           moveOnFocus: true,
           loadingTemplate: '<div class="loading"></div>',
@@ -103,7 +122,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'text',
               type: Panel,
-              uiDataMaster: '/content/itemList',
+              //uiDataMaster: '/content/itemList',
+              uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
                 '<div class="title"><h1><%= data.title %></h1>' +
@@ -121,7 +141,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'video',
               type: Panel,
-              uiDataMaster: '/content/itemList',
+              //uiDataMaster: '/content/itemList',
+              uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               onData: function(ui) {
                 var thisEl = app.ui.element('/detail/video').htmlEl,
@@ -142,7 +163,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 {
                   id: 'title',
                   type: Panel,
-                  uiDataMaster: '/content/itemList',
+                  //uiDataMaster: '/content/itemList',
+                  uiDataSync: '/detail',                  
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
                     '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
@@ -159,7 +181,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'twitter',
               type: Panel,
-              uiDataMaster: '/content/itemList',
+              //uiDataMaster: '/content/itemList',
+              uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
                 '<div class="tweet"><%= data.text %><p class="date"><%= data.date %></p></div>',
