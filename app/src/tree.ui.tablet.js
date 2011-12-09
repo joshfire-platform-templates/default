@@ -15,7 +15,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'menu',
               type: List,
               dataPath: '/datasourcelist/',
-              itemInnerTemplate: '<div class="picto item-<%= item.col %>"></div><div class="name"><%= item.name %></div>',
+              itemInnerTemplate: '<div class="picto item-<%= item.config.col %>"></div><div class="name"><%= item.name %></div>',
               onData: function() {} // trigger data, WTF?
             }
           ]
