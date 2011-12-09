@@ -4,11 +4,15 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #000;
+  background: #333 url(../images/img-bckgd.png) 0 0;
+  
+  
+  
   color: #fff;
   font-size: 20px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
 
 ul {
   margin: 0;
@@ -26,40 +30,55 @@ ul {
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   font-size: 15px;
   position: absolute;
-  top: 0; 
-  left: 0;
-  width: 10%;
-  height: 30px;
+  top: 5%; 
+  left: 5%;
+  width: 14%;
+  height: 22px;
+  margin: 3% 0 0px 0;
+  padding: 6px 0 6px 1%;
 }
 
 #defaultApp__menu {
   position: absolute;
-  top: 30px; 
-  left: 0;
-  width: 10%;
+  top: 20%;
+  left: 5%;
+  width: 15%;
 }
 
 #defaultApp__menu ul {
   overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+  border-top: black 1px solid;
+  border-bottom: #505050 1px solid;
+
 }
 
 #defaultApp__menu li {
-  float: left;
-  width: 150px;
-  height: 30px;
+ /* float: left;*/
+  width: 65%;
+  height: 32px;
+  padding: 30px 0 30px 35%;
   line-height: 30px;
-  border: 2px solid #fff;
-  border-bottom: 0;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #000;
+  border-right: 1px transparent solid;;
+  border-left: 1px transparent solid;
+  /*
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin-right: 10px;
-  text-align: center;
+  */
+ 
+  /*text-align: left;*/
   list-style: none;
   text-transform: capitalize;
+
+  
 }
 
 #defaultApp__menu li.focused {
-  background: orange;
+  border: #F1F1F1 solid 1px;
+  box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
 }
 
 #defaultApp__menu li.selected {
@@ -69,10 +88,10 @@ ul {
 #defaultApp__content {
   position: absolute;
   top: 0; bottom: 0; 
-  left: 10%;
-  right: 0;
-
-  border: 2px solid #fff;
+  left: 20%;
+  right: 5%;
+  top: 5%;
+  /*border: 2px solid #fff;*/
   overflow: auto;
 }
 
@@ -81,7 +100,6 @@ ul {
 }
 
 #defaultApp__content__itemList li, #defaultApp__content__itemGrid li {
-  outline: 1px solid white;
   list-style: none;
   float: left;
   margin: 20px 4%;
@@ -90,14 +108,18 @@ ul {
   text-align: center;
   margin-right: 0;
   overflow: hidden;
+  border-radius: 3px;
 }
 
 #defaultApp__content__itemGrid li {
-    width: 20%;
+  width: 18%;
+  padding: 20px 13px 5px 13px;
+  border:transparent 1px solid;
 }
 
 #defaultApp__content__itemList li.focused {
-  outline:3px solid orange;
+border: #F1F1F1 solid 1px;
+box-shadow:1px 1px 21px #869be0, inset 1px 1px 15px #000;
 }
 
 #defaultApp__content__itemList li .preview {
