@@ -49,7 +49,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
                   '<img src="http://placehold.it/200x150" />' +
-                  '<%= item.title %>' +
+                  '<h3><%= item.title %></h3>' +
+                  '<p><%= item.content %></p>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 switch (direction) {
