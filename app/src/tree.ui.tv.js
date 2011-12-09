@@ -105,7 +105,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
         {
           id: 'detail',
           type: Panel,
-          //uiDataMaster: '/content/itemList',
           noMouseAutoFocus: true,
           moveOnFocus: true,
           loadingTemplate: '<div class="loading"></div>',
@@ -119,7 +118,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'text',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
@@ -138,7 +136,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'video',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               onData: function(ui) {
@@ -160,7 +157,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 {
                   id: 'title',
                   type: Panel,
-                  //uiDataMaster: '/content/itemList',
                   uiDataSync: '/detail',                  
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
@@ -178,7 +174,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'twitter',
               type: Panel,
-              //uiDataMaster: '/content/itemList',
               uiDataSync: '/detail',
               loadingTemplate: '<div class="loading"></div>',
               innerTemplate:
