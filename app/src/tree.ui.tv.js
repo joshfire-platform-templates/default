@@ -45,11 +45,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                               'class="josh-List joshover item-<%= item.source %> "' + 
                               '><%= itemInner %></li>',
               itemInnerTemplate:
-                '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
-                  '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
-                '<% } else if (item.source == "twitter") { %>' +
+                '<% if (item.source == "twitter") { %>' +
                   '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
+                  '<img src="http://placehold.it/200x150" />' +
                   '<%= item.title %>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
@@ -70,10 +69,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               itemInnerTemplate:
                 '<% if (item.source == "youtube" || item.source == "flickr" ) { %>' +
                   '<div class="preview"><img src="<%= item.image %>"></div><div class="title"><%= item.title %></div>' +
-                '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.title %></div>' +
-                '<% } else { %>' +
-                  '<%= item.title %>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 // This is a Hack. This should be handled by a Grid Element of the Joshfire framework.
