@@ -25,7 +25,7 @@ ul {
   height: 100%
 }
 
-#defaultApp__header {
+#defaultApp__sidebarleft__header {
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   font-size: 15px;
@@ -38,14 +38,14 @@ ul {
   padding: 6px 0 6px 1%;
 }
 
-#defaultApp__menu {
+#defaultApp__sidebarleft__menu {
   position: absolute;
   top: 20%;
   left: 5%;
   width: 15%;
 }
 
-#defaultApp__menu ul {
+#defaultApp__sidebarleft__menu ul {
   overflow: hidden;
   width: 80%;
   padding: 15px 10%;
@@ -57,7 +57,7 @@ ul {
 
 
 
-#defaultApp__menu li {
+#defaultApp__sidebarleft__menu li {
  /* float: left;*/
   width: 65%;
   height: 32px;
@@ -80,14 +80,14 @@ ul {
 
 }
 
-#defaultApp__menu li.focused {
+#defaultApp__sidebarleft__menu li.focused {
   border: #F1F1F1 solid 1px;
   box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
   color: #F1F1F1;
   border-radius: 3px;
 }
 
-#defaultApp__menu li.selected {
+#defaultApp__sidebarleft__menu li.selected {
   outline: 2px solid blue;
 }
 

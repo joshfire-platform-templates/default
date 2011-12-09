@@ -8,33 +8,39 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
 
       return [
         {
-          id: 'header',
+          id: 'sidebarleft',
           type: Panel,
           children: [
             {
-              id: 'title',
+              id: 'header',
               type: Panel,
-              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+              children: [
+                {
+                  id: 'title',
+                  type: Panel,
+                  innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+                }
+              ]
+            },
+            {
+              id: 'menu',
+              type: List,
+              dataPath: '/datasourcelist/',
+              itemInnerTemplate: '<%= item.name %>',
+              orientation:'left',
+              beforeGridExit: function(self, direction) {
+                if (direction == 'right') {
+                  app.ui.moveTo('focus', '/content/itemList');
+                  app.ui.element('/content/itemList').focusByIndex([0]);
+                }
+              }
             }
           ]
         },
         {
-          id: 'menu',
-          type: List,
-          dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.name %>',
-          orientation:'left',
-          beforeGridExit: function(self, direction) {
-            if (direction == 'right') {
-              app.ui.moveTo('focus', '/content/itemList');
-              app.ui.element('/content/itemList').focusByIndex([0]);
-            }
-          }
-        },
-        {
           id: 'content',
           type: PanelManager,
-          uiMaster: '/menu',
+          uiMaster: '/sidebarleft/menu',
           children: [
             {
               id: 'itemList',
@@ -56,7 +62,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               beforeGridExit: function(self, direction) {
                 switch (direction) {
                   case 'left' :
-                    app.ui.moveTo('focus', '/menu');
+                    app.ui.moveTo('focus', '/sidebarleft/menu');
                     break;
                 }
               }
@@ -90,7 +96,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   case 'up' :
                     var gotoIndex = coords[0] - widthElements;
                     if(gotoIndex < 0) {
-                      app.ui.moveTo('focus', '/menu');
+                      app.ui.moveTo('focus', '/sidebarleft/menu');
                     } else {
                       // the followingline doesn't work well: the grid coordinates are not updated 
                       //app.ui.element('/content/itemList').focusByIndex(gotoIndex);
