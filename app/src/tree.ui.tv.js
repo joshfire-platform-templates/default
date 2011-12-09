@@ -50,7 +50,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% } else { %>' +
                   '<img src="http://placehold.it/200x150" />' +
                   '<h3><%= item.title %></h3>' +
-                  '<p><%= item.content %></p>' +
+                  '<% var len = Math.min(300, item.content.length); var truncated = item.content.substring(0, len); %>' +
+                  '<p><%= truncated %></p>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 switch (direction) {
