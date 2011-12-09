@@ -11,10 +11,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
       // transform these datasources in a Joshfire Framework friendly datasource type
       var datasourceArray = [];
       _.each(datasources, function(value, key) {
-        console.log(value);
         if(_.isArray(value)) {
           _.each(value, function(val, index) {
-            datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index, name: val.name, col: val.col }) );  
+            datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key).children[index], { id: key + index, name: val.name }) );  
           });
         } else {
           datasourceArray.push( _.extend(Joshfire.factory.getDataSource(key), { id: key }) );
@@ -27,6 +26,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
         datachildren.push(
           {
             'id': datasource.id,
+            'col': datasource.config.col,
+            'database': datasource.config.db,
             children: function(query, cb) {
               datasource.find({}, function (err, data) {
                 // Make sure every entry has an id

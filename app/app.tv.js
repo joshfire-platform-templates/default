@@ -11,6 +11,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
     setup: function(callback) {
       var _this = this,
           menu = _this.ui.element('/menu'),
+          itemGrid = _this.ui.element('/content/itemGrid'),          
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/detail'),
           title = _this.ui.element('/header/title'),
@@ -26,20 +27,42 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         console.warn('menu item has been selected', data[0][0]);
         var datasourceId = data[0][0];
         // Set the new dataPath
-        _this.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
-        _this.ui.moveTo('focus', '/content/itemList');
+        var ds = _app.data.get('/datasource/' + datasourceId);
+
+        var item = '/content/itemList';
+        // if videos or pictures, display a grid
+        console.log("ds.col", ds.col);
+        if(ds.col == 'videos' || ds.col == 'photos') {
+          console.log("use item grid");
+          item = '/content/itemGrid';
+        }
+        _this.ui.element("/content").switchTo(item);
+        _this.ui.element(item).setDataPath('/datasource/' + datasourceId + '/');
+        _this.ui.moveTo('focus', item );
       });
 
-      // handle select on itemList
-      itemList.subscribe('select', function(event, data) {
-        _this.ui.element('/detail').show();
-        _this.ui.moveTo('focus', '/detail/back');
-      });
+      // handle select on itemList and itemGrid
+      var generateSelectDataFunction = function(uiElement) {
+        return function(event, data) {
+          detailPanel.show();
+          _this.ui.moveTo('focus', '/detail/back');
+
+          // store in the back button the origin of the datapath
+          backBtn.previousPath = uiElement.path;
+
+          var dataToDisplay = uiElement.dataPath + data[0];
+          console.log( "detail", uiElement.path, dataToDisplay );
+          detailPanel.setDataPath( dataToDisplay );
+        }
+      }
+
+      itemList.subscribe('select', generateSelectDataFunction(itemList));
+      itemGrid.subscribe('select', generateSelectDataFunction(itemGrid));
 
       // Close details when pushing back button
       backBtn.subscribe('select', function(event, data) {
         detailPanel.hide();
-        _this.ui.moveTo('focus', '/content/itemList');
+        _this.ui.moveTo('focus', backBtn.previousPath);
       });
 
       // Handling focus style on back button      

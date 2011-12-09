@@ -111,10 +111,7 @@ ul {
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li {
- /* 
- border: 1px solid #F1F1F1; 
- */
+#defaultApp__content__itemList li, #defaultApp__content__itemGrid li {
   list-style: none;
   float: left;
   margin: 20px 4%;
@@ -126,8 +123,7 @@ ul {
 
 }
 
-/* alternative grid layout */
-#defaultApp__content__itemList li.grid {
+#defaultApp__content__itemGrid li {
   width: 18%;
   padding: 10px 13px 15px 13px;
   border:transparent 1px solid;
