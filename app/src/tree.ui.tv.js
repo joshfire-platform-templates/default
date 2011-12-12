@@ -16,9 +16,13 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               type: Panel,
               children: [
                 {
-                  id: 'title',
+                  id: 'title', // the title or the logo
                   type: Panel,
-                  innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+                  innerTemplate: '<% if(Joshfire.factory.config.app.logo) { %>' + 
+                                    '<img class="applogo" src="<%= Joshfire.factory.config.app.logo.url %>" alt="<%= Joshfire.factory.config.app.name %>" />' +
+                                  '<% } else { %>' +
+                                    '<h1><%= Joshfire.factory.config.app.name %></h1>' +
+                                  '<% } %>'
                 }
               ]
             },
