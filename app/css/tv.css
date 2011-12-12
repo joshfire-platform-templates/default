@@ -70,6 +70,10 @@ background-image: -webkit-gradient(
   padding: 8px 8px 6px 6%;
 }
 
+#defaultApp__sidebarleft__header img.applogo {
+  width : 100%;
+}
+
 #defaultApp__sidebarleft__menu {
   position: absolute;
   top: 12%;
