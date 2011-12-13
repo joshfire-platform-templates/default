@@ -49,9 +49,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
                   '<div class="preview"><img src="http://placehold.it/200x150" /></div>' +
-                  '<h3><%= item.title %></h3>' +
+                  '<div class="textsummary"><h3><%= item.title %></h3>' +
                   '<% var len = Math.min(300, item.content.length); var truncated = item.content.substring(0, len); %>' +
-                  '<p><%= truncated %></p>' +
+                  '<p><%= truncated %></p></div>' +
                 '<% } %>',
               beforeGridExit: function(self, direction) {
                 switch (direction) {
