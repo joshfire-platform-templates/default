@@ -100,7 +100,7 @@ ul {
   list-style-type: none;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background: #fff; 
 }
 
 /* list */
@@ -140,19 +140,17 @@ ul {
 
 /* grid */
 
-/* TODO: crop to make thumbnails. Doesn't seem to be easy in CSS. use  squared thumbnails ?*/
 #defaultApp__content__itemList li.grid {
   float: left;
-  width: 100px;
+  width: 25%;
   height: 100px;
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li.grid .preview img{
+#defaultApp__content__itemList li.grid .thumbnail {
+  background-size: cover;
+  width: 100%;
   height: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 

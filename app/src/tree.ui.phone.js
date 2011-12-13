@@ -33,7 +33,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           children: [
             {
               id: 'itemList',
-              scroller: false, // do not use iScroll it's crappy crap (and doesn't work with a grid made of floats)
+              //scroller: false, // do not use iScroll it's crappy crap (and doesn't work with a grid made of floats)
               type: List,
               htmlClass: 'abs100',
               loadingTemplate: '<div class="loading"></div>',
@@ -54,7 +54,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% if (item.source == "youtube") { %>' +
                   '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract && item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
                 '<% } else if (item.source == "flickr") { %>' +
-                  '<div class="preview"><img src="<%= item.image %>"></div>' + 
+                  "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
                 '<% } else if (item.source == "twitter") { %>' +
                   '<div class="tweet"><%= item.title %></div>' +
                 '<% } else { %>' +
