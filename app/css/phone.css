@@ -94,25 +94,27 @@ ul {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* ITEM LIST */
+
 #defaultApp__content__itemList li {
+  list-style-type: none;
   position: relative;
-  min-height: 41px;
-  line-height: 41px;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 0 26px 0 6px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
-  text-shadow: #fff 0 0 1px;
   background: #fff;
 }
 
-#defaultApp__content__itemList li.item-youtube {
+/* list */
+#defaultApp__content__itemList li.list {
+  position: relative;
+  min-height: 41px;
   line-height: inherit;
+  border-bottom: 1px solid #e0e0e0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding: 6px 26px 6px 6px;
 }
 
-#defaultApp__content__itemList li.item-youtube .title {
+#defaultApp__content__itemList li.list .title {
   font-weight: bold;
   margin-right: 70px;
   text-overflow: ellipsis;
@@ -120,7 +122,7 @@ ul {
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li.item-youtube .abstract {
+#defaultApp__content__itemList li.list .abstract {
   color: gray;
   font-size: 13px;
   float: left;
@@ -128,14 +130,33 @@ ul {
   margin-right: 70px;
 }
 
-#defaultApp__content__itemList li.item-youtube .preview {
+#defaultApp__content__itemList li.list .preview {
   position: absolute;
   top: 6px; right: 30px;
 }
-
-#defaultApp__content__itemList li.item-youtube .preview img {
+#defaultApp__content__itemList li.list .preview img {
   max-height: 40px;
 }
+
+/* grid */
+
+/* TODO: crop to make thumbnails. Doesn't seem to be easy in CSS. use  squared thumbnails ?*/
+#defaultApp__content__itemList li.grid {
+  float: left;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+#defaultApp__content__itemList li.grid .preview img{
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* CONTENT */
 
 #defaultApp__content__detail {
   position: absolute;
