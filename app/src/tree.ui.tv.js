@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'joshfire/adapters/ios/uielements/video.youtube'], function(Class, UITree, List, Panel, PanelManager, Button, Video) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'joshfire/adapters/ios/uielements/video.youtube', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, Video, UI) {
 
   return Class(UITree, {
 
@@ -14,17 +14,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'header',
               type: Panel,
-              children: [
-                {
-                  id: 'title', // the title or the logo
-                  type: Panel,
-                  innerTemplate: '<% if(Joshfire.factory.config.app.logo) { %>' + 
-                                    '<img class="applogo" src="<%= Joshfire.factory.config.app.logo.url %>" alt="<%= Joshfire.factory.config.app.name %>" />' +
-                                  '<% } else { %>' +
-                                    '<h1><%= Joshfire.factory.config.app.name %></h1>' +
-                                  '<% } %>'
-                }
-              ]
+              children: [ UI.uiHeader ]
             },
             {
               id: 'menu',
