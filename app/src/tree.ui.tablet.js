@@ -86,7 +86,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   autoShow: false,
                   children: [
                     {
-                      id: 'text',
+                      // Article (default)
+                      id: 'article',
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
                       forceDataPathRefresh: true,
@@ -94,10 +95,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       innerTemplate:
                         '<div class="title"><h1><%= data.title %></h1>' +
                         '<p class="author"><%= data.creator || data.user %></p></div>' +
-                        '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                        '<p><%= data.content %></p>',
                       onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/text').htmlEl;
-                        if (ui.data.source != 'youtube') {
+                        var thisEl = app.ui.element('/sidebarright/content/detail/article').htmlEl;
+                        if (ui.data.source != 'youtube' && ui.data.source != 'flickr') {
                           $(thisEl).show();
                         } else {
                           $(thisEl).hide();
@@ -105,6 +106,24 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       }
                     },
                     {
+                      // Flickr
+                      id: 'image',
+                      type: Panel,
+                      uiDataMaster: '/sidebarright/content/itemList',
+                      forceDataPathRefresh: true,
+                      loadingTemplate: '<div class="loading"></div>',
+                      innerTemplate: '<img src="<%= data.photo %>" />',
+                      onData: function(ui) {
+                        var thisEl = app.ui.element('/sidebarright/content/detail/image').htmlEl;
+                        if (ui.data.source =='flickr') {
+                          $(thisEl).show();
+                        } else {
+                          $(thisEl).hide();
+                        }
+                      }
+                    },                    
+                    {
+                      // Video
                       id: 'video',
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
@@ -142,23 +161,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                           noAutoPlay: false
                         }
                       ]
-                    },
-                    {
-                      id: 'twitter',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate:
-                        '<div class="tweet"><%= data.title %><p class="date"><%= data.date %></p></div>',
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/twitter').htmlEl;
-                        if (ui.data.source == 'twitter') {
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      }
                     }
                   ]
                 }
