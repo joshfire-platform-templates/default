@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button'], function(Class, UITree, List, Panel, PanelManager, Button) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, UI) {
 
   return Class(UITree, {
 
@@ -35,11 +35,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   label: 'Prev',
                   autoShow: false
                 },
-                {
-                  id: 'title',
-                  type: Panel,
-                  innerTemplate: '<%= Joshfire.factory.config.app.name %>'
-                }
+                UI.uiHeader
               ]
             },
             {
@@ -51,10 +47,27 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   id: 'itemList',
                   type: List,
                   loadingTemplate: '<div class="loading"></div>',
-                  itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
+                  itemTemplate: "<li id='<%=itemHtmlId%>' " + 
+                            "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
+                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
+                            // grid view
+                            "<% if(item.source == 'flickr') { %>" +
+                              "grid" +
+                            "<% } else if(item.source == 'youtube') { %>" +
+                            // two rows
+                              "rows" +
+                            "<% } else { %>" +
+                            // list view
+                              "list" +
+                            "<% } %>" +
+                            "' >" +
+                            "<%= itemInner %>" + 
+                            "</li>",
                   itemInnerTemplate:
                     '<% if (item.source == "youtube") { %>' +
                       '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                    '<% } else if (item.source == "flickr") { %>' +
+                      "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
                     '<% } else if (item.source == "twitter") { %>' +
                       '<div class="tweet"><%= item.title %></div>' +
                     '<% } else { %>' +
@@ -69,7 +82,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   autoShow: false,
                   children: [
                     {
-                      id: 'text',
+                      // Article (default)
+                      id: 'article',
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
                       forceDataPathRefresh: true,
@@ -77,10 +91,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       innerTemplate:
                         '<div class="title"><h1><%= data.title %></h1>' +
                         '<p class="author"><%= data.creator || data.user %></p></div>' +
-                        '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                        '<p><%= data.content %></p>',
                       onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/text').htmlEl;
-                        if (ui.data.source != 'youtube') {
+                        var thisEl = app.ui.element('/sidebarright/content/detail/article').htmlEl;
+                        if (ui.data.source != 'youtube' && ui.data.source != 'flickr') {
                           $(thisEl).show();
                         } else {
                           $(thisEl).hide();
@@ -88,6 +102,24 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       }
                     },
                     {
+                      // Flickr
+                      id: 'image',
+                      type: Panel,
+                      uiDataMaster: '/sidebarright/content/itemList',
+                      forceDataPathRefresh: true,
+                      loadingTemplate: '<div class="loading"></div>',
+                      innerTemplate: '<img src="<%= data.photo %>" />',
+                      onData: function(ui) {
+                        var thisEl = app.ui.element('/sidebarright/content/detail/image').htmlEl;
+                        if (ui.data.source =='flickr') {
+                          $(thisEl).show();
+                        } else {
+                          $(thisEl).hide();
+                        }
+                      }
+                    },                    
+                    {
+                      // Video
                       id: 'video',
                       type: Panel,
                       uiDataMaster: '/sidebarright/content/itemList',
@@ -125,23 +157,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                           noAutoPlay: false
                         }
                       ]
-                    },
-                    {
-                      id: 'twitter',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate:
-                        '<div class="tweet"><%= data.title %><p class="date"><%= data.date %></p></div>',
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/twitter').htmlEl;
-                        if (ui.data.source == 'twitter') {
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      }
                     }
                   ]
                 }

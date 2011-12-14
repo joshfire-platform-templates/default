@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button'], function(Class, UITree, List, Panel, PanelManager, Button) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, UI) {
 
   return Class(UITree, {
 
@@ -18,12 +18,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               label: 'Prev',
               autoShow: false
             },
-            {
-              id: 'title',
-              type: Panel,
-              htmlClass: 'abs100',
-              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
-            }
+            UI.uiHeader
           ]
         },
         {
@@ -39,7 +34,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' " + 
                             "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
-                            "class='josh-List joshover item-<%= item.source %> " + 
+                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
                             // grid view
                             "<% if (item.itemType === 'ImageObject') { %>" +
                               "grid" +
@@ -67,12 +62,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'detail',
               type: Panel,
-              uiDataMaster: '/content/itemList',
               loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
               children: [
                 {
-                  id: 'text',
+                  // Article
+                  id: 'article',
                   type: Panel,
                   uiDataMaster: '/content/itemList',
                   forceDataPathRefresh: true,
@@ -81,10 +76,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     '<div class="title"><h1><%= data.name %></h1>' +
                     '<% if (data.author && data.author[0]) { %><p class="author">By <strong><%= data.author[0].name %></strong></p><% } %>' +
                     '</div>' +
-                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                    '<% if (data.articleBody) { %><p><%= data.articleBody %></p><% } %>',
                   onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
-                    if (ui.data.itemType === 'VideoObject' || ui.data.itemType === 'Article/Status') {
+                    var thisEl = app.ui.element('/content/detail/article').htmlEl;
+                    if (ui.data.itemType === 'VideoObject' || ui.data.itemType === 'ImageObject') {
                       $(thisEl).hide();
                     }
                     else {
@@ -93,9 +88,26 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   }
                 },
                 {
-                  id: 'video',
+                  // Flickr
+                  id: 'image',
                   type: Panel,
                   uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loading"></div>',
+                  innerTemplate: '<img src="<%= data.photo %>" />',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/image').htmlEl;
+                    if (ui.data.source =='flickr') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
+                },  
+                {
+                  // Video
+                  id: 'video',
+                  type: Panel,
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
                   onData: function(ui) {
@@ -131,26 +143,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       noAutoPlay: false
                     }
                   ]
-                },
-                {
-                  id: 'twitter',
-                  type: Panel,
-                  uiDataMaster: '/content/itemList',
-                  forceDataPathRefresh: true,
-                  loadingTemplate: '<div class="loading"></div>',
-                  innerTemplate:
-                    '<div class="tweet"><%= data.name %>' +
-                    '<% if (data.datePublished) { %><p class="date"><%= data.datePublished %></p><% } %>' +
-                    '</div>',
-                  onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/twitter').htmlEl;
-                    if (ui.data.itemType === 'Article/Status') {
-                      $(thisEl).show();
-                    }
-                    else {
-                      $(thisEl).hide();
-                    }
-                  }
                 }
               ]
             }
