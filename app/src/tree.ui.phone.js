@@ -41,7 +41,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                             "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
                             "class='josh-List joshover item-<%= item.source %> " + 
                             // grid view
-                            "<% if(item.source == 'flickr') { %>" +
+                            "<% if (item.itemType === 'ImageObject') { %>" +
                               "grid" +
                             "<% } else { %>" +
                             // list view
@@ -51,14 +51,17 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                             "<%= itemInner %>" + 
                             "</li>",
               itemInnerTemplate:
-                '<% if (item.source == "youtube") { %>' +
-                  '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract && item.abstract.length > 70) { %><%= item.abstract.substring(0, 70) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
-                '<% } else if (item.source == "flickr") { %>' +
-                  "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
-                '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.title %></div>' +
+                '<% if (item.itemType === "VideoObject") { %>' +
+                  '<div class="title"><%= item.name %></div>' +
+                  '<div class="abstract"><% if (item.description && item.description.length > 70) { %><%= item.description.substring(0, 70) %>…<% } else { %><%= item.description %><% } %></div>' +
+                  '<% if (item.thumbnail && item.thumbnail[0]) { %><div class="preview"><img src="<%= item.thumbnail[0].contentURL %>"></div><% } %>' +
+                  '<span class="list-arrow"></span>' +
+                '<% } else if ((item.itemType === "ImageObject") && item.thumbnail && item.thumbnail[0]) { %>' +
+                  "<div class='thumbnail' style='background-image:url(\"<%=item.thumbnail[0].contentURL%>\")'></div>" + 
+                '<% } else if (item.itemType === "Article/Status") { %>' +
+                  '<div class="tweet"><%= item.name %></div>' +
                 '<% } else { %>' +
-                  '<%= item.title %><span class="list-arrow"></span>' +
+                  '<%= item.name %><span class="list-arrow"></span>' +
                 '<% } %>'
             },
             {
@@ -75,14 +78,16 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
-                    '<div class="title"><h1><%= data.title %></h1>' +
-                    '<p class="author"><%= data.creator || data.user %></p></div>' +
+                    '<div class="title"><h1><%= data.name %></h1>' +
+                    '<% if (data.author && data.author[0]) { %><p class="author">By <strong><%= data.author[0].name %></strong></p><% } %>' +
+                    '</div>' +
                     '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/text').htmlEl;
-                    if (ui.data.source == 'youtube' || ui.data.source == 'twitter') {
+                    if (ui.data.itemType === 'VideoObject' || ui.data.itemType === 'Article/Status') {
                       $(thisEl).hide();
-                    } else {
+                    }
+                    else {
                       $(thisEl).show();
                     }
                   }
@@ -97,13 +102,14 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     var thisEl = app.ui.element('/content/detail/video').htmlEl,
                         player = app.ui.element('/content/detail/video/player.youtube');
 
-                    if (ui.data.source == 'youtube') {
+                    if (ui.data.itemType === 'VideoObject') {
                       player.playWithStaticUrl({
-                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
+                        url: ui.data.contentURL.replace('http://www.youtube.com/watch?v=', ''),
                         width: '100%'
                       });
                       $(thisEl).show();
-                    } else {
+                    }
+                    else {
                       $(thisEl).hide();
                     }
                   },
@@ -113,8 +119,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       type: Panel,
                       uiDataMaster: '/content/itemList',
                       innerTemplate:
-                        '<div class="title"><h1><%= data.title %></h1>' +
-                        '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
+                        '<div class="title"><h1><%= data.name %></h1>' +
+                        '<% if (data.author && data.autor[0]) { %><p class="author">By <strong><%= data.author[0].name %></strong></p><% } %>' +
+                        '</div>'
                     },
                     {
                       id: 'player.youtube',
@@ -132,12 +139,15 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
-                    '<div class="tweet"><%= data.title %><p class="date"><%= data.date %></p></div>',
+                    '<div class="tweet"><%= data.name %>' +
+                    '<% if (data.datePublished) { %><p class="date"><%= data.datePublished %></p><% } %>' +
+                    '</div>',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/twitter').htmlEl;
-                    if (ui.data.source == 'twitter') {
+                    if (ui.data.itemType === 'Article/Status') {
                       $(thisEl).show();
-                    } else {
+                    }
+                    else {
                       $(thisEl).hide();
                     }
                   }
