@@ -18,7 +18,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               label: 'Prev',
               autoShow: false
             },
-            UI.uiHeader
+            {
+              id: 'title', // the title or the logo
+              type: Panel,
+              innerTemplate: UI.tplHeader
+            }
           ]
         },
         {
@@ -51,7 +55,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% } else if (item.source == "flickr") { %>' +
                   "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
                 '<% } else if (item.source == "twitter") { %>' +
-                  '<div class="tweet"><%= item.title %></div>' +
+                  UI.tplTweetItem +
                 '<% } else { %>' +
                   '<%= item.title %><span class="list-arrow"></span>' +
                 '<% } %>'
