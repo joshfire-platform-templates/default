@@ -34,7 +34,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' " + 
                             "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
-                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
+                            "class='josh-List joshover item-<%= item.itemType %> mainitemlist " + 
                             // grid view
                             "<% if (item.itemType === 'ImageObject') { %>" +
                               "grid" +
@@ -94,10 +94,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   uiDataMaster: '/content/itemList',
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
-                  innerTemplate: '<img src="<%= data.photo %>" />',
+                  innerTemplate: '<img src="<%= data.contentURL %>" alt="" />',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/image').htmlEl;
-                    if (ui.data.source =='flickr') {
+                    if (ui.data.itemType === 'ImageObject') {
                       $(thisEl).show();
                     } else {
                       $(thisEl).hide();
@@ -114,9 +114,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                     var thisEl = app.ui.element('/content/detail/video').htmlEl,
                         player = app.ui.element('/content/detail/video/player.youtube');
 
-                    if (ui.data.itemType === 'VideoObject') {
+                    if ((ui.data.itemType === 'VideoObject') && ui.data.publisher && (ui.data.publisher.name === 'Youtube')) {
                       player.playWithStaticUrl({
-                        url: ui.data.contentURL.replace('http://www.youtube.com/watch?v=', ''),
+                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
                         width: '100%'
                       });
                       $(thisEl).show();
