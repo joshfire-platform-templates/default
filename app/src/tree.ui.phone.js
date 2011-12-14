@@ -59,12 +59,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'detail',
               type: Panel,
-              uiDataMaster: '/content/itemList',
               loadingTemplate: '<div class="loading"></div>',
               autoShow: false,
               children: [
                 {
-                  id: 'text',
+                  // Article
+                  id: 'article',
                   type: Panel,
                   uiDataMaster: '/content/itemList',
                   forceDataPathRefresh: true,
@@ -72,10 +72,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   innerTemplate:
                     '<div class="title"><h1><%= data.title %></h1>' +
                     '<p class="author"><%= data.creator || data.user %></p></div>' +
-                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                    '<p><%= data.content %></p>',
                   onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
-                    if (ui.data.source == 'youtube' || ui.data.source == 'twitter') {
+                    var thisEl = app.ui.element('/content/detail/article').htmlEl;
+                    if (ui.data.source == 'youtube' || ui.data.source == 'flickr') {
                       $(thisEl).hide();
                     } else {
                       $(thisEl).show();
@@ -83,9 +83,26 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   }
                 },
                 {
-                  id: 'video',
+                  // Flickr
+                  id: 'image',
                   type: Panel,
                   uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loading"></div>',
+                  innerTemplate: '<img src="<%= data.photo %>" />',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/image').htmlEl;
+                    if (ui.data.source =='flickr') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
+                },  
+                {
+                  // Video
+                  id: 'video',
+                  type: Panel,
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
                   onData: function(ui) {
@@ -119,23 +136,6 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       noAutoPlay: false
                     }
                   ]
-                },
-                {
-                  id: 'twitter',
-                  type: Panel,
-                  uiDataMaster: '/content/itemList',
-                  forceDataPathRefresh: true,
-                  loadingTemplate: '<div class="loading"></div>',
-                  innerTemplate:
-                    '<div class="tweet"><%= data.title %><p class="date"><%= data.date %></p></div>',
-                  onData: function(ui) {
-                    var thisEl = app.ui.element('/content/detail/twitter').htmlEl;
-                    if (ui.data.source == 'twitter') {
-                      $(thisEl).show();
-                    } else {
-                      $(thisEl).hide();
-                    }
-                  }
                 }
               ]
             }
