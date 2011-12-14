@@ -35,7 +35,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   label: 'Prev',
                   autoShow: false
                 },
-                UI.uiHeader
+                {
+                  id: 'title', // the title or the logo
+                  type: Panel,
+                  innerTemplate: UI.tplHeader
+                }
               ]
             },
             {

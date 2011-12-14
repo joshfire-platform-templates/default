@@ -18,7 +18,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               label: 'Prev',
               autoShow: false
             },
-            UI.uiHeader
+            {
+              id: 'title', // the title or the logo
+              type: Panel,
+              innerTemplate: UI.tplHeader
+            }
           ]
         },
         {
@@ -49,12 +53,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% if (item.itemType === "VideoObject") { %>' +
                   '<div class="title"><%= item.name %></div>' +
                   '<div class="abstract"><% if (item.description && item.description.length > 70) { %><%= item.description.substring(0, 70) %>…<% } else { %><%= item.description %><% } %></div>' +
-                  '<% if (item.thumbnail && item.thumbnail[0]) { %><div class="preview"><img src="<%= item.thumbnail[0].contentURL %>"></div><% } %>' +
+                  '<% if (item.image) { %><div class="preview"><img src="<%= item.image.contentURL %>"></div><% } %>' +
                   '<span class="list-arrow"></span>' +
-                '<% } else if ((item.itemType === "ImageObject") && item.thumbnail && item.thumbnail[0]) { %>' +
-                  "<div class='thumbnail' style='background-image:url(\"<%=item.thumbnail[0].contentURL%>\")'></div>" + 
+                '<% } else if ((item.itemType === "ImageObject") && item.image) { %>' +
+                  "<div class='thumbnail' style='background-image:url(\"<%=item.image.contentURL%>\")'></div>" + 
                 '<% } else if (item.itemType === "Article/Status") { %>' +
-                  '<div class="tweet"><%= item.name %></div>' +
+                  UI.tplTweetItem +
                 '<% } else { %>' +
                   '<%= item.name %><span class="list-arrow"></span>' +
                 '<% } %>'

@@ -14,7 +14,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'header',
               type: Panel,
-              children: [ UI.uiHeader ]
+              children: [{
+                id: 'title', // the title or the logo
+                type: Panel,
+                innerTemplate: UI.tplHeader
+              }]
             },
             {
               id: 'menu',
