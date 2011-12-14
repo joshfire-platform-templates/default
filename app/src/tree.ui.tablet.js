@@ -51,10 +51,27 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   id: 'itemList',
                   type: List,
                   loadingTemplate: '<div class="loading"></div>',
-                  itemTemplate: "<li id='<%=itemHtmlId%>' data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>' class='josh-List joshover item-<%= item.source %>'><%= itemInner %></li>",
+                  itemTemplate: "<li id='<%=itemHtmlId%>' " + 
+                            "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
+                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
+                            // grid view
+                            "<% if(item.source == 'flickr') { %>" +
+                              "grid" +
+                            "<% } else if(item.source == 'youtube') { %>" +
+                            // two rows
+                              "rows" +
+                            "<% } else { %>" +
+                            // list view
+                              "list" +
+                            "<% } %>" +
+                            "' >" +
+                            "<%= itemInner %>" + 
+                            "</li>",
                   itemInnerTemplate:
                     '<% if (item.source == "youtube") { %>' +
                       '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
+                    '<% } else if (item.source == "flickr") { %>' +
+                      "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
                     '<% } else if (item.source == "twitter") { %>' +
                       '<div class="tweet"><%= item.title %></div>' +
                     '<% } else { %>' +

@@ -39,7 +39,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               loadingTemplate: '<div class="loading"></div>',
               itemTemplate: "<li id='<%=itemHtmlId%>' " + 
                             "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
-                            "class='josh-List joshover item-<%= item.source %> " + 
+                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
                             // grid view
                             "<% if(item.source == 'flickr') { %>" +
                               "grid" +
