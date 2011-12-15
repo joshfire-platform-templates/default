@@ -64,6 +64,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'detail',
               type: Panel,
               loadingTemplate: '<div class="loading"></div>',
+              uiDataMaster: '/content/itemList',              
               autoShow: false,
               children: [
                 {
@@ -109,6 +110,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   type: Panel,
                   forceDataPathRefresh: true,
                   loadingTemplate: '<div class="loading"></div>',
+                  uiDataMaster: '/content/itemList',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/video').htmlEl,
                         player = app.ui.element('/content/detail/video/player.youtube');

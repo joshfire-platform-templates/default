@@ -52,19 +52,21 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Open item when selected
       itemList.subscribe('select', function(event, data) {
-        var dataPath = itemList.dataPath + data[0];
-        var ds = _app.data.get(dataPath);
+
+        //use this code if wyou want to disable the preview for a certain datasource
+        //var dataPath = itemList.dataPath + data[0];
+        //var ds = _app.data.get(dataPath);
 
         // display detail page except for twitter
-        if(ds.source != 'twitter' ) {
+        //if(ds.source != 'twitter' ) {
           _this.ui.element('/content/detail').show();
 
-          _this.ui.element('/content/detail').setDataPath(dataPath);
-          _this.ui.element('/content/detail/article').setDataPath(dataPath);
-          _this.ui.element('/content/detail/video').setDataPath(dataPath);
-          _this.ui.element('/content/detail/video/player.youtube').setDataPath(dataPath);
-          _this.ui.element('/content/detail/video/title').setDataPath(dataPath);                                          
-        }
+        //   _this.ui.element('/content/detail').setDataPath(dataPath);
+        //   _this.ui.element('/content/detail/article').setDataPath(dataPath);
+        //   _this.ui.element('/content/detail/video').setDataPath(dataPath);
+        //   _this.ui.element('/content/detail/video/player.youtube').setDataPath(dataPath);
+        //   _this.ui.element('/content/detail/video/title').setDataPath(dataPath);                                          
+        // }
 
       });
 
