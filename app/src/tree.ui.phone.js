@@ -148,7 +148,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       $(thisEl).hide();
                     }
                   }
-                },  
+                },
                 {
                   // Video
                   id: 'video',
