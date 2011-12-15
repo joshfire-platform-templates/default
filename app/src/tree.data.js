@@ -20,6 +20,15 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
         }
       });
 
+      // add a last fake datasource for the About page 
+      datasourceArray.push({
+              id: "about",
+              config : {
+                col : "about"
+              }, 
+              name : "About"
+            });
+
       // Loop trough all datasources to create data tree branches
       var datachildren = [];
       _.each(datasourceArray, function(datasource, index) {

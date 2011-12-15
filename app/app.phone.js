@@ -35,6 +35,13 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       footer.subscribe('select', function(event, data) {
         var datasourceId = data[0][0];
 
+        // if about page
+        if(datasourceId == 'about') {
+          console.log("about");
+          _this.ui.element('/content/about').show();
+          return;
+        }
+
         // Set the new dataPath
         _this.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
 
@@ -59,7 +66,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
         // display detail page except for twitter
         //if(ds.source != 'twitter' ) {
-          _this.ui.element('/content/detail').show();
+        _this.ui.element('/content/detail').show();
 
         //   _this.ui.element('/content/detail').setDataPath(dataPath);
         //   _this.ui.element('/content/detail/article').setDataPath(dataPath);
