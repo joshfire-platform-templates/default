@@ -14,6 +14,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                   '<img src="<%= item.user.avatar %>" />'+
                   '<p class="user"><span class="name"><%= item.user.name %></span><span class="login">@<%= item.user.login %></span></p>'+
                   '<p class="content"><%= item.title %></p>' +
+                  '<p class="date"><%= item.datePublished %></p>' +
                 '</div>'
 
 	};
