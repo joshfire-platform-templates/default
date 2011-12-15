@@ -53,11 +53,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   loadingTemplate: '<div class="loading"></div>',
                   itemTemplate: "<li id='<%=itemHtmlId%>' " + 
                             "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
-                            "class='josh-List joshover item-<%= item.source %> mainitemlist " + 
+                            "class='josh-List joshover item-<%= item.itemType %> mainitemlist " + 
                             // grid view
-                            "<% if(item.source == 'flickr') { %>" +
+                            "<% if (item.itemType === 'ImageObject') { %>" +
                               "grid" +
-                            "<% } else if(item.source == 'youtube') { %>" +
+                            "<% } else if (item.itemType === 'VideoObject') { %>" +
                             // two rows
                               "rows" +
                             "<% } else { %>" +
@@ -68,14 +68,17 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                             "<%= itemInner %>" + 
                             "</li>",
                   itemInnerTemplate:
-                    '<% if (item.source == "youtube") { %>' +
-                      '<div class="title"><%= item.title %></div><div class="abstract"><% if(item.abstract.length > 130) { %><%= item.abstract.substring(0, 130) %>…<% } else { %><%= item.abstract %><% } %></div><div class="preview"><img src="<%= item.image %>"></div><span class="list-arrow"></span>' +
-                    '<% } else if (item.source == "flickr") { %>' +
-                      "<div class='thumbnail' style='background-image:url(\"<%=item.image%>\")'></div>" + 
-                    '<% } else if (item.source == "twitter") { %>' +
-                      '<div class="tweet"><%= item.title %></div>' +
+                    '<% if (item.itemType === "VideoObject") { %>' +
+                      '<div class="title"><%= item.name %></div>' +
+                      UI.getItemDescriptionTemplate(130) +
+                      UI.tplItemPreview +
+                      '<span class="list-arrow"></span>' +
+                    '<% } else if (item.itemType === "ImageObject") { %>' +
+                      UI.tplItemThumbnail +
+                    '<% } else if (item.itemType === "Article/Status") { %>' +
+                      '<div class="tweet"><%= item.name %></div>' +
                     '<% } else { %>' +
-                      '<%= item.title %><span class="list-arrow"></span>' +
+                      '<%= item.name %><span class="list-arrow"></span>' +
                     '<% } %>'
                 },
                 {
@@ -93,12 +96,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       forceDataPathRefresh: true,
                       loadingTemplate: '<div class="loading"></div>',
                       innerTemplate:
-                        '<div class="title"><h1><%= data.title %></h1>' +
-                        '<p class="author"><%= data.creator || data.user %></p></div>' +
-                        '<p><%= data.content %></p>',
+                        '<div class="title"><h1><%= data.name %></h1>' +
+                        UI.tplDataAuthor +
+                        '<% if (data.articleBody) { print(data.articleBody); } %>',
                       onData: function(ui) {
                         var thisEl = app.ui.element('/sidebarright/content/detail/article').htmlEl;
-                        if (ui.data.source != 'youtube' && ui.data.source != 'flickr') {
+                        if (ui.data.itemType !== 'VideoObject' && ui.data.itemType !== 'ImageObject') {
                           $(thisEl).show();
                         } else {
                           $(thisEl).hide();
@@ -112,10 +115,10 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       uiDataMaster: '/sidebarright/content/itemList',
                       forceDataPathRefresh: true,
                       loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate: '<img src="<%= data.photo %>" />',
+                      innerTemplate: '<img src="<%= data.contentURL %>" />',
                       onData: function(ui) {
                         var thisEl = app.ui.element('/sidebarright/content/detail/image').htmlEl;
-                        if (ui.data.source =='flickr') {
+                        if (ui.data.itemType === 'ImageObject') {
                           $(thisEl).show();
                         } else {
                           $(thisEl).hide();
@@ -133,7 +136,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                         var thisEl = app.ui.element('/sidebarright/content/detail/video').htmlEl,
                             player = app.ui.element('/sidebarright/content/detail/video/player.youtube');
 
-                        if (ui.data.source == 'youtube') {
+                        if ((ui.data.itemType === 'VideoObject') && ui.data.publisher && (ui.data.publisher.name === 'Youtube')) {
                           player.playWithStaticUrl({
                             url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
                             width: '480px',
@@ -150,8 +153,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                           type: Panel,
                           uiDataMaster: '/sidebarright/content/itemList',
                           innerTemplate:
-                            '<div class="title"><h1><%= data.title %></h1>' +
-                            '<p class="author">By <strong><%= data.creator || data.user %></strong></p></div>'
+                            '<div class="title"><h1><%= data.name %></h1>' +
+                            UI.tplDataAuthor +
+                            '</div>'
                         },
                         {
                           id: 'player.youtube',
