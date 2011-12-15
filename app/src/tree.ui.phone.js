@@ -194,6 +194,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       '<img class="applogo" src="<%= Joshfire.factory.config.app.logo.url %>" alt="<%= Joshfire.factory.config.app.name %>" />' +
                     '<% } %>' +
                     '<p class="appname"><%= Joshfire.factory.config.app.name %></p>' +
+                    '<div class="abouthtml"><%= Joshfire.factory.config.template.options.abouthtml %></div>' +
                   '</div>'
             }
           ]
