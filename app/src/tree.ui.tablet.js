@@ -118,7 +118,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       loadingTemplate: '<div class="loading"></div>',
                       innerTemplate: UI.tplTweetPage,
                       onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/image').htmlEl;
+                        var thisEl = app.ui.element('/sidebarright/content/detail/twitter').htmlEl;
                         console.log(ui.data.itemType);
                         if (ui.data.itemType === 'Article/Status') {
                           $(thisEl).show();

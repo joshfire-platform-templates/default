@@ -43,6 +43,23 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '</div>' +
                   '</div>',                
 
+    tplEventItem : '<div class="event">' +
+                    '<% var d = new Date(item.startDate); %>' + 
+                    '<p class="startDate"><%= d.getHours() %>:<%= d.getMinutes() %></p>' +     
+                    '<p class="content"><%= item.name %></p>' +                 
+                  '</div>',
+
+    tplEventPage : '<div class="event">' +
+                    '<% var d = new Date(data.startDate); %>' + 
+                    '<div class="date">' +
+                      '<p class="startDate"><%= d.getHours() %>:<%= d.getMinutes() %></p>' +  
+                    '</div>' +
+                    '<div class="event-content">' +
+                      '<h2 class="name"><%= data.name %></h2>' +
+                      '<p class="description"><%= data.desctiption %></p>' +
+                    '</div>' +
+                  '</div>',
+
     tplItemPreview :  '<% if (item.image) { %>' +
                         '<div class="preview"><img src="<%= item.image.contentURL %>"></div>' +
                       '<% } %>',
