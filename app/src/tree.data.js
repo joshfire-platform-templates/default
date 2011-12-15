@@ -30,11 +30,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.data', 'joshfire/vendor/unders
             'database': datasource.config.db,
             children: function(query, cb) {
               datasource.find({}, function (err, data) {
-                // Make sure every entry has an id
-                // Some datasource entries have an id (item.sourceID), others don't (id)
-                var items = _.map(data.entries, function(item, id) {
-                  return _.extend(item, { id: item.sourceId || id });
-                }); 
+                // The framework requires an 'id', but datasources
+                // use 'url' (or nothing). Make sure we have an id.
+                // NB: the framework does not like URL as ids!
+                var items = _.map(data.entries, function (item, idx) {
+                  return _.extend(item, { id: "#" + idx });
+                });
 
                 cb(null, items);
               });

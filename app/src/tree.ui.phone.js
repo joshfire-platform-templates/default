@@ -52,11 +52,11 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               itemInnerTemplate:
                 '<% if (item.itemType === "VideoObject") { %>' +
                   '<div class="title"><%= item.name %></div>' +
-                  '<div class="abstract"><% if (item.description && item.description.length > 70) { %><%= item.description.substring(0, 70) %>…<% } else { %><%= item.description %><% } %></div>' +
-                  '<% if (item.image) { %><div class="preview"><img src="<%= item.image.contentURL %>"></div><% } %>' +
+                  UI.getItemDescriptionTemplate(70) +
+                  UI.tplItemPreview +
                   '<span class="list-arrow"></span>' +
-                '<% } else if ((item.itemType === "ImageObject") && item.image) { %>' +
-                  "<div class='thumbnail' style='background-image:url(\"<%=item.image.contentURL%>\")'></div>" + 
+                '<% } else if (item.itemType === "ImageObject") { %>' +
+                  UI.tplItemThumbnail +
                 '<% } else if (item.itemType === "Article/Status") { %>' +
                   UI.tplTweetItem +
                 '<% } else { %>' +
@@ -78,9 +78,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                   loadingTemplate: '<div class="loading"></div>',
                   innerTemplate:
                     '<div class="title"><h1><%= data.name %></h1>' +
-                    '<% if (data.author && data.author[0]) { %><p class="author">By <strong><%= data.author[0].name %></strong></p><% } %>' +
+                      UI.tplDataAuthor +
                     '</div>' +
-                    '<% if (data.articleBody) { %><p><%= data.articleBody %></p><% } %>',
+                    '<% if (data.articleBody) { print(data.articleBody); } %>',
                   onData: function(ui) {
                     var thisEl = app.ui.element('/content/detail/article').htmlEl;
                     if (ui.data.itemType === 'VideoObject' || ui.data.itemType === 'ImageObject') {
@@ -136,7 +136,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       uiDataMaster: '/content/itemList',
                       innerTemplate:
                         '<div class="title"><h1><%= data.name %></h1>' +
-                        '<% if (data.author && data.autor[0]) { %><p class="author">By <strong><%= data.author[0].name %></strong></p><% } %>' +
+                        UI.tplDataAuthor +
                         '</div>'
                     },
                     {
