@@ -167,6 +167,13 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                       ]
                     }
                   ]
+                },
+                {
+                  id: 'about',
+                  type: Panel,
+                  loadingTemplate: '<div class="loading"></div>',          
+                  autoShow: false,
+                  innerTemplate: UI.tplAboutPage
                 }
               ]
             }
