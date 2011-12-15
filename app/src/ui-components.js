@@ -16,8 +16,8 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                       '<img src="<%= item.author[0].image.contentURL %>" alt="" />' +
                     '<% } %>' +
                     '<p class="user"><span class="name"><%= item.author[0].name %></span>' +
-                    '<% if (item.publisher && (item.publisher.name === "Twitter")) { %>' +
-                      ' <span class="login">@<%= item.author[0].url.replace("http://twitter.com/", "") %></span>' +
+                    '<% if (item.author[0]["foaf:nick"]) { %>' +
+                      ' <span class="login">@<%= item.author[0]["foaf:nick"] %></span>' +
                     '<% } %>' +
                     '</p>' +
                   '<% } %>' +
@@ -32,8 +32,8 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                         '<img src="<%= data.author[0].image.contentURL %>" alt="" />' +
                       '<% } %>' +
                       '<p class="username"><%= data.author[0].name %></p>' +
-                      '<% if (data.publisher && (data.publisher.name === "Twitter")) { %>' +
-                        ' <p class="userlogin">@<%= data.author[0].url.replace("http://twitter.com/", "") %></p>' +
+                      '<% if (data.author[0]["foaf:nick"]) { %>' +
+                        ' <p class="userlogin">@<%= data.author[0]["foaf:nick"] %></p>' +
                       '<% } %>' +
                     '<% } %>' +
                     '</div>' +
