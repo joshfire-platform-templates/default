@@ -60,8 +60,12 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
                 '<% } else if (item.itemType === "Article/Status") { %>' +
                   UI.tplTweetItem +
                 '<% } else if (item.itemType === "Event") { %>' +
-                  UI.tplEventItem +
+                  UI.tplEventItem +   
+                //'<% } else if (item.itemType === "Article && item.url && item.url.indexOf("spreadsheed.google.com") != -1) { %>' +
+                //  UI.tplEventItem +                    
                 '<% } else { %>' +
+                // check if 
+                  UI.tplItemPreview +
                   '<%= item.name %><span class="list-arrow"></span>' +
                 '<% } %>'
             },
