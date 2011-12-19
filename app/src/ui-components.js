@@ -38,7 +38,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '<% } %>' +
                     '</div>' +
                     '<div class="tweet-content">' +
-                      '<p class="content"><%= data.name %></p>' +
+                      '<p class="content linkify"><%= data.name %></p>' +
                       '<p class="date"><%= data.datePublished %></p>' +                  
                     '</div>' +
                   '</div>',                
