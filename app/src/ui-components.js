@@ -38,21 +38,21 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '<% } %>' +
                     '</div>' +
                     '<div class="tweet-content">' +
-                      '<p class="content"><%= data.name %></p>' +
+                      '<p class="content linkify"><%= data.name %></p>' +
                       '<p class="date"><%= data.datePublished %></p>' +                  
                     '</div>' +
                   '</div>',                
 
     tplEventItem : '<div class="event">' +
                     '<% var d = new Date(item.startDate); %>' + 
-                    '<p class="startDate"><%= d.getHours() %>:<%= d.getMinutes() %></p>' +     
+                    '<p class="startDate"><%= d.toTimeString().substring(0, 5) %></p>' +     
                     '<p class="content"><%= item.name %></p>' +                 
                   '</div>',
 
     tplEventPage : '<div class="event">' +
-                    '<% var d = new Date(data.startDate); %>' + 
                     '<div class="coords">' +
-                      '<p class="startDate"><%= d.getHours() %>:<%= d.getMinutes() %></p>' + 
+                      '<p class="startDate"><%= new Date(data.startDate).toTimeString().substring(0, 5) %></p>' + 
+                      '<p class="endDate"><%= new Date(data.endDate).toTimeString().substring(0, 5) %></p>' +                       
                       '<% if (data.location) { %>' + 
                         '<p class="location"><%= data.location.name %></p>' +  
                       '<% } %>' +
