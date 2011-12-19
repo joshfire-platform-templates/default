@@ -352,17 +352,17 @@ padding: 7%;
 
 /* Twitter CSS */
 
-.defaultApp__content__itemList_scroller ul li.item-twitter {
+.defaultApp__content__itemList_scroller ul li.item-Article/Status {
   border: 1px transparent solid;
   padding: 2%;
 
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-twitter{
+#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li {
   height: auto;
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-twitter .tweet{
+#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li .tweet{
 
   text-align: left;
   font-size: 40px;
