@@ -87,6 +87,8 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '<div class="abouthtml"><%= Joshfire.factory.config.template.options.abouthtml %></div>' +
                   '</div>',
 
+    tplNothingToSeeHere : '<div class="empty-list"><p>Empty</p></div>',
+
     getItemDescriptionTemplate: function (maxLength) {
       return '<% if (item.description) { %>' +
         '<div class="abstract">' +
