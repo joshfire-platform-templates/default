@@ -11,6 +11,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                 '<% } %>',
 
     tplTweetItem :  '<div class="tweet">' +
+                  '<div class="tweet-header">' +
                   '<% if (item.author) { %>' +
                     '<% if (item.author[0] && item.author[0].image) { %>' +
                       '<img src="<%= item.author[0].image.contentURL %>" alt="" />' +
@@ -21,6 +22,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '<% } %>' +
                     '</p>' +
                   '<% } %>' +
+                  '</div>' +
                   '<div class="tweet-content">' +
                     '<p class="content"><%= item.name %></p>' +
                     '<p class="date"><%= item.datePublished %></p>' + 
