@@ -21,8 +21,10 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '<% } %>' +
                     '</p>' +
                   '<% } %>' +
-                  '<p class="content"><%= item.name %></p>' +
-                  '<p class="date"><%= item.datePublished %></p>' +                  
+                  '<div class="tweet-content">' +
+                    '<p class="content"><%= item.name %></p>' +
+                    '<p class="date"><%= item.datePublished %></p>' + 
+                  '</div>' +                                     
                 '</div>',
 
     tplTweetPage : '<div class="tweet">' +
