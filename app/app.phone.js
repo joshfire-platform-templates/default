@@ -91,8 +91,8 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       // when the menu is built, create the "more" button
       footer.subscribe('afterShow', function(event, data) {
         var $menuitems = $('#defaultApp__footer li');
-        if($menuitems.length > 4) {
-          $($menuitems[2]).after("<li class='more-footer'><div class='picto'></div><div class='name'>more</div></li>");
+        if($menuitems.length > 5) {
+          $($menuitems[3]).after("<li class='more-footer'><div class='picto'></div><div class='name'>more</div></li>");
         }
         $('.more-footer').bind('click', function(){
           $('#defaultApp__footer').toggleClass("opened");
