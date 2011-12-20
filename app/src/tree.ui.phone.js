@@ -77,6 +77,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
             {
               id: 'detail',
               type: Panel,
+              htmlClass: 'detailView',
               loadingTemplate: '<div class="loading"></div>',
               uiDataMaster: '/content/itemList',              
               autoShow: false,
