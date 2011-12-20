@@ -359,76 +359,114 @@ padding: 7%;
 }
 
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus {
- /*
-  height: auto;
-  padding: 30px;
-  box-shadow: inset 0 0 40px 0 #111;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  background: rgba(10, 10, 10, 0.2);
-  */
-}
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .date{
-
   text-align: left;
-  font-size: 20px;
-  line-height: 24px;
-  /*
-  text-shadow: 2px 2px #111;
-  */
-  margin:0;
-  font-weight: 300;
-}
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .username{
-    text-align: left;
-  font-size: 35px;
-  line-height: 50px;
-  text-shadow: 2px 2px #111;
-  margin:0;
-  font-weight: 300;
-  }
+  height: auto;
+  margin: 2% 4% 0 4%;
   
+}
 
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet{
-
-  text-align: left;
   font-size: 35px;
   line-height: 50px;
   text-shadow: 2px 2px #111;
-  margin: 1% 0;
+  margin: 0;
   font-weight: 300;
 }
 
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet a{
-color: #F1F1F1;
+color: #EEE;
 }
 
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet img{
   /*
   height:180px;
-  width:180px;
   margin: 32px;
-  */
   float: left;
-  
+  */
+  width:100px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius:5px;
 }
   
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user, #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.content 
-{
+#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p {
 margin: 0;
 }  
+
+
+
 
  
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user .name, #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.date  {
 display: none;
+  /*
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
+  text-shadow: 2px 2px #111;
+  margin:0;
+  font-weight: 300;
+  */
+
 }    
+
+
+#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user {
+  font-size: 17px;
+  line-height: 20px;
+  text-shadow: 1px 1px #111;
+  margin:0;
+
+}
 
  
 #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user .login {
+  color: #DDD;
+  font-weight: 600;
+  
+}
+
+
+.defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet-header{
+  float: left;
+  width: 145px;
+  /*
+  background: rgba(10, 10, 10, 0.2);
+  */
+  padding: 14px 8px;
+  text-align: center;
 
 }
+
   
+.defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet-content{
+  float: left;
+  width: 74%;
+  margin: 0 0 0 2%;
+  padding: 2%;
+  box-shadow: inset 0 0 40px 0 #111;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: rgba(10, 10, 10, 0.2);
+  border: 1px solid transparent;
+}
+
+#defaultApp__content__itemList  .defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused {
+border: 1px solid transparent;
+box-shadow: none;
+background: none;
+
+}
+
+#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused .tweet p.user .login{
+color: #FFF;
+}
+
+.defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused .tweet-content{
+border: #F1F1F1 solid 1px;
+box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
+
+}
+
   
   
