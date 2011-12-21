@@ -25,7 +25,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                   '</div>' +
                   '<div class="tweet-content">' +
                     '<p class="content"><%= item.name %></p>' +
-                    '<p class="date"><%= item.datePublished %></p>' + 
+                    '<p class="date"><%= item.datePublished ? toDate(item.datePublished).toTimeString().substring(0, 5) : "" %></p>' + 
                   '</div>' +                                     
                 '</div>',
 
@@ -43,7 +43,7 @@ Joshfire.define(['joshfire/uielements/list', 'joshfire/uielements/panel', 'joshf
                     '</div>' +
                     '<div class="tweet-content">' +
                       '<p class="content linkify"><%= data.name %></p>' +
-                      '<p class="date"><%= data.datePublished %></p>' +                  
+                      '<p class="date"><%= data.datePublished ? toDate(data.datePublished).toString().substring(0, 21) : "" %></p>' +                  
                     '</div>' +
                   '</div>',                
 
