@@ -43,8 +43,16 @@ li.mainitemlist.list .preview {
   position: absolute;
   top: 6px; right: 30px;
 }
+
 li.mainitemlist.list .preview img {
   max-height: 40px;
+}
+
+li.mainitemlist .thumbnail {
+  float: left;
+  width: 74px;
+  height: 74px;
+  background-size: cover;
 }
 
 /* grid */
