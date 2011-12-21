@@ -102,6 +102,7 @@ ul {
   background: #fff;
   padding: 6px;
   z-index: 101;
+  overflow: hidden;  
 }
 
 #defaultApp__content__detail .title {
@@ -215,4 +216,17 @@ ul {
 
 #defaultApp__footer li.selected .name {
   color: #1f2222;
+}
+
+.detailViewItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.detailViewItem .directory {
+/*   height: 800px;
+  width: 200px; */
 }
