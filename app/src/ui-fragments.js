@@ -8,7 +8,7 @@ return {
       id: 'itemList',
       scroller: true,
       type: List,
-      htmlClass: 'abs100',
+      htmlClass: 'itemList',
       loadingTemplate: '<div class="loading"></div>',
       itemTemplate: "<li id='<%=itemHtmlId%>' " + 
                     "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
@@ -247,7 +247,7 @@ return {
       id: 'about',
       scroller: true,               
       type: Panel,
-      htmlClass: 'detailViewItem',   
+      htmlClass: 'about',   
       loadingTemplate: '<div class="loading"></div>',          
       autoShow: false,
       innerTemplate: UI.tplAboutPage,
