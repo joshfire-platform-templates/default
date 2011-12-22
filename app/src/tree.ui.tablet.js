@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, UI) {
+Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'joshfire/adapters/ios/uielements/video.youtube', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, Video, UI) {
 
   return Class(UITree, {
 
@@ -8,218 +8,104 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
 
       return [
         {
-          id: 'sidebarleft',
+          id: 'header',
           type: Panel,
           children: [
             {
-              id: 'menu',
-              type: List,
-              dataPath: '/datasourcelist/',
-              itemInnerTemplate: '<div class="picto item-<%= item.config.col %>"></div><div class="name"><%= item.name %></div>',
-              onData: function() {} // trigger data, WTF?
+              id: 'title',
+              type: Panel,
+              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
             }
           ]
         },
         {
-          id: 'sidebarright',
-          type: Panel,
+          id: 'menu',
+          type: List,
+          dataPath: '/datasourcelist/',
+          itemInnerTemplate: '<%= item.name %>',
+          onData: function() {} // trigger data, WTF?
+        },
+        {
+          id: 'content',
+          type: PanelManager,
+          uiMaster: '/menu',
           children: [
             {
-              id: 'header',
-              type: Panel,
-              htmlClass: 'header',
-              children: [
-                {
-                  id: 'prev',
-                  type: Button,
-                  label: 'Prev',
-                  autoShow: false
-                },
-                {
-                  id: 'title', // the title or the logo
-                  type: Panel,
-                  innerTemplate: UI.tplHeader
-                }
-              ]
+              id: 'itemList',
+              type: List,
+              orientation: 'left',
+              loadingTemplate: '<div class="loading"></div>',
+              itemInnerTemplate:
+                '<%= item.name %>'
             },
             {
-              id: 'content',
-              type: PanelManager,
-              uiMaster: '/sidebarleft/menu',
+              id: 'detail',
+              type: Panel,
+              uiDataMaster: '/content/itemList',
+              loadingTemplate: '<div class="loadin">Loading details</div>',
+              autoShow: false,
               children: [
                 {
-                  id: 'itemList',
-                  type: List,
-                  loadingTemplate: '<div class="loading"></div>',
-                  itemTemplate: "<li id='<%=itemHtmlId%>' " + 
-                            "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
-                            "class='josh-List joshover item-<%= item.itemType.replace('/', '') %> mainitemlist " + 
-                            // grid view
-                            "<% if (item.itemType === 'ImageObject') { %>" +
-                              "grid" +
-                            "<% } else if (item.itemType === 'VideoObject') { %>" +
-                            // two rows
-                              "rows" +
-                            "<% } else { %>" +
-                            // list view
-                              "list" +
-                            "<% } %>" +
-                            "' >" +
-                            "<%= itemInner %>" + 
-                            "</li>",
-                  itemInnerTemplate:
-                    '<% if (item.itemType === "VideoObject") { %>' +
-                      '<div class="title"><%= item.name %></div>' +
-                      UI.getItemDescriptionTemplate(130) +
-                      UI.tplItemPreview +
-                      '<span class="list-arrow"></span>' +
-                    '<% } else if (item.itemType === "ImageObject") { %>' +
-                      UI.tplItemThumbnail +
-                    '<% } else if (item.itemType === "Article/Status") { %>' +
-                      UI.tplTweetItem +
-                    '<% } else if (item.itemType === "Event") { %>' +
-                      UI.tplEventItem +                      
-                    '<% } else { %>' +
-                      '<%= item.name %><span class="list-arrow"></span>' +
-                    '<% } %>'
+                  id: 'text',
+                  type: Panel,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loadin">Loading text</div>',
+                  innerTemplate:
+                    '<div class="title"><h1><%= data.name %></h1>' +
+                    UI.tplDataAuthor +
+                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/text').htmlEl;
+                    if (ui.data.itemType !== 'VideoObject') {
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  }
                 },
                 {
-                  id: 'detail',
+                  id: 'video',
                   type: Panel,
-                  htmlClass: 'detailView',
-                  uiDataMaster: '/sidebarright/content/itemList',
-                  loadingTemplate: '<div class="loading"></div>',
-                  autoShow: false,
+                  uiDataMaster: '/content/itemList',
+                  forceDataPathRefresh: true,
+                  loadingTemplate: '<div class="loadin">Loading video</div>',
+                  onData: function(ui) {
+                    var thisEl = app.ui.element('/content/detail/video').htmlEl,
+                        player = app.ui.element('/content/detail/video/player.youtube');
+
+                    if ((ui.data.itemType === 'VideoObject') && ui.data.publisher && (ui.data.publisher.name === 'Youtube')) {
+                      player.playWithStaticUrl({
+                        url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
+                        width: '480px'
+                      });
+
+                      $(thisEl).show();
+                    } else {
+                      $(thisEl).hide();
+                    }
+                  },
                   children: [
                     {
-                      // Article (default)
-                      id: 'article',
+                      id: 'title',
                       type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
+                      uiDataMaster: '/content/itemList',
                       innerTemplate:
                         '<div class="title"><h1><%= data.name %></h1>' +
-                        UI.tplDataAuthor +
-                        '<% if (data.articleBody) { print(data.articleBody); } %>',
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/article').htmlEl;
-                        if (ui.data.itemType === 'VideoObject'
-                         || ui.data.itemType === 'ImageObject'
-                         || ui.data.itemType === 'Event'
-                         || ui.data.itemType === 'Article/Status'
-                       ) {
-                          $(thisEl).hide();
-                        }
-                        else {
-                          $(thisEl).show();
-                        }
-                      }
+                        UI.itemDataAuthor
                     },
                     {
-                      // Twitter
-                      id: 'twitter',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate: UI.tplTweetPage,
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/twitter').htmlEl;
-                        console.log(ui.data.itemType);
-                        if (ui.data.itemType === 'Article/Status') {
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      }
-                    },
-                    {
-                      // Flickr
-                      id: 'image',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate: '<img src="<%= data.contentURL %>" />',
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/image').htmlEl;
-                        if (ui.data.itemType === 'ImageObject') {
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      }
-                    },
-                    {
-                      // Event
-                      id: 'event',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      innerTemplate: UI.tplEventPage,
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/event').htmlEl;
-                        if (ui.data.itemType === 'Event') {
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      }
-                    },                  
-                    {
-                      // Video
-                      id: 'video',
-                      type: Panel,
-                      uiDataMaster: '/sidebarright/content/itemList',
-                      forceDataPathRefresh: true,
-                      loadingTemplate: '<div class="loading"></div>',
-                      onData: function(ui) {
-                        var thisEl = app.ui.element('/sidebarright/content/detail/video').htmlEl,
-                            player = app.ui.element('/sidebarright/content/detail/video/player.youtube');
-
-                        if ((ui.data.itemType === 'VideoObject') && ui.data.publisher && (ui.data.publisher.name === 'Youtube')) {
-                          player.playWithStaticUrl({
-                            url: ui.data.url.replace('http://www.youtube.com/watch?v=', ''),
-                            width: '480px',
-                          });
-
-                          $(thisEl).show();
-                        } else {
-                          $(thisEl).hide();
-                        }
-                      },
-                      children: [
-                        {
-                          id: 'title',
-                          type: Panel,
-                          uiDataMaster: '/sidebarright/content/itemList',
-                          innerTemplate:
-                            '<div class="title"><h1><%= data.name %></h1>' +
-                            UI.tplDataAuthor +
-                            '</div>'
-                        },
-                        {
-                          id: 'player.youtube',
-                          type: 'video.youtube',
-                          autoShow: true,
-                          controls: true,
-                          noAutoPlay: false
-                        }
-                      ]
+                      id: 'player.youtube',
+                      type: Video,
+                      autoShow: true,
+                      controls: true,
+                      noAutoPlay: false
                     }
                   ]
-                },
-                {
-                  id: 'about',
-                  type: Panel,
-                  loadingTemplate: '<div class="loading"></div>',          
-                  autoShow: false,
-                  innerTemplate: UI.tplAboutPage
                 }
               ]
             }
+            
           ]
         }
       ];
