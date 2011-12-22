@@ -10,7 +10,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
     setup: function(callback) {
       var _this = this,
-          menu = _this.ui.element('/menu'),
+          menu = _this.ui.element('/header/menu'),
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/content/detail'),
           title = _this.ui.element('/header/title');

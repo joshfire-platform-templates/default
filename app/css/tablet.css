@@ -56,9 +56,9 @@ background: -webkit-linear-gradient(top, #d8d8d8, #b8b8b8);
   padding: 10px;
 }
 
-#defaultApp__menu {}
+.menu {}
 
-#defaultApp__menu ul {
+.menu ul {
   display: block;
   margin: 20px auto 0;
   padding: 0;
@@ -68,7 +68,7 @@ background: -webkit-linear-gradient(top, #d8d8d8, #b8b8b8);
   text-align: center;
 }
 
-#defaultApp__menu li {
+.menu li {
   display: inline-block;
   width: auto;
   height: 30px;
@@ -84,12 +84,12 @@ background: -webkit-linear-gradient(top, #d8d8d8, #b8b8b8);
   background: #eaeaea;
 }
 
-#defaultApp__menu li:not(.selected):hover {
+.menu li:not(.selected):hover {
   cursor: pointer;
 }
 
 
-#defaultApp__menu li.selected {
+.menu li.selected {
   background: #fff;
   border-width: 1px 1px 0px 1px;
   border-top: 1px solid orange;

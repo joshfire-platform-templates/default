@@ -15,20 +15,21 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
               id: 'title',
               type: Panel,
               innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+            },
+            {
+              id: 'menu',
+              htmlClass: 'menu',
+              type: List,
+              dataPath: '/datasourcelist/',
+              itemInnerTemplate: '<%= item.name %>',
+              onData: function() {} // trigger data, WTF?
             }
           ]
         },
         {
-          id: 'menu',
-          type: List,
-          dataPath: '/datasourcelist/',
-          itemInnerTemplate: '<%= item.name %>',
-          onData: function() {} // trigger data, WTF?
-        },
-        {
           id: 'content',
           type: PanelManager,
-          uiMaster: '/menu',
+          uiMaster: '/header/menu',
           children: [
             {
               id: 'itemList',

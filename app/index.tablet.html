@@ -2,17 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Desktop</title>
+    <title>Tablet</title>
     <link rel="stylesheet" href="css/shared.css">    
-    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/tablet.css">
+
+    <script data-joshfire-bootstrap src="src/toDate.js"></script>    
     <script data-main="./" src="joshfire/adapters/browser/bootstrap.js"></script>
     <script data-joshfire-bootstrap ></script>
+
   </head>
   <body class="device-desktop">
     <div id="splashscreen"></div>
     <script>
       Joshfire.require(['app.tablet'], function(App) {
-        new App();
+         window._app=new App();
       });
     </script>
   </body>
