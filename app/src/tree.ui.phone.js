@@ -32,18 +32,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           children: [
             UIFragments.itemList(),
             UIFragments.detail(app, "/content", "/content/itemList"),
-            {
-              id: 'about',
-              scroller: true,               
-              type: Panel,
-              htmlClass: 'detailViewItem',   
-              loadingTemplate: '<div class="loading"></div>',          
-              autoShow: false,
-              innerTemplate: UI.tplAboutPage,
-              onAfterRefresh : function() {
-                app.ui.element('/content/detail/video').insertScroller();
-              }
-            }
+            UIFragments.about(app, "/content")
           ]
         },
         {
