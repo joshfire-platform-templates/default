@@ -31,8 +31,9 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           type: PanelManager,
           uiMaster: '/header/menu',
           children: [
-            UIFragments.itemList(),
-            UIFragments.detail(app, "/content", "/content/itemList")
+              UIFragments.itemList()
+            , UIFragments.detail(app, "/content", "/content/itemList")
+            , UIFragments.about(app, "/content")
           ]
         }
       ];
