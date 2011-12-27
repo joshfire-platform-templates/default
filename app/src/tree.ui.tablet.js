@@ -11,19 +11,8 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           id: 'header',
           type: Panel,
           children: [
-            {
-              id: 'title',
-              type: Panel,
-              innerTemplate: '<%= Joshfire.factory.config.app.name %>'
-            },
-            {
-              id: 'menu',
-              htmlClass: 'menu',
-              type: List,
-              dataPath: '/datasourcelist/',
-              itemInnerTemplate: '<%= item.name %>',
-              onData: function() {} // trigger data, WTF?
-            }
+            UIFragments.title(),
+            UIFragments.menu()
           ]
         },
         {
