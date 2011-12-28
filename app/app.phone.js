@@ -57,13 +57,14 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         _this.ui.element('/content/detail').show();
       });
 
-      // if no item is displayed, display a message
       itemList.subscribe('afterRefresh', function(event, data) {
+        // if list is empty, display a message
         var $items = $('#defaultApp__content__itemList li');
         if($items.length == 0) {
           $('#defaultApp__content__itemList').html(UItpl.tplNothingToSeeHere);
         }
 
+        // if list is a grid, add a clear:both at the end for scrolling
         if( $('#defaultApp__content__itemList li.grid').length > 0 ) {
           if( ! $('#defaultApp__content__itemList ul li').last().hasClass('clearfix') ) {
             $('#defaultApp__content__itemList ul').append('<li class="clearfix"></li>');
