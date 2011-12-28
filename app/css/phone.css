@@ -219,6 +219,21 @@ ul {
   color: #1f2222;
 }
 
+/* grid */
+
+li.mainitemlist.grid {
+  float: left;
+  width: 25%;
+  height: 100px;
+  overflow: hidden;
+}
+
+li.mainitemlist.grid .thumbnail {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
 .detailViewItem {
   position: absolute;
   top: 0;

@@ -3,7 +3,18 @@
  */
 Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list', 'joshfire/uielements/panel', 'joshfire/uielements/panel.manager', 'joshfire/uielements/button', 'src/ui-components'], function(Class, UITree, List, Panel, PanelManager, Button, UI, UIFragments) {
 return {
-  itemList : function() {
+  /**
+   * @param toGrid : list of object type for wich to dispkay content as grid
+   */
+  itemList : function(params) {
+    params = params || {};
+    params.toGrid = params.toGrid || ['ImageObject'];
+    
+    var gridIf = "item.itemType === '" + params.toGrid[0] + "'";
+    for (var i = 1; i < params.toGrid.length; i ++) {
+      gridIf += " || item.itemType === '" + params.toGrid[i] + "'";
+    }
+
     return {
       id: 'itemList',
       scroller: true,
@@ -14,7 +25,7 @@ return {
                     "data-josh-ui-path='<%= path %>' data-josh-grid-id='<%= item.id %>'" + 
                     "class='josh-List joshover item-<%= item.itemType.replace('/', '') %> mainitemlist " + 
                     // grid view
-                    "<% if (item.itemType === 'ImageObject') { %>" +
+                    "<% if (" + gridIf + ") { %>" +
                       " grid" +
                     "<% } else { %>" +
                     // list view
