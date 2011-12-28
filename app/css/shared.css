@@ -106,3 +106,7 @@ li.mainitemlist.rows .preview {
 li.mainitemlist.rows .preview img {
 /*  max-height: 40px;*/
 }
+
+.clearfix {
+  clear:both;
+}

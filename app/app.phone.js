@@ -70,7 +70,9 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         }
 
         if( $('#defaultApp__content__itemList li.grid').length > 0 ) {
-           $('#defaultApp__content__itemList ul').append('<li style="clear:both;"></li>');
+          if( ! $('#defaultApp__content__itemList ul li').last().hasClass('clearfix') ) {
+            $('#defaultApp__content__itemList ul').append('<li class="clearfix"></li>');
+          }
         }
       });
 
