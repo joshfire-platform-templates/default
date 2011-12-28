@@ -262,6 +262,14 @@ li.mainitemlist.grid .thumbnail {
   bottom: 0;
 }
 
+.detailViewItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .detailView.fullSize {
   left: 0;
 
