@@ -52,11 +52,6 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         prevBtn.hide();
       });
 
-      // Refresh content each time new data is attached
-      itemList.subscribe('data', function(event, data) {
-        itemList.refresh();
-      });
-
       // Open item when selected
       itemList.subscribe('select', function(event, data) {
         _this.ui.element('/content/detail').show();
