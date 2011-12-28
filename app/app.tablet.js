@@ -41,7 +41,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
         }
 
         // Set the new dataPath
-        _this.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
+        itemList.setDataPath('/datasource/' + datasourceId + '/');
 
         // Show itemList, because we could be on a detail panel
         _this.ui.element('/content').switchTo('itemList');

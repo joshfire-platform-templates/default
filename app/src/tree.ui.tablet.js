@@ -21,7 +21,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           uiMaster: '/header/menu',
           children: [
               UIFragments.itemList()
-            , UIFragments.detail(app, "/content", "/content/itemList")
+            , UIFragments.detail({app:app, treePosition:"/content", uiDataMaster:"/content/itemList"})
             , UIFragments.about(app, "/content")
           ]
         }
