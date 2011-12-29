@@ -59,9 +59,9 @@ return {
 
   title : function() {
     return {
-            id: 'title', // only the title, no logo
+            id: 'title',
             type: Panel,
-            innerTemplate: '<%= Joshfire.factory.config.app.name %>'
+            innerTemplate: UI.tplHeader
           };
   },
 
