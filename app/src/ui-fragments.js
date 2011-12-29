@@ -49,9 +49,9 @@ return {
             '<span class="list-arrow"></span>' +
           '</div>' +
         '<% } else { %>' +
+          UI.tplItemPreview +
           '<div class="title"><%= item.name %></div>' +
           UI.getItemDescriptionTemplate(70) +
-          UI.tplItemPreview +
           '<span class="list-arrow"></span>' +
         '<% } %>'
     };
