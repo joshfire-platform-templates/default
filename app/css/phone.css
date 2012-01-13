@@ -40,6 +40,13 @@ ul {
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
+
+
+
+/* HEADER josh-id-header  */
+
+
+
 #defaultApp__header {
   position: absolute;
   top: 0; right: 0; left: 0;
@@ -52,36 +59,46 @@ ul {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-#defaultApp__header__prev {
+/* 
+#defaultApp__header__prev 
+*/
+.josh-id-header_prev {
   -webkit-appearance: none;
+  /*
   -webkit-box-shadow: 1px 0 1px rgba(255, 255, 255, 0.3);
-  background: none;
+  */
+  background: transparent url(../images/btn-back-iphone.png) 0 0 no-repeat;
   border-radius: 0;
   border: 0;
+  /*
   border-right: 1px solid rgba(0, 0, 0, 0.3);
-  color: #585858;
+  */
+  color: #FFF; /* before: 585858 */
   display: none;
   font-family: inherit;
   font-size: 12px;
   font-weight: bold;
-  height: 100%;
-  line-height: 100%;
-  margin: 0;
+  height: 31px;
+  line-height: 20px;
+  margin: 7px 0 0 5px;
+  /*
   max-width: 15%;
+  */
   overflow: hidden;
-  padding: 0 10px;
+  padding-left: 14px;
   position: relative;
   text-overflow: ellipsis;
-  text-shadow: rgba(255, 255, 255, 0.5) 0 1px 0;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 1);
+  /*
+  rgba(255, 255, 255, 0.5) 0 1px 0;
+  */
+  width: 51px;
   white-space: nowrap;
+  position: absolute;
   z-index: 10;
 }
 
-#defaultApp__content {
-  position: absolute;
-  top: 45px; right: 0; bottom: 49px; left: 0;
-  overflow: auto;
-}
+
 
 #defaultApp__header__title {
   text-align: center;
@@ -95,38 +112,540 @@ ul {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* CONTENT */
 
-#defaultApp__content__detail {
+
+
+/* CONTENT josh-id-content */
+
+#defaultApp__content {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background: #fff;
-  padding: 6px;
-  z-index: 101;
-  overflow: hidden;  
+  top: 45px; right: 0; bottom: 49px; left: 0;
+  overflow: auto;
 }
 
-#defaultApp__content__detail .title {
+
+/* content_itemList >josh-id-content_itemList> */
+
+/* list layout */
+li.mainitemlist.list {
+  min-height: 60px;
+  padding: 5px 6px 6px 8px;
+}
+
+li.mainitemlist.list .title {
+  margin-right: 25px;
+  margin-left: 80px;
+  font-size: 13px;
+  color:#111;
+}
+
+li.mainitemlist.list .abstract {
+  margin-right: 0;
+  margin-left: 80px;
+  width: 206px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  line-height: 16px;
+  color: #000;
+}
+
+li.mainitemlist.list .preview {
+  left: 0;
+  top:0;
+  width: 80px;
+  overflow: hidden;
+  /*
+  right: 240px;
+  border: 0;
+*/
+}
+
+li.mainitemlist.list .preview img {
+max-height: 64px;
+
+}
+
+li.mainitemlist .thumbnail {
+}
+
+
+/* list view of elements */
+
+
+/* maybe some detail view of twitter detail */
+.josh-id-content_itemList li.item-ArticleStatus{}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet{}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet p {
+margin: 1px 0;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header{}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header img{
+position: absolute;
+left: 10px;
+top: 10px;
+width: 48px;
+overflow: hidden;
+right: 0;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user{
+margin: 0 25px 0 60px;
+font-size: 13px;
+color: #111;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user .name{
+display: none;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user .login{
+font-weight: 700;
+}
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-content{
+margin: 0 4px 0 60px;
+font-size: 15px;
+line-height: 18px;
+}
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-content p.content {
+white-space: normal;
+margin: 3px 0;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet-content p.date{
+font-size: 13px;
+color:#808080;
+}
+
+
+
+.josh-id-content_itemList li.item-Article{
+min-height: 80px;
+}
+
+.josh-id-content_itemList li.item-Article .directory{
+margin: 0;
+padding: 0;
+}
+
+.josh-id-content_itemList li.item-Article .thumbnail{
+position: absolute;
+left: 10px;
+top: 10px;
+width: 60px;
+height: 60px;
+overflow: hidden;
+right: 0;
+}
+
+.josh-id-content_itemList li.item-Article .name{
+margin: 2px 25px 0 75px;
+font-size: 13px;
+color: #111;
+font-weight: 700;
+}
+
+.josh-id-content_itemList li.item-Article .description{
+margin: 0 4px 0 75px;
+font-size: 15px;
+line-height: 18px;
+white-space: normal;
+}
+
+
+.josh-id-content_itemList li.item-Event{}
+
+.josh-id-content_itemList li.item-Event .event{}
+
+.josh-id-content_itemList li.item-Event .event p{
+margin: 0;
+}
+
+.josh-id-content_itemList li.item-Event .event .startDate{
+position: absolute;
+left: 10px;
+top: 10px;
+font-weight: 700;
+color: #111;
+}
+
+.josh-id-content_itemList li.item-Event .event .content{
+margin: 5px 4px 0 60px;
+font-size: 15px;
+line-height: 18px;
+}
+
+.josh-id-content_itemList li.item-Event{}
+
+
+
+.josh-id-content_itemList li.item-VideoObject{
+}
+
+
+/* grid layout using for image gallery */
+
+li.mainitemlist.grid {
+  float: left;
+  width: 25%;
+  height: 100px;
+  overflow: hidden;
+}
+
+li.mainitemlist.grid .thumbnail {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+li.mainitemlist:nth-child(odd) {
+border-right:none;
+}
+
+
+/* content_detail */
+/* main */
+
+
+.detailView{}
+
+
+.josh-id-content_detail {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+
+  padding: 0px;
+  z-index: 101;
+  overflow: hidden;  
+  background: url('../images/bg_white.png');
+}
+
+
+
+/* used to be used for josh-id-content_detail_video_title but badly cascading on 
+detail_article title
+*/
+
+.josh-id-content_detail .title {
+
+}
+/*
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-  border: 1px solid #c5c3be;
+  border-bottom: 1px solid #c5c3be;
   background: #fff;
   padding: 10px;
-  border-radius: 5px;
+
+  margin-bottom: 10px;
+*/
+
+
+.josh-id-content_detail .title h1 {
+  margin: 0;
+  font-size: 15px;
+
+  font-weight: bold;
+  color:#000;
+}
+
+.josh-id-content_detail .title p {
+  margin: 0;
+  font-size: 13px;
+  color:#999;
+}
+
+  
+
+/* detail view of list elements */
+
+.josh-id-content_detail_article{
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #c5c3be;
+  background: #fff;
+  padding: 10px;
+  }
+
+
+.josh-id-content_detail_article .title{}
+
+.josh-id-content_detail_article .title H1{
+margin: 8px 0 4px 0;
+color: #111;
+line-height: 20px;
+font-size: 15px;
+}
+
+
+.josh-id-content_detail_article .body{}
+
+.josh-id-content_detail_article .body p{
+margin: 0;
+font-size: 16px;
+line-height: 20px;
+color: black;
+}
+
+.josh-id-content_detail_article .body p a{
+color: black;
+text-decoration: underline;
+}
+
+
+.josh-id-content_detail_twitter{
+padding:0;
+}
+
+.josh-id-content_detail_twitter .tweet {
+  background: #FFF;
+  padding:6px;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #C5C3BE;
+
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-header{}
+
+.josh-id-content_detail_twitter .tweet .tweet-header img{
+position: absolute;
+left: 10px;
+top: 10px;
+width: 48px;
+overflow: hidden;
+right: 0;
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-header .username{
+display: none;
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-header .userlogin{
+
+margin: 0px 25px 0 63px;
+font-size: 14px;
+color: #111;
+font-weight: 700;
+
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-header .user .login{
+
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-content{
+margin: 5px 5px 0 63px;
+font-size: 16px;
+line-height: 20px;
+}
+
+
+.josh-id-content_detail_twitter .tweet .tweet-content p.content {
+white-space: normal;
+margin: 3px 0;
+}
+
+.josh-id-content_detail_twitter .tweet .tweet-content p.content a{
+color: black;
+}
+
+
+.josh-id-content_detail_twitter .tweet .tweet-content p.date{
+font-size: 13px;
+color:#808080;
+}
+
+
+
+
+
+.josh-id-content_detail_google{
+
+}
+
+
+.josh-id-content_detail_google .directory{
+background: #FFF;
+margin: 0;
+padding: 10px;
+position: absolute;
+top: 0;
+right: 0;
+left: 0;
+-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid #C5C3BE;
+
+}
+
+.josh-id-content_detail_google .directory .picture{
+  position: absolute;
+  top: 176px;
+  right: 0;
+  left: 0;
+}
+
+.josh-id-content_detail_google .directory .picture img{
+  width: 100%;
+}
+
+
+.josh-id-content_detail_google .directory .name{
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  color: #111;
+  font-weight: 700;
+}
+
+.josh-id-content_detail_google .directory .description{
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 13px;
+  color: gray;
+  margin: 1px 0 0 0;
+}
+
+.josh-id-content_detail_google .directory .content{
+  font-size: 16px;
+  line-height: 20px;
+  margin: 3px 0;
+}
+
+
+/* image gallery not using detail_image*/
+
+
+
+
+
+.josh-id-content_detail_image{}
+
+.josh-id-content_detail_event{}
+
+
+/* to refactore _detail_event .* > same properties than _detail_video .* and a couple more*/
+.josh-id-content_detail_event .event{
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #C5C3BE;
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+
+}
+
+.josh-id-content_detail_event .event .coords{
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 13px;
+  color: gray;
+  
+}
+
+.josh-id-content_detail_event .event .coords p{
+  margin: 0;
+  line-height: 20px;
+  margin: 0 8px 0 0;
+  font-size: 14px;
+}
+
+.josh-id-content_detail_event .event .coords .startDate{
+  float: left;
+  font-weight: 700;
+  color: #111;
+}
+
+.josh-id-content_detail_event .event .coords .endDate{
+  float: left;
+}
+
+.josh-id-content_detail_event .event .coords .location{
+  float: left;
+  font-weight: 700;
+}
+
+
+.josh-id-content_detail_event .event .event-content{
+  clear: left;
+  margin-top: 25px;
+}
+
+.josh-id-content_detail_event .event .event-content .name{
+  font-size: 16px;
+  color: #111;
+  font-weight: 700;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.josh-id-content_detail_event .event .event-content .description{
+  font-size: 16px;
+  line-height: 20px;
+  margin: 3px 0;
+}
+
+.josh-id-content_detail_video{}
+.josh-id-content_detail_video .title{
+
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #c5c3be;
+  background: #fff;
+  padding: 10px;
+
   margin-bottom: 10px;
 }
 
-#defaultApp__content__detail .title h1 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 300;
-  font-weight: bold;
+
+
+/* content_about */
+
+.josh-id-content_about{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-#defaultApp__content__detail .title p {
-  margin: 0;
-  font-size: 13px;
-  opacity: 0.7;
+.josh-id-content_about .aboutpage{
+  background: #FFF;
+  padding: 20px 10px 10px 10px;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #C5C3BE;
 }
+}
+
+.josh-id-content_about .aboutpage .abouthtml{
+  margin-bottom: 10px;
+}
+
+.josh-id-content_about .aboutpage .abouthtml H3{
+  margin: 8px 0 4px 0;
+  color: #111;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.josh-id-content_about .aboutpage .abouthtml p{
+margin: 0;
+font-size: 16px;
+line-height: 20px;
+color: #000;
+}
+
+
+
+/* content common styles:none */
+
+/* FOOTER josh-id-footer */
+
 
 #defaultApp__footer {
   position: absolute;
@@ -219,30 +738,3 @@ ul {
   color: #1f2222;
 }
 
-/* grid */
-
-li.mainitemlist.grid {
-  float: left;
-  width: 25%;
-  height: 100px;
-  overflow: hidden;
-}
-
-li.mainitemlist.grid .thumbnail {
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.detailViewItem, .about {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.detailViewItem .directory {
-/*   height: 800px;
-  width: 200px; */
-}
