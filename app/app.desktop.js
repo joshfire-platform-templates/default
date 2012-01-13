@@ -1,4 +1,4 @@
-Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tree.ui.desktop', 'joshfire/utils/splashscreen', 'joshfire/uielements/panel'], function(BaseApp, Class, Data, UI, Splash, Panel) {
+Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tree.ui.desktop', 'joshfire/utils/splashscreen', 'joshfire/uielements/panel', './src/lib/ba-linkify', 'src/ui-components'], function(BaseApp, Class, Data, UI, Splash, Panel, linkify, UItpl) {
 
   return Class(BaseApp, {
 
@@ -13,6 +13,7 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
           menu = _this.ui.element('/menu'),
           itemList = _this.ui.element('/content/itemList'),
           detailPanel = _this.ui.element('/content/detail'),
+          twitterPanel = _this.ui.element('/content/detail/twitter'),
           title = _this.ui.element('/header/title');
 
       this.splash = new Splash();
@@ -34,16 +35,43 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
       menu.subscribe('select', function(event, data) {
         var datasourceId = data[0][0];
 
+        // if about page
+        if(datasourceId == 'about') {
+          _this.ui.element('/content/about').show();
+          return;
+        }
+
         // Set the new dataPath
-        _this.ui.element('/content/itemList').setDataPath('/datasource/' + datasourceId + '/');
+        itemList.setDataPath('/datasource/' + datasourceId + '/');
+
+        // Check if the selected datasource should be displayed fullscreen
+        var dataCol;
+        for(var i=0; i< _this.data.tree['/datasource/'].length; i++ ) {
+          if(_this.data.tree['/datasource/'][i].id == datasourceId) {
+            dataCol = _this.data.tree['/datasource/'][i].col;       
+          }
+        }
+        var fullSizeClass = 'fullSize';
+        if((dataCol == 'photos' || dataCol == 'videos')) {
+          if( !itemList.hasHtmlClass(fullSizeClass) ) {
+            itemList.addHtmlClass(fullSizeClass);
+            detailPanel.addHtmlClass(fullSizeClass);
+          }
+        } else {
+          itemList.removeHtmlClass(fullSizeClass);
+          detailPanel.removeHtmlClass(fullSizeClass);
+        }
 
         // Show itemList, because we could be on a detail panel
         _this.ui.element('/content').switchTo('itemList');
       });
 
-      // Refresh content each time new data is attached
-      itemList.subscribe('data', function(event, data) {
-        itemList.refresh();
+      // linkify the tweets
+      twitterPanel.subscribe('afterRefresh', function(event, data) {
+        var cb = function( text, href ) {
+          return href ? '<a href="' + href + '" title="' + href + '" rel="external" target="_blank">' + text + '<\/a>' : text;
+        }
+        $('.linkify').html( linkify( $('.linkify').text(), {callback: cb} ) );
       });
 
       // Open item when selected
@@ -53,7 +81,15 @@ Joshfire.define(['joshfire/app', 'joshfire/class', './src/tree.data', './src/tre
 
       // Todo: find better event to select first item
       itemList.subscribe('afterRefresh', function(event, data) {
-        // itemList.selectByIndex(0);
+        var $items = $('#defaultApp__content__itemList li');
+        if($items.length == 0) {
+          $('#defaultApp__content__itemList').html(UItpl.tplNothingToSeeHere);
+        }
+        if( $('#defaultApp__content__itemList li.grid').length > 0 ) {
+          if( ! $('#defaultApp__content__itemList ul li').last().hasClass('clearfix') ) {
+            $('#defaultApp__content__itemList ul').append('<li class="clearfix"></li>');
+          }
+        }
       });
 
       callback(null, true);
