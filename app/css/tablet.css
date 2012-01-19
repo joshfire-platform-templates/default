@@ -370,12 +370,12 @@ item-Article
 */
 
 .josh-id-content_itemList li.item-Article .description {
-margin: 4px 4px 0 75px;
-font-size: 15px;
-line-height: 18px;
-white-space: normal;
-font-size: 13px;
-color: gray;
+  margin: 4px 4px 0 75px;
+  font-size: 13px;
+  line-height: 15px;
+  white-space: normal;
+  font-size: 13px;
+  color: gray;
 
 }
 
@@ -385,11 +385,13 @@ item-BlogPosting
 */
 
 li.mainitemlist.item-BlogPosting .abstract {
-line-height: 15px;
-white-space: normal;
-font-size: 13px;
-color: gray;
-margin-top: 1px;
+  line-height: 15px;
+  white-space: normal;
+  font-size: 13px;
+  color: gray;
+  margin-top: 1px;
+  margin-right: 25px;
+  width: auto;
 }
 
 
@@ -398,14 +400,15 @@ item-VideoObject
 */
 
 .josh-id-content_itemList li.item-ImageObject{
-border: none;
+  border: none;
 }
 
 li.mainitemlist.grid.item-VideoObject{
   /*background: lightBlue;*/
   margin: 2.5%;
   background: transparent;
-
+  height: 146px;
+  padding: 4px 0;
 }
 
 li.mainitemlist.grid.item-VideoObject .preview{
@@ -432,13 +435,16 @@ li.mainitemlist.grid.item-VideoObject .title{
 }
 
 li.mainitemlist.grid.item-VideoObject .abstract{
+  display: none;
+}
+/*
 -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   display: -webkit-box;
 margin-top: 5px;
-}
+*/
 
 
 li.mainitemlist.grid.item-VideoObject .list-arrow{}
@@ -778,24 +784,25 @@ margin-top: 0;
 
 /* iPads (landscape) ----------- */
 @media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-/* Styles */
-}
+and (min-width : 768px) 
+and (max-width : 1024px) 
+and (orientation : landscape) {}
 
 
 
 /* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
 
 .menu {
 right: 8%;
 }
 
 .menu li {
-  background: aqua;
   width: 40px;
+}
+
+li.mainitemlist.grid.item-VideoObject .title{
+  width: 151px;
 }
 
 
