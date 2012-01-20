@@ -6,49 +6,76 @@ img.applogo {
 
 /* ITEM LIST */
 
+/* list layout */
+
 li.mainitemlist {
+  /*
   -webkit-box-sizing: border-box;
+  */
   list-style-type: none;
   position: relative;
   overflow: hidden;
   background: #fff; 
 }
 
-/* list */
+
+/* .list controls several lists : videos/blogposting/...*/
+
 li.mainitemlist.list {
   position: relative;
-  min-height: 41px;
   line-height: inherit;
   border-bottom: 1px solid #e0e0e0;
+  /*
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 6px 26px 6px 6px;
+  */
+  white-space: normal;
+  min-height: 41px;
+  padding: 5px 6px 6px 8px;
 }
 
+
+
+
 li.mainitemlist.list .title {
-  font-weight: bold;
-  margin-right: 70px;
+  font-weight: 700;
+  margin-right: 25px;
+  margin-left: 80px;
+  font-size: 13px;
+  color: #111;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
 li.mainitemlist.list .abstract {
-  color: gray;
-  font-size: 13px;
-  float: left;
+margin-right: 0;
+margin-left: 80px;
+width: 206px;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+display: -webkit-box;
+overflow: hidden;
+text-overflow: ellipsis;
+font-size: 15px;
+line-height: 16px;
+color: black;
   white-space: normal;
   margin-right: 70px;
 }
 
 li.mainitemlist.list .preview {
   position: absolute;
-  top: 6px; right: 30px;
+  left: 0;
+  top:0;
+  width: 80px;
+  overflow: hidden;
 }
 
 li.mainitemlist.list .preview img {
-  max-height: 40px;
+max-height: 64px;
 }
+/*before max-height: 40px;*/
 
 li.mainitemlist .thumbnail {
   float: left;
@@ -76,8 +103,9 @@ li.mainitemlist.rows {
   height: 104px;
 }
 
-li.mainitemlist:nth-child(odd) {
-  border-right: 1px solid #E0E0E0;
+li.mainitemlist:nth-child(even) {
+  border-right: none;
+  background: #F1F1F1;
 }
 
 li.mainitemlist.rows .list-arrow {
@@ -108,6 +136,165 @@ li.mainitemlist.rows .preview {
 li.mainitemlist.rows .preview img {
 /*  max-height: 40px;*/
 }
+
+
+
+/* list view of elements */
+
+/*
+twitter 
+*/
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header{}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header img{
+position: absolute;
+left: 10px;
+top: 10px;
+width: 48px;
+overflow: hidden;
+right: 0;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user{
+margin: 0 25px 0 60px;
+font-size: 13px;
+color: #111;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user .name{
+display: none;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-header .user .login{
+font-weight: 700;
+}
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-content{
+margin: 0 4px 0 60px;
+font-size: 15px;
+line-height: 18px;
+}
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet .tweet-content p.content {
+white-space: normal;
+margin: 3px 0;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet-content p.date{
+font-size: 13px;
+color:#808080;
+margin-top: 0;
+}
+
+/*
+item-Article
+*/
+
+.josh-id-content_itemList li.item-Article{
+min-height: 70px;
+}
+
+.josh-id-content_itemList li.item-Article .directory{
+margin: 0;
+padding: 0;
+}
+
+.josh-id-content_itemList li.item-Article .thumbnail{
+position: absolute;
+left: 10px;
+top: 10px;
+width: 60px;
+height: 60px;
+overflow: hidden;
+right: 0;
+}
+
+.josh-id-content_itemList li.item-Article .name{
+margin: 2px 25px 0 75px;
+font-size: 13px;
+color: #111;
+font-weight: 700;
+}
+
+.josh-id-content_itemList li.item-Article .description{
+margin: 0 4px 0 75px;
+font-size: 15px;
+line-height: 18px;
+white-space: normal;
+}
+
+/*
+item-event
+*/
+
+.josh-id-content_itemList li.item-Event{}
+
+.josh-id-content_itemList li.item-Event .event{}
+
+.josh-id-content_itemList li.item-Event .event p{
+margin: 0;
+}
+
+.josh-id-content_itemList li.item-Event .event .startDate{
+position: absolute;
+left: 10px;
+top: 10px;
+font-weight: 700;
+color: #111;
+}
+
+.josh-id-content_itemList li.item-Event .event .content{
+margin: 5px 4px 0 60px;
+font-size: 15px;
+line-height: 18px;
+}
+
+.josh-id-content_itemList li.item-Event{}
+
+/* 
+item-video 
+*/
+.josh-id-content_itemList li.item-VideoObject{
+}
+
+
+/* DETAIL CONTENT */
+
+/* Detail images */
+
+.josh-id-content_detail_image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  text-align: center;
+}
+
+.josh-id-content_detail_image img{
+}
+
+
+
+/* ABOUT */
+
+.josh-id-content_about {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+}
+
+
+
+
+
+
+/* MISC */
 
 .clearfix {
   clear:both;
