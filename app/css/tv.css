@@ -266,6 +266,7 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
   text-align: center;
   margin-right: 0;
   overflow: hidden;
+  border: 1px solid transparent;
 }
 
 
@@ -507,13 +508,29 @@ item-Event
 
 .josh-id-content_itemList li.item-Event{}
 
-.josh-id-content_itemList li.item-Event .event{}
+.josh-id-content_itemList li.item-Event .event{
+  font-size: 35px;
+  line-height: 50px;
+  text-shadow: 2px 2px #111;
+  margin: 0;
+  font-weight: 300;
+}
 
-.josh-id-content_itemList li.item-Event .event p{}
+.josh-id-content_itemList li.item-Event .event p{
+  font-size: 35px;
+  line-height: 50px;
+  margin-top: 45px;
+}
 
-.josh-id-content_itemList li.item-Event .event .startDate{}
+.josh-id-content_itemList li.item-Event .event .startDate{
+  float: left;
+  font-weight: 700;
+  margin: 45px 35px 0 45px;
+}
 
-.josh-id-content_itemList li.item-Event .event .content{}
+.josh-id-content_itemList li.item-Event .event .content{
+  float: left;
+}
 
 
 
@@ -521,6 +538,12 @@ item-Event
 /* 
 item-video 
 */
+
+
+
+
+
+
 
 
 /* DETAIL CONTENT - detail view of elements */
