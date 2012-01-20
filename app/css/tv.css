@@ -152,7 +152,7 @@ color-stop(0.2, rgb(10,10,10)), color-stop(0.8, rgb(66,66,66)));
 .josh-id-sidebarleft_menu li .picto{
   background-repeat: no-repeat;
   background-position: 0 0;
-
+  float: left;
   width: 30px;
   height: 30px;
   margin-right: 10%;
@@ -225,15 +225,9 @@ background-image: url(../images/icons/about-focus.png);
 
 
 
+/* GOLBAL CONTENT */
 
-
-
-
-/* Global content CSS */
-
-
-
-#defaultApp__content {
+.josh-id-content {
   position: absolute;
   bottom: 0; 
   left: 20%;
@@ -250,12 +244,17 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
 (top, transparent 0%,transparent 60%,rgba(0, 0, 0, 0.8) 100%,rgba(0, 0, 0, 0.9) 100%)
 
 
+/* List layout - Grid layout */
 
-#defaultApp__content__itemList ul {
+
+.josh-id-content_itemList{}
+
+.josh-id-content_itemList ul{
   overflow: hidden;
 }
 
-#defaultApp__content__itemList li, #defaultApp__content__itemGrid li {
+
+.josh-id-content_itemList li.mainitemlist, .josh-id-content_itemGrid li{
   list-style: none;
   float: left;
   /*
@@ -267,10 +266,10 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
   text-align: center;
   margin-right: 0;
   overflow: hidden;
-
 }
 
-#defaultApp__content__itemGrid li {
+
+.josh-id-content_itemGrid li{
   width: 18%;
   /*
   padding: 10px 13px 15px 13px;
@@ -279,8 +278,8 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
   border:transparent 1px solid;
 }
 
-#defaultApp__content__itemGrid li.focused,
-#defaultApp__content__itemList li.focused, .defaultApp__content__itemList_scroller li.focused {
+.josh-id-content_itemGrid li.focused,
+.josh-id-content_itemList li.focused, .defaultApp__content__itemList_scroller li.focused {
   border: #F1F1F1 solid 1px;
   box-shadow:1px 1px 21px #869be0, inset 1px 1px  15px #000;
   color: #F1F1F1;
@@ -289,18 +288,20 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
   background: #333 url(../images/img-bckgd.png) 0 0;
 }
 
-#defaultApp__content__itemGrid li .preview, #defaultApp__content__itemList li .preview {
+
+.josh-id-content_itemGrid li .preview, .josh-id-content_itemList li.mainitemlist li .preview {
   width: 100%;
   height: 75%;
   background: transparent; 
 }
 
-#defaultApp__content__itemList li .preview img, #defaultApp__content__itemGrid li .preview img{
+
+.josh-id-content_itemList li.mainitemlist .preview img, .josh-id-content_itemGrid li .preview img{
   height: 100%;
 }
 
 
-#defaultApp__content__itemList li .title, #defaultApp__content__itemGrid li .title {
+.josh-id-content_itemList li.mainitemlist .title, .josh-id-content_itemGrid li .title {
   font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -311,17 +312,229 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
 }
 
 
-/* Video Fullscreen CSS */
 
 
-#defaultApp__detail {
+
+
+
+
+/* list view of elements */
+
+/*
+twitter 
+*/
+
+.defaultApp__content__itemList_scroller ul li.item-ArticleStatus {
+  border: 1px transparent solid;
+  padding: 2%;
+  color: #CCC;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus {
+  text-align: left;
+  height: auto;
+  margin: 2% 4% 0 4%;
+  
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet{
+  font-size: 35px;
+  line-height: 50px;
+  text-shadow: 2px 2px #111;
+  margin: 0;
+  font-weight: 300;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet a{
+color: #EEE;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet img{
+  /*
+  height:180px;
+  margin: 32px;
+  float: left;
+  */
+  width:100px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius:5px;
+}
+  
+.josh-id-content_itemList li.item-ArticleStatus .tweet p {
+margin: 0;
+}  
+
+
+
+
+ 
+.josh-id-content_itemList li.item-ArticleStatus .tweet p.user .name, .josh-id-content_itemList li.item-ArticleStatus .tweet p.date  {
+display: none;
+}  
+  /*
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
+  text-shadow: 2px 2px #111;
+  margin:0;
+  font-weight: 300;
+  */
+
+  
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet p.user {
+  font-size: 17px;
+  line-height: 20px;
+  text-shadow: 1px 1px #111;
+  margin:0;
+
+}
+
+ 
+.josh-id-content_itemList li.item-ArticleStatus .tweet p.user .login {
+  color: #DDD;
+  font-weight: 600;
+  
+}
+
+
+.josh-id-content_itemList li.item-ArticleStatus .tweet-header{
+  float: left;
+  width: 145px;
+  /*
+  background: rgba(10, 10, 10, 0.2);
+  */
+  padding: 14px 8px;
+  text-align: center;
+
+}
+
+  
+.josh-id-content_itemList li.item-ArticleStatus .tweet-content{
+  float: left;
+  width: 74%;
+  margin: 0 0 0 2%;
+  padding: 2%;
+  box-shadow: inset 0 0 40px 0 #111;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: rgba(10, 10, 10, 0.2);
+  border: 1px solid transparent;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus.focused {
+border: 1px solid transparent;
+box-shadow: none;
+background: none;
+}
+
+
+
+
+.josh-id-content_itemList li.item-ArticleStatus.focused .tweet p.user .login{
+color: #FFF;
+}
+
+.josh-id-content_itemList li.item-ArticleStatus.focused .tweet-content{
+border: #F1F1F1 solid 1px;
+box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
+
+}
+
+
+/*
+item-Article
+*/
+
+/*
+item-BlogPosting (=item-Article?)
+*/
+
+.josh-id-content_itemList li.item-BlogPosting{
+border: 1px solid transparent;
+}
+
+.josh-id-content_itemList li.item-BlogPosting {
+text-align: left;
+padding: 2%;
+height: 300px;
+}
+
+
+
+
+
+.josh-id-content_itemList li.item-BlogPosting .preview {
+  
+  width: 372px;
+  height: 279px;
+
+  float: left;
+  margin: 1% 5% 1% 0%;
+
+}
+
+.josh-id-content_itemList li.item-BlogPosting .textsummary {
+  
+  float: left;
+  width: 52%;
+  overflow: hidden;
+  height: 100%;
+}
+
+
+
+
+.josh-id-content_itemList li.item-BlogPosting H3 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 52px;
+  text-shadow: 2px 2px #111;
+}
+
+.josh-id-content_itemList li.item-BlogPosting p {
+  font-size: 28px;
+  line-height: 39px;
+  margin: 2% 0;
+}
+
+
+/*
+item-Event
+*/
+
+.josh-id-content_itemList li.item-Event{}
+
+.josh-id-content_itemList li.item-Event .event{}
+
+.josh-id-content_itemList li.item-Event .event p{}
+
+.josh-id-content_itemList li.item-Event .event .startDate{}
+
+.josh-id-content_itemList li.item-Event .event .content{}
+
+
+
+
+/* 
+item-video 
+*/
+
+
+/* DETAIL CONTENT - detail view of elements */
+
+/* Main detail */
+
+.josh-id-detail {
   background: #333 url(../images/img-bckgd.png) 0 0;
   z-index: 1000;
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
-#defaultApp__detail__back {
+.josh-id-detail_back {
   -webkit-appearance: none;
   position: absolute;
   left: 10%;
@@ -340,91 +553,43 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
   text-align: left;
   padding: 0 0 0 81px;
   background: #333 url(../images/btn-back.png) 25px 22px no-repeat;
-
+  z-index: 99;
 }
 
-#defaultApp__detail__back.focused {
+.josh-id-detail_back.focused {
   border: #F1F1F1 solid 1px;
   box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
   color: #F1F1F1;
-  border-radius: 3px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
   background: #333 url(../images/btn-back-focus.png) 25px 22px no-repeat;
   opacity: 0.9;
-  
 }
 
 
+/* Detail images */
+
+
+
+
+/* Detail video - Video Fullscreen CSS */
 
 .josh-id-detail_video .josh-id-detail_video_title .title{
 display: none;
-
 }
 
 
-
-/*Feed CSS */
-
-.defaultApp__content__itemList_scroller ul li.item-BlogPosting{
-border: 1px solid transparent;
-}
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-BlogPosting {
-text-align: left;
-padding: 2%;
-height: 300px;
-}
-
-
-
-
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-BlogPosting .preview {
-  
-  width: 372px;
-  height: 279px;
-
-  float: left;
-  margin: 1% 5% 1% 0%;
-
-}
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-BlogPosting .textsummary {
-  
-  float: left;
-  width: 52%;
-  overflow: hidden;
-  height: 100%;
-}
-
-
-
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-BlogPosting H3 {
-  margin: 0;
-  font-size: 40px;
-  line-height: 52px;
-  text-shadow: 2px 2px #111;
-}
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-BlogPosting p {
-  font-size: 28px;
-  line-height: 39px;
-  margin: 2% 0;
-}
-
-/* Details RSS CSS */
+/* Detailed item-blogposting - RSS - article */
 
 .josh-id-detail .detailViewItem {
 padding: 7%;
-
-
 }
 
 .josh-id-detail .detailViewItem .title H1 {
   font-size: 60px;
   text-shadow: 3px 3px #111;
   line-height: 80px;
-  }
+}
 
 .josh-id-detail .detailViewItem .title p {
   text-shadow: 2px 2px #111;
@@ -435,127 +600,52 @@ padding: 7%;
   font-size: 48px;
   line-height: 82px;
   text-shadow: 2px 2px #111;
-
 }
 
 
-/* Twitter CSS */
+/* Detailed twitter */
 
-.defaultApp__content__itemList_scroller ul li.item-ArticleStatus {
-  border: 1px transparent solid;
-  padding: 2%;
-  color: #CCC;
+
+.josh-id-detail_twitter .tweet {
+  padding-top: 50px;
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus {
-  text-align: left;
-  height: auto;
-  margin: 2% 4% 0 4%;
-  
+.josh-id-detail_twitter .tweet .tweet-header {}
+
+.josh-id-detail_twitter .tweet .tweet-header img{
+  float: left;
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet{
-  font-size: 35px;
-  line-height: 50px;
-  text-shadow: 2px 2px #111;
+.josh-id-detail_twitter .tweet .tweet-header p{
+
   margin: 0;
-  font-weight: 300;
+  line-height: 48px;
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet a{
-color: #EEE;
+.josh-id-detail_twitter .tweet .tweet-header p.username{
+  display: none;
 }
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet img{
-  /*
-  height:180px;
-  margin: 32px;
-  float: left;
-  */
-  width:100px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius:5px;
-}
-  
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p {
-margin: 0;
-}  
-
-
-
-
- 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user .name, #defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.date  {
-display: none;
-  /*
-  text-align: left;
-  font-size: 20px;
-  line-height: 24px;
-  text-shadow: 2px 2px #111;
-  margin:0;
-  font-weight: 300;
-  */
-
-}    
-
-
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user {
-  font-size: 17px;
-  line-height: 20px;
-  text-shadow: 1px 1px #111;
-  margin:0;
-
-}
-
- 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet p.user .login {
-  color: #DDD;
-  font-weight: 600;
-  
+.josh-id-detail_twitter .tweet .tweet-header p.userlogin{
+  margin: 0 0 0 70px;
 }
 
 
-.defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet-header{
-  float: left;
-  width: 145px;
-  /*
-  background: rgba(10, 10, 10, 0.2);
-  */
-  padding: 14px 8px;
-  text-align: center;
+.josh-id-detail_twitter .tweet .tweet-content {}
 
+.josh-id-detail_twitter .tweet .tweet-content p{
+  margin: 0;
 }
 
-  
-.defaultApp__content__itemList_scroller ul li.item-ArticleStatus .tweet-content{
-  float: left;
-  width: 74%;
-  margin: 0 0 0 2%;
-  padding: 2%;
-  box-shadow: inset 0 0 40px 0 #111;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  background: rgba(10, 10, 10, 0.2);
-  border: 1px solid transparent;
+.josh-id-detail_twitter .tweet .tweet-content p.content{
+  font-size: 82px;
+  line-height: 140px;
+  margin: 40px 0 0px 0;
+  color: white;
 }
 
-#defaultApp__content__itemList  .defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused {
-border: 1px solid transparent;
-box-shadow: none;
-background: none;
+.josh-id-detail_twitter .tweet .tweet-content p.date{}
 
-}
 
-#defaultApp__content__itemList .defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused .tweet p.user .login{
-color: #FFF;
-}
 
-.defaultApp__content__itemList_scroller ul li.item-ArticleStatus.focused .tweet-content{
-border: #F1F1F1 solid 1px;
-box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
 
-}
-
-  
-  
