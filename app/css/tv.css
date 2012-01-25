@@ -525,7 +525,7 @@ item-BlogPosting
 
 .josh-id-content_itemList li.item-BlogPosting {
   text-align: left;
-  padding: 2%;
+  padding: 2% 0 2% 0;
   height: auto;
   /*
   border: 1px solid transparent;
