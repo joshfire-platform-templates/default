@@ -36,7 +36,7 @@
         "devices": "tv",
         "startfile": "app/index.tv.html",
         "images":"marketing/preview-tv.png",
-        "screenshots":["marketing/screenshot-tv-1.jpg", "marketing/screenshot-tv-2.jpg"]
+        "screenshots":["marketing/screenshot-tv-1.png", "marketing/screenshot-tv-2.png"]
       },
       {
         "devices": "*",
