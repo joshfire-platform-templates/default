@@ -8,8 +8,8 @@ body {
   
   
   
-  color: #bbb;
-  font-size: 20px;
+  color: #777;
+  font-size: 35px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -35,13 +35,17 @@ ul {
 
 
 .josh-id-sidebarleft{
+/*
   top: 5%;
   left: 5%;
+*/
+  top: 0;
+  left: 0;
   position: absolute;
   bottom: 0%;
-  width: 15%;
-  margin: 3% 0 0 0;
-  padding: 6px 0 6px 0;
+  width: 21%;
+  margin: 0 0 0 0;
+  padding: 3% 3% 1% 3%;
   background-image: linear-gradient(bottom, rgb(10,10,10) 20%, rgb(66,66,66) 80%);
 background-image: -o-linear-gradient(bottom, rgb(10,10,10) 20%, rgb(66,66,66) 80%);
 background-image: -webkit-linear-gradient(bottom, rgb(10,10,10) 20%, rgb(66,66,66) 80%);
@@ -56,24 +60,20 @@ color-stop(0.2, rgb(10,10,10)), color-stop(0.8, rgb(66,66,66)));
   /*
   background-image: -webkit-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
   background-image: -o-linear-gradient(bottom, rgb(97,97,97) 11%, rgb(62,61,71) 56%);
+  padding: 8px 8px 18px 10%;
   */
   font-size: 18px; 
   color: #F1F1F1;
   position: absolute;
   left: 0; 
   right: 0;
-  
-  
-/*
-  width: 90%;
-  height: 22px;
-  margin: 3% 0 0px 0;
-*/
-  padding: 8px 8px 18px 10%;
+
 
   border-bottom: 1px black solid;
   box-shadow: 0px 1px #505050;
 
+  margin: 0;
+  padding: 0 20% 8% 20%;
 }
 
 .device-tv img.applogo {
@@ -82,19 +82,23 @@ color-stop(0.2, rgb(10,10,10)), color-stop(0.8, rgb(66,66,66)));
 }
 
 .josh-id-sidebarleft_menu {
+  /*
   position: absolute;
   top: 20%;
-  /*
   left: 5%;
-  */
   width: 100%;
+  */
+  
 }
 
 .josh-id-sidebarleft_menu ul {
   overflow: hidden;
+  
+  padding: 15px 4%;
+  margin: 42% 0 0 0;
+/*
   width: 80%;
-  padding: 15px 10%;
-/*  border-top: black 1px solid;
+  border-top: black 1px solid;
   border-bottom: #505050 1px solid; */
 
 }
@@ -103,14 +107,15 @@ color-stop(0.2, rgb(10,10,10)), color-stop(0.8, rgb(66,66,66)));
 
 
 .josh-id-sidebarleft_menu li {
- /* float: left;*/
+  /*
   width: 85%;
+  */
   height: 32px;
   padding: 30px 0 30px 15%;
   line-height: 30px;
   border-top: 1px solid #505050;
   border-bottom: 1px solid black;
-  border-right: 1px transparent solid;;
+  border-right: 1px transparent solid;
   border-left: 1px transparent solid;
 
   list-style: none;
@@ -137,7 +142,7 @@ color-stop(0.2, rgb(10,10,10)), color-stop(0.8, rgb(66,66,66)));
 .josh-id-sidebarleft_menu li.focused {
   border: rgba(250, 250, 250, 0.7) solid 1px;
   box-shadow: 1px 1px 21px #869be0, inset 1px 1px 15px #000;
-  color: #F1F1F1;
+  color: #E1E1E1;
   border-radius: 5px;
   text-shadow: 2px 2px black;  
   /* cancel if disturbing */ margin: 0 0 1px 0;
@@ -236,18 +241,19 @@ background-image: url(../images/icons/about-focus.png);
 .josh-id-content {
   position: absolute;
   bottom: 0; 
-  left: 20%;
-  right: 5%;
-  top: 5%;
+  left: 27%;
+  right: 0;
+  top: 0;
   /*border: 2px solid #fff;*/
   overflow: auto;
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(35%,rgba(0,0,0,0)), color-stop(95%,rgba(0,0,0,0.9)), color-stop(100%,rgba(0,0,0,0.9))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0.9) 95%,rgba(0,0,0,0.9) 100%); /* Chrome10+,Safari5.1+ */
 background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0.9) 95%,rgba(0,0,0,0.9) 100%); /* Opera 11.10+ */
-
+  /*
+  margin-left: 1px;
+  */
 }
 
-(top, transparent 0%,transparent 60%,rgba(0, 0, 0, 0.8) 100%,rgba(0, 0, 0, 0.9) 100%)
 
 
 /* List layout - Grid layout */
@@ -286,10 +292,10 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,
 }
 
 .josh-id-content_itemGrid li.focused,
-.josh-id-content_itemList li.focused, .defaultApp__content__itemList_scroller li.focused {
+.josh-id-content_itemList li.focused, .defaultApp__content__itemList_scroller ul li.focused {
   border: rgba(250, 250, 250, 0.7) solid 1px;
   box-shadow:1px 1px 21px #869be0, inset 1px 1px  15px #000;
-  color: #F1F1F1;
+  color: #E1E1E1;
   border-radius: 10px;
   text-shadow: 1px 1px black;
   background: #333 url(../images/img-bckgd.png) 0 0;
@@ -334,7 +340,7 @@ twitter
 .defaultApp__content__itemList_scroller ul li.item-ArticleStatus {
   border: 1px transparent solid;
   padding: 2%;
-  color: #CCC;
+  
 }
 
 .josh-id-content_itemList li.item-ArticleStatus {
@@ -401,7 +407,7 @@ display: none;
 
  
 .josh-id-content_itemList li.item-ArticleStatus .tweet p.user .login {
-  color: #DDD;
+  color: #656565;
   font-weight: 600;
   
 }
@@ -443,7 +449,7 @@ background: none;
 
 
 .josh-id-content_itemList li.item-ArticleStatus.focused .tweet p.user .login{
-color: #FFF;
+color: #F1F1F1;
 }
 
 .josh-id-content_itemList li.item-ArticleStatus.focused .tweet-content{
@@ -618,7 +624,7 @@ item-Event
 
 .josh-id-content_itemList li.item-Event .event .content{
   float: left;
-  width: 900px;
+  width: 860px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -708,11 +714,12 @@ text-align: center;
 }
 
 .josh-id- .josh-id-detail .josh-id-detail_image img {
-  border-top: 10px solid #EAEAEA;
-  border-right: 10px solid #F9F9F9;
-  border-left: 10px solid #F9F9F9;
-  border-bottom: 10px solid #EAEAEA;
+  border-top: 10px solid #D1D1D1;
+  border-right: 10px solid #F1F1F1;
+  border-left: 10px solid #F1F1F1;
+  border-bottom: 10px solid #D1D1D1;
   background: #F1F1F1;
+  width: 100%;
 }
 
 /* Detailed event */
@@ -737,7 +744,7 @@ text-align: center;
 .josh-id-detail_event .event .coords p.endDate{}
 
 .josh-id-detail_event .event .coords p.location{
-  color: #F1F1F1;
+  color: #E1E1E1;
 }
 
 
@@ -758,14 +765,18 @@ text-align: center;
   font-size: 70px;
   line-height: 130px;
   margin-top: 30px;
-  color: #F1F1F1;
+  color: #E1E1E1;
 
 }
 
 /* Detailed video - Video Fullscreen CSS */
 
 .josh-id- .josh-id-detail .josh-id-detail_video{
+
 padding: 0;
+background: #111;
+height: 100%;
+width: 100%;
 }
 
 .josh-id-detail_video .josh-id-detail_video_title .title{
@@ -838,7 +849,7 @@ padding: 7%;
   font-size: 82px;
   line-height: 140px;
   margin: 40px 0 0px 0;
-  color: white;
+  color: #E1E1E1;
 }
 
 .josh-id-detail_twitter .tweet .tweet-content p.date{}
@@ -849,7 +860,7 @@ padding: 7%;
 /* Detailed article */
 
 .josh-id-detail_article{
-  color: #F1F1F1;
+  color: #E1E1E1;
 }
 
 .josh-id-detail_article .title{
@@ -916,7 +927,7 @@ color: #F1F1F1;
 .josh-id-detail_google .directory p.content{
   font-size: 70px;
   line-height: 130px;
-  color: #F1F1F1;
+  color: #E1E1E1;
 }
 
 
