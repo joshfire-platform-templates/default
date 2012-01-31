@@ -20,7 +20,7 @@ Joshfire.define(['joshfire/class', 'joshfire/tree.ui', 'joshfire/uielements/list
           type: PanelManager,
           uiMaster: '/header/menu',
           children: [
-              UIFragments.itemList({toGrid: ['ImageObject', 'VideoObject']})
+              UIFragments.itemList({toGrid: ['ImageObject']})
             , UIFragments.detail({app:app, treePosition:"/content", uiDataMaster:"/content/itemList"})
             , UIFragments.about(app, "/content")
           ]
