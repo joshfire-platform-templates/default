@@ -1,3 +1,6 @@
+/* default-css */
+
+
 html,
 body {
   width: 100%;
@@ -123,6 +126,7 @@ ul {
   overflow: auto;
 }
 
+/* ITEM LIST */
 
 /* list layout */
 li.mainitemlist.list {}
@@ -148,7 +152,6 @@ li.mainitemlist.grid .thumbnail {
   width: 100%;
   height: 100%;
 }
-
 
 
 /* content_detail */

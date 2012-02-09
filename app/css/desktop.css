@@ -291,14 +291,17 @@ item-Event
 
 .josh-id-content_itemList li.item-Event{
   border-bottom: 1px solid #DDD;
-  padding: 20px 10px 10px 10px;
+  padding: 12px 10px 12px 10px;
   list-style: none;
   min-height: 30px;
 }
 
+.josh-id-content_itemList li.item-Event .event{
+
+}
 
 .josh-id-content_itemList li.item-Event .event .content {
-  margin: 0px 4px 0 70px;
+  margin: 0px 4px 0 60px;
   line-height: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -307,8 +310,9 @@ item-Event
 
 
 .josh-id-content_itemList li.item-Event .event .startDate {
-  top: 20px;
+  top: 6px;
   line-height: 16px;
+  margin-bottom: 5px;
 }
 
 

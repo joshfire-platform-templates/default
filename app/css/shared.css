@@ -1,3 +1,6 @@
+/* default-css */
+
+
 img.applogo {
   max-height: 90%;
   max-width: 200px;
@@ -62,6 +65,10 @@ line-height: 16px;
 color: black;
   white-space: normal;
   margin-right: 70px;
+}
+
+li.mainitemlist.list .abstract p, li.mainitemlist.list .abstract img, li.mainitemlist.list .abstract p img {
+margin: 0;
 }
 
 li.mainitemlist.list .preview {
@@ -219,36 +226,61 @@ font-weight: 700;
 }
 
 .josh-id-content_itemList li.item-Article .description{
-margin: 0 4px 0 75px;
-font-size: 15px;
-line-height: 18px;
-white-space: normal;
+  margin: 0 4px 0 75px;
+  font-size: 15px;
+  line-height: 18px;
+  white-space: normal;
 }
 
 /*
 item-event
 */
 
-.josh-id-content_itemList li.item-Event{}
+.josh-id-content_itemList li.item-Event{
+  min-height: 31px;
+  padding: 10px 6px 6px 8px;
+}
 
 .josh-id-content_itemList li.item-Event .event{}
 
 .josh-id-content_itemList li.item-Event .event p{
-margin: 0;
+  margin: 0;
+  line-height: 18px;
 }
 
+
+
+
+.josh-id-content_itemList li.item-Event .event .startDateDay{
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.josh-id-content_itemList li.item-Event .event .startDateDay .date{
+}
+
+.josh-id-content_itemList li.item-Event .event .startDateDay .localedate{
+display: none;
+}
+
+
 .josh-id-content_itemList li.item-Event .event .startDate{
+  float: left;
+  margin-right: 10px;
+/*
 position: absolute;
 left: 10px;
 top: 10px;
 font-weight: 700;
 color: #111;
+*/
 }
 
+
 .josh-id-content_itemList li.item-Event .event .content{
-margin: 5px 4px 0 60px;
+margin: 0px 4px 0 50px;
 font-size: 15px;
-line-height: 18px;
 }
 
 
@@ -258,6 +290,30 @@ item-video
 */
 .josh-id-content_itemList li.item-VideoObject{
 }
+
+/*  Liste item-BlogPosting  */
+
+li.mainitemlist.item-BlogPosting .preview{
+
+height: 60px;
+width: 80px;
+overflow: hidden;
+text-align: center;
+display: table-cell;
+vertical-align: middle;
+
+}
+
+li.mainitemlist.item-BlogPosting .preview img{
+
+max-height: 220%;
+max-width: 150%;
+
+}
+
+
+
+
 
 
 /* DETAIL CONTENT */
@@ -275,6 +331,12 @@ item-video
 }
 
 .josh-id-content_detail_image img{
+}
+
+/* Detail calendar */
+
+.josh-id-content_detail_event .event .coords .Day .localedate{
+display: none;
 }
 
 
