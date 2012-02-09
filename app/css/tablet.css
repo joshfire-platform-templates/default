@@ -488,6 +488,13 @@ padding: 7%+19.5%+10%+19.5%;
 
 /* CONTENT DETAIL */
 
+.detailViewItem, .about {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+}
 
 #defaultApp__content__detail {
   /*
