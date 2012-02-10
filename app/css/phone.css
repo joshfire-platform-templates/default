@@ -221,7 +221,7 @@ bottom: 0;
 .josh-id-content_detail_article .title H1{
 margin: 8px 0 4px 0;
 color: #111;
-line-height: 20px;
+line-height: 18px;
 font-size: 15px;
 }
 
@@ -229,10 +229,6 @@ font-size: 15px;
 .josh-id-content_detail_article .body{}
 
 .josh-id-content_detail_article .body p{
-margin: 0;
-font-size: 16px;
-line-height: 20px;
-color: black;
 }
 
 .josh-id-content_detail_article .body p a{

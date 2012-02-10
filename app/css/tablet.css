@@ -543,21 +543,16 @@ border-left: 1px solid #DDD;
 .josh-id-content_detail_article .title{}
 
 .josh-id-content_detail_article .title H1{
-margin: 8px 0;
-color: #111;
-line-height: 23px;
-font-size: 18px;
+  margin: 8px 0;
+  color: #111;
+  line-height: 23px;
+  font-size: 18px;
 }
 
 
 .josh-id-content_detail_article .body{}
 
-.josh-id-content_detail_article .body p{
-margin: 0;
-font-size: 18px;
-line-height: 23px;
-color: black;
-}
+.josh-id-content_detail_article .body p{}
 
 .josh-id-content_detail_article .body p a{
 color: black;
@@ -816,5 +811,4 @@ li.mainitemlist.grid.item-VideoObject .title{
 
 
 
-}
 
