@@ -395,8 +395,13 @@ item-VideoObject
   text-decoration: underline;
 }
 
-
-
+.josh-id-content_detail_article .body .embed-youtube{
+}
+ /* displaying once as video player, once as thumbnail...  */
+.josh-id-content_detail_article .body .embed-youtube .youtube-player{
+max-width: 100%; /*i.e. 400px*/
+max-height: 255px;
+}
 
 /* Detailed twitter */
 
