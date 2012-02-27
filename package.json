@@ -1,8 +1,8 @@
 {
   "name": "default",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "fullName": "Base template",
-  "description": "Official base template, supports all the devices compatible with the Factory. Applied by default.",
+  "description": "Official base template, supports all the devices compatible with the Factory.\n\nThis template is applied by default to families of devices for which you have not yet installed a template. For instance, if you installed another template on mobile devices, this template is installed on all other devices: tablets, desktops, TVs and connected objects.\n\nThe template handles all types of datasources and adjusts the icon of the corresponding icon in the toolbar based on the type of items the datasource returns (e.g. photos, videos, RSS content, etc.).",
   "keywords": [
      "default",
      "clean",
@@ -17,26 +17,25 @@
       {
         "devices": "desktop",
         "startfile": "app/index.desktop.html",
-        "images": "marketing/preview-desktop.png",
-        "screenshots":["marketing/screenshot-desktop-1.png"]
+        "images": "marketing/image-small.png"
       },
       {
         "devices": "phone",
         "startfile": "app/index.phone.html",
-        "images":"marketing/preview-phone.png",
-        "screenshots":["marketing/screenshot-phone-1.png", "marketing/screenshot-phone-2.png", "marketing/screenshot-phone-3.png"]
+        "images":"marketing/image-small.png",
+        "screenshots":["marketing/screenshot-phone.png"]
       },
       {
         "devices": "tablet",
         "startfile": "app/index.tablet.html",
-        "images":"marketing/preview-tablet.png",
-        "screenshots":["marketing/screenshot-tablet-1.png", "marketing/screenshot-tablet-2.png"]
+        "images":"marketing/image-small.png",
+        "screenshots":["marketing/screenshot-tablet-portrait.png"]    
       },
       {
         "devices": "tv",
         "startfile": "app/index.tv.html",
-        "images":"marketing/preview-tv.png",
-        "screenshots":["marketing/screenshot-tv-1.png", "marketing/screenshot-tv-2.png"]
+        "images":"marketing/image-small.png",
+        "screenshots":["marketing/screenshot-tv.jpg"]
       },
       {
         "devices": "*",
@@ -46,7 +45,7 @@
     "datasources": {
       "main": {
         "title": "Main tabs",
-        "description": "Add up to 6 tabs in your application",
+        "description": "Up to 6 tabs. Any type of datasource accepted.",
         "multiple":true
       }
     },
