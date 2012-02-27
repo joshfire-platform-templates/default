@@ -1,6 +1,6 @@
 {
   "name": "default",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "fullName": "Base template",
   "description": "Official base template, supports all the devices compatible with the Factory. Applied by default.",
   "keywords": [
