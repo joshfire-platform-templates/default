@@ -1,4 +1,4 @@
-define([],function() {
+Joshfire.define([],function() {
 
 /*!
  * linkify - v0.3 - 6/27/2009
@@ -173,4 +173,4 @@ var linkify = (function(){
 
 return linkify;
 
-})
+});

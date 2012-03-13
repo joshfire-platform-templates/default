@@ -1,0 +1,5 @@
+build.sh export-ignore
+app/build export-ignore
+app/joshfire export-ignore
+app/*.js export-ignore
+app/src export-ignore
