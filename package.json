@@ -1,6 +1,6 @@
 {
   "name": "default",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "fullName": "Base template",
   "description": "Official base template, supports all the devices compatible with the Factory.\n\nThis template is applied by default to families of devices for which you have not yet installed a template. For instance, if you installed another template on mobile devices, this template is installed on all other devices: tablets, desktops, TVs and connected objects.\n\nThe template handles all types of datasources and adjusts the icon of the corresponding icon in the toolbar based on the type of items the datasource returns (e.g. photos, videos, RSS content, etc.).",
   "keywords": [
